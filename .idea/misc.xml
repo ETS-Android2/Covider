@@ -4,6 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layout/activity_main.xml" value="0.19927536231884058" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/activities/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/courses.xml" value="0.1" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/form.xml" value="0.1" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_courses.xml" value="0.1" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_form.xml" value="0.1" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_map.xml" value="0.1" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/map.xml" value="0.1" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/menu/main_menu.xml" value="0.1623931623931624" />
+        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/menu/top_app_bar.xml" value="0.22760416666666666" />
       </map>
     </option>
   </component>
