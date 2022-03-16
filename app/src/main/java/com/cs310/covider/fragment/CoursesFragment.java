@@ -1,11 +1,11 @@
-package com.cs310.covider;
+package com.cs310.covider.fragment;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.cs310.covider.model.MyFragment;
+import com.cs310.covider.R;
 
 /**
  * A simple {@link Fragment} subclass.

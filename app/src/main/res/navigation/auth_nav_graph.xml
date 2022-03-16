@@ -7,12 +7,12 @@
 
     <fragment
             android:id="@+id/login"
-            android:name="com.cs310.covider.LoginFragment"
+            android:name="com.cs310.covider.fragment.LoginFragment"
             android:label="fragment_login"
             tools:layout="@layout/fragment_login"/>
     <fragment
             android:id="@+id/register"
-            android:name="com.cs310.covider.RegisterFragment"
+            android:name="com.cs310.covider.fragment.RegisterFragment"
             android:label="fragment_register"
             tools:layout="@layout/fragment_register"/>
 </navigation>

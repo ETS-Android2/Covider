@@ -1,4 +1,4 @@
-package com.cs310.covider;
+package com.cs310.covider.fragment;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -7,15 +7,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.cs310.covider.model.MyFragment;
+import com.cs310.covider.R;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FormFragment#newInstance} factory method to
+ * Use the {@link LoginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FormFragment extends MyFragment {
+public class LoginFragment extends MyFragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -25,7 +26,7 @@ public class FormFragment extends MyFragment {
     private String mParam1;
     private String mParam2;
 
-    public FormFragment() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +36,11 @@ public class FormFragment extends MyFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment form.
+     * @return A new instance of fragment Login.
      */
     // TODO: Rename and change types and number of parameters
-    public static FormFragment newInstance(String param1, String param2) {
-        FormFragment fragment = new FormFragment();
+    public static LoginFragment newInstance(String param1, String param2) {
+        LoginFragment fragment = new LoginFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,6 +61,11 @@ public class FormFragment extends MyFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_form, container, false);
+        return inflater.inflate(R.layout.fragment_login, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 }

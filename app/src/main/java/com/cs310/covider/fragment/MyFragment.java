@@ -1,4 +1,4 @@
-package com.cs310.covider.model;
+package com.cs310.covider.fragment;
 
 import android.os.Bundle;
 import android.view.View;

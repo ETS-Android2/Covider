@@ -1,19 +1,18 @@
-package com.cs310.covider;
+package com.cs310.covider.fragment;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.cs310.covider.model.MyFragment;
+import com.cs310.covider.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RegisterFragment#newInstance} factory method to
+ * Use the {@link FormFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RegisterFragment extends MyFragment {
-
+public class FormFragment extends MyFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -23,7 +22,7 @@ public class RegisterFragment extends MyFragment {
     private String mParam1;
     private String mParam2;
 
-    public RegisterFragment() {
+    public FormFragment() {
         // Required empty public constructor
     }
 
@@ -33,11 +32,11 @@ public class RegisterFragment extends MyFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Register.
+     * @return A new instance of fragment form.
      */
     // TODO: Rename and change types and number of parameters
-    public static RegisterFragment newInstance(String param1, String param2) {
-        RegisterFragment fragment = new RegisterFragment();
+    public static FormFragment newInstance(String param1, String param2) {
+        FormFragment fragment = new FormFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,6 +57,6 @@ public class RegisterFragment extends MyFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        return inflater.inflate(R.layout.fragment_form, container, false);
     }
 }

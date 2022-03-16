@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
 import com.cs310.covider.database.Database;
+import com.cs310.covider.fragment.*;
 import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         if(Database.getCurrentUser() != null) {
-            changeToFragment(navigationView.getMenu().findItem(R.id.menu_map_item),MapFragment.class);
+            changeToFragment(navigationView.getMenu().findItem(R.id.menu_map_item), MapFragment.class);
         }
         else
         {
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.main_fragment);
             assert navHostFragment != null;
             navHostFragment.getNavController().setGraph(R.navigation.auth_nav_graph);
-            changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item),LoginFragment.class);
+            changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item), LoginFragment.class);
         }
     }
 
