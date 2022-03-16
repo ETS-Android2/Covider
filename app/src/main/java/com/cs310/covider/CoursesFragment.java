@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.cs310.covider.model.MyFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CoursesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CoursesFragment extends Fragment {
+public class CoursesFragment extends MyFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

@@ -8,10 +8,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import com.cs310.covider.database.Database;
-import com.cs310.covider.model.User;
 import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.auth_menu);
             NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+            assert navHostFragment != null;
             navHostFragment.getNavController().setGraph(R.navigation.auth_nav_graph);
             changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item),LoginFragment.class);
         }
@@ -118,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
         FragmentManager fragmentManager = getSupportFragmentManager();
+        assert fragment != null;
         fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).commit();
 
         // Highlight the selected item has been done by NavigationView
