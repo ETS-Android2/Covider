@@ -17,12 +17,12 @@ public class Building {
         this.id = id;
     }
 
-    public int GetInfectedNumber(Util.TimeSpan span, Date date){
+    public int getInfectedNumber(Util.TimeSpan span, Date date){
         //TODO
         return 0;
     }
 
-    public int GetRiskFactor(Util.TimeSpan span, Date date)
+    public int getRiskFactor(Util.TimeSpan span, Date date)
     {
         //TODO
         return 0;

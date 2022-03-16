@@ -11,18 +11,18 @@ public class Util {
         MONTH
     }
 
-    public static boolean InTimeFrame(TimeSpan span, Date a, Date b)
+    public static boolean inTimeFrame(TimeSpan span, Date a, Date b)
     {
         switch (span)
         {
             case DAY: {
-                return SameDay(a, b);
+                return sameDay(a, b);
             }
             case WEEK:{
-                return SameWeek(a,b);
+                return sameWeek(a,b);
             }
             case MONTH:{
-                return SameMonth(a, b);
+                return sameMonth(a, b);
             }
             default:{
                 return false;
@@ -30,7 +30,7 @@ public class Util {
         }
     }
 
-    public static boolean SameWeek(Date a, Date b) {
+    public static boolean sameWeek(Date a, Date b) {
         Calendar currentCalendar = Calendar.getInstance();
         currentCalendar.setTime(b);
         int week = currentCalendar.get(Calendar.WEEK_OF_YEAR);
@@ -42,7 +42,7 @@ public class Util {
         return week == targetWeek && year == targetYear;
     }
 
-    public static boolean SameMonth(Date a, Date b) {
+    public static boolean sameMonth(Date a, Date b) {
         Calendar currentCalendar = Calendar.getInstance();
         currentCalendar.setTime(b);
         int month = currentCalendar.get(Calendar.MONTH);
@@ -54,7 +54,7 @@ public class Util {
         return month == targetMonth && year == targetYear;
     }
 
-    public static boolean SameDay(Date a, Date b) {
+    public static boolean sameDay(Date a, Date b) {
         Calendar currentCalendar = Calendar.getInstance();
         currentCalendar.setTime(b);
         int day = currentCalendar.get(Calendar.DAY_OF_YEAR);

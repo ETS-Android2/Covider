@@ -8,6 +8,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import com.cs310.covider.database.Database;
+import com.cs310.covider.model.User;
 import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,8 +19,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private MenuItem currentItem;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.menu_map_item);
+        if(Database.getCurrentUser() != null) {
+            changeToFragment(navigationView.getMenu().findItem(R.id.menu_map_item),MapFragment.class);
+        }
+        else
+        {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.auth_menu);
+            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+            navHostFragment.getNavController().setGraph(R.navigation.auth_nav_graph);
+            changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item),LoginFragment.class);
+        }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-        Fragment fragment = null;
+        if(Database.getCurrentUser() != null)
+        {
+            return onNavigationItemSelectedLoggedin(item);
+        }
+        else
+        {
+            return onNavigationItemSelectedAuth(item);
+        }
+    }
+
+    private boolean onNavigationItemSelectedLoggedin(@NonNull @NotNull MenuItem item)
+    {
         Class fragmentClass = null;
         switch (item.getItemId())
         {
@@ -61,12 +84,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
         }
+        changeToFragment(item,fragmentClass);
+        return false;
+    }
+
+    private boolean onNavigationItemSelectedAuth(@NonNull @NotNull MenuItem item)
+    {
+        Class fragmentClass = null;
+        switch (item.getItemId())
+        {
+            case R.id.menu_login_item: {
+                fragmentClass = LoginFragment.class;
+                break;
+            }
+            case R.id.menu_register_item: {
+                fragmentClass = RegisterFragment.class;
+                break;
+            }
+            default:{
+                break;
+            }
+        }
+        changeToFragment(item,fragmentClass);
+        return false;
+    }
+
+    private void changeToFragment(MenuItem item, Class fragmentClass)
+    {
+        Fragment fragment = null;
         try {
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).commit();
 
@@ -76,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setTitle(item.getTitle());
         // Close the navigation drawer
         drawerLayout.closeDrawers();
-        return false;
     }
 
     @Override

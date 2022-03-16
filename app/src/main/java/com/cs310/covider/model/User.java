@@ -26,7 +26,7 @@ public class User {
     private String email = "";
     private Date lastInfectionDate;
 
-    public boolean Risky(Util.TimeSpan span, Date queryDate){
+    public boolean risky(Util.TimeSpan span, Date queryDate){
         //TODO
         return true;
     }
@@ -95,6 +95,7 @@ public class User {
         return result;
     }
 
+    @Override
     public String toString() {
         return "User(userType=" + this.getUserType() + ", userCourses=" + this.getUserCourses() + ", id=" + this.getId() + ", lastInfectionDate=" + this.getLastInfectionDate() + ")";
     }
