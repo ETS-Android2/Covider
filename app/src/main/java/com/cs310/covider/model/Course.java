@@ -5,77 +5,59 @@ import java.util.Objects;
 
 public class Course {
 
-    public Course(String id, Building building, ArrayList<User> students, ArrayList<User> instructors) {
+    public Course(String id, String buildingName, ArrayList<String> studentsEmails, ArrayList<String> instructorsEmails, CourseMode mode) {
+        this.courseMode = mode;
         this.id = id;
-        this.building = building;
-        this.students = students;
-        this.instructors = instructors;
+        this.buildingName = buildingName;
+        this.studentsEmails = studentsEmails;
+        this.instructorsEmails = instructorsEmails;
+    }
+
+    public Course(){
+    }
+
+    public String toString() {
+        return "Course(id=" + this.getId() + ", building=" + this.getBuildingName() + ", students=" + this.getStudentsEmails() + ", instructors=" + this.getInstructorsEmails() + ")";
+    }
+
+    public CourseMode getCourseMode() {
+        return courseMode;
+    }
+
+    public void setCourseMode(CourseMode courseMode) {
+        this.courseMode = courseMode;
     }
 
     public String getId() {
-        return this.id;
-    }
-
-    public Building getBuilding() {
-        return this.building;
-    }
-
-    public ArrayList<User> getStudents() {
-        return this.students;
-    }
-
-    public ArrayList<User> getInstructors() {
-        return this.instructors;
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setBuilding(Building building) {
-        this.building = building;
+    public String getBuildingName() {
+        return buildingName;
     }
 
-    public void setStudents(ArrayList<User> students) {
-        this.students = students;
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
     }
 
-    public void setInstructors(ArrayList<User> instructors) {
-        this.instructors = instructors;
+    public ArrayList<String> getStudentsEmails() {
+        return studentsEmails;
     }
 
-    @Override
-    public boolean equals(final Object o) {
-        if (o == this) {
-            return true;
-        }
-        if (!(o instanceof Course)) {
-            return false;
-        }
-        final Course other = (Course) o;
-        if (!other.canEqual((Object) this)) {
-            return false;
-        }
-        final Object this$id = this.getId();
-        final Object other$id = other.getId();
-        return Objects.equals(this$id, other$id);
+    public void setStudentsEmails(ArrayList<String> studentsEmails) {
+        this.studentsEmails = studentsEmails;
     }
 
-    protected boolean canEqual(final Object other) {
-        return other instanceof Course;
+    public ArrayList<String> getInstructorsEmails() {
+        return instructorsEmails;
     }
 
-    @Override
-    public int hashCode() {
-        final int PRIME = 59;
-        int result = 1;
-        final Object $id = this.getId();
-        result = result * PRIME + ($id == null ? 43 : $id.hashCode());
-        return result;
-    }
-
-    public String toString() {
-        return "Course(id=" + this.getId() + ", building=" + this.getBuilding() + ", students=" + this.getStudents() + ", instructors=" + this.getInstructors() + ")";
+    public void setInstructorsEmails(ArrayList<String> instructorsEmails) {
+        this.instructorsEmails = instructorsEmails;
     }
 
     public enum CourseMode{
@@ -83,9 +65,10 @@ public class Course {
         INPERSON
     }
 
+    CourseMode courseMode;
     private String id;
-    private Building building;
-    private ArrayList<User> students;
-    private ArrayList<User> instructors;
+    private String buildingName;
+    private ArrayList<String> studentsEmails;
+    private ArrayList<String> instructorsEmails;
 
 }

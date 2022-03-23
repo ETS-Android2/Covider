@@ -1,28 +1,30 @@
 package com.cs310.covider.model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
 
-    public User(UserType userType, ArrayList<Course> userCourses, String id, Date lastInfectionDate, String email) {
+    public User(UserType userType, ArrayList<String> userCourses, Date lastInfectionDate, String email) {
         this.userType = userType;
-        this.userCourses = userCourses;
+        this.userCoursesIDs = userCourses;
         this.email = email;
-        this.id = id;
         this.lastInfectionDate = lastInfectionDate;
     }
 
-    public enum UserType {
+    public User() {
+    }
+
+    public enum UserType implements Serializable {
         INSTRUCTOR,
         STUDENT
     }
 
     private UserType userType = UserType.STUDENT;
-    private ArrayList<Course> userCourses;
-    private String id = "";
+    private ArrayList<String> userCoursesIDs;
     private String email = "";
     private Date lastInfectionDate;
 
@@ -41,12 +43,8 @@ public class User {
         return this.userType;
     }
 
-    public ArrayList<Course> getUserCourses() {
-        return this.userCourses;
-    }
-
-    public String getId() {
-        return this.id;
+    public ArrayList<String> getUserCoursesIDs() {
+        return this.userCoursesIDs;
     }
 
     public Date getLastInfectionDate() {
@@ -57,12 +55,8 @@ public class User {
         this.userType = userType;
     }
 
-    public void setUserCourses(ArrayList<Course> userCourses) {
-        this.userCourses = userCourses;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setUserCoursesIDs(ArrayList<String> userCoursesIDs) {
+        this.userCoursesIDs = userCoursesIDs;
     }
 
     public void setLastInfectionDate(Date lastInfectionDate) {
@@ -81,8 +75,8 @@ public class User {
         if (!other.canEqual((Object) this)) {
             return false;
         }
-        final Object this$id = this.getId();
-        final Object other$id = other.getId();
+        final Object this$id = this.getEmail();
+        final Object other$id = other.getEmail();
         return Objects.equals(this$id, other$id);
     }
 
@@ -94,13 +88,13 @@ public class User {
     public int hashCode() {
         final int PRIME = 59;
         int result = 1;
-        final Object $id = this.getId();
+        final Object $id = this.getEmail();
         result = result * PRIME + ($id == null ? 43 : $id.hashCode());
         return result;
     }
 
     @Override
     public String toString() {
-        return "User(userType=" + this.getUserType() + ", userCourses=" + this.getUserCourses() + ", id=" + this.getId() + ", lastInfectionDate=" + this.getLastInfectionDate() + ")";
+        return "User(userType=" + this.getUserType() + ", userCourses=" + this.getUserCoursesIDs() + ", lastInfectionDate=" + this.getLastInfectionDate() + ")";
     }
 }

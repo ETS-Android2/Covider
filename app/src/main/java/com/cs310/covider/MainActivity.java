@@ -1,4 +1,5 @@
 package com.cs310.covider;
+import android.location.Location;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -10,19 +11,28 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.cs310.covider.database.Database;
 import com.cs310.covider.fragment.*;
+import com.cs310.covider.model.Building;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public Toolbar toolbar;
     public DrawerLayout drawerLayout;
     public NavigationView navigationView;
 
+    private void dummy() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dummy();
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -38,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        if(Database.getCurrentUser() != null) {
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
         }
         else
@@ -66,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-        if(Database.getCurrentUser() != null)
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
         {
             return onNavigationItemSelectedLoggedin(item);
         }
@@ -96,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_logout_item:{
                 fragmentClass = LogoutFragment.class;
                 break;
+            }
+            case R.id.menu_add_course_item:{
+                fragmentClass = AddCourseFragment.class;
             }
             default:{
                 break;

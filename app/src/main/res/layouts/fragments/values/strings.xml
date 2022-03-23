@@ -10,4 +10,7 @@
     <string name="confirm_password">confirm password</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+    <string name="add_course">Add Course</string>
+    <string name="section_ie_39456d">Section (39456D)</string>
+    <string name="course_name_ie_math_125g">Name (MATH 125g)</string>
 </resources>

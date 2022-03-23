@@ -1,20 +1,26 @@
 package com.cs310.covider.model;
 
-import android.location.Location;
+import com.cs310.covider.model.MyLatLng;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class Building {
-    int id;
-    private Location location;
-    private ArrayList<Course> courses;
+    String name;
+    private MyLatLng location;
+    private ArrayList<String> coursesIDs;
 
-    public Building(Location location, ArrayList<Course> courses, int id)
+    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs)
     {
-        this.courses = courses;
+        this.name = name;
+        this.coursesIDs = coursesIDs;
         this.location = location;
-        this.id = id;
+    }
+
+    public Building(){
+
     }
 
     public int getInfectedNumber(Util.TimeSpan span, Date date){
@@ -28,28 +34,24 @@ public class Building {
         return 0;
     }
 
-    public int getId() {
-        return this.id;
-    }
+    public String getName() {return this.name;}
 
-    public Location getLocation() {
+    public void setName(String name) {this.name = name;}
+
+    public MyLatLng getLocation() {
         return this.location;
     }
 
-    public ArrayList<Course> getCourses() {
-        return this.courses;
+    public ArrayList<String> getCoursesIDs() {
+        return this.coursesIDs;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setLocation(Location location) {
+    public void setLocation(MyLatLng location) {
         this.location = location;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
+    public void setCoursesIDs(ArrayList<String> coursesIDs) {
+        this.coursesIDs = coursesIDs;
     }
 
     @Override
@@ -64,7 +66,7 @@ public class Building {
         if (!other.canEqual((Object) this)) {
             return false;
         }
-        if (this.getId() != other.getId()) {
+        if (!Objects.equals(this.getName(), other.getName())) {
             return false;
         }
         return true;
@@ -78,11 +80,13 @@ public class Building {
     public int hashCode() {
         final int PRIME = 59;
         int result = 1;
-        result = result * PRIME + this.getId();
+        result = result * PRIME + this.getName().hashCode();
         return result;
     }
 
+    @NotNull
+    @Override
     public String toString() {
-        return "Building(id=" + this.getId() + ", location=" + this.getLocation() + ", courses=" + this.getCourses() + ")";
+        return "Building(name=" + this.getName() + ", location=" + this.getLocation() + ", courses=" + this.getCoursesIDs() + ")";
     }
 }

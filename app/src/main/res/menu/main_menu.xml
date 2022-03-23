@@ -20,9 +20,15 @@
           android:id="@+id/menu_form_item">
         </item>
 
+
+        <item android:title="@string/add_course"
+              android:id="@+id/menu_add_course_item">
+        </item>
+
         <item android:title="@string/logout"
               android:id="@+id/menu_logout_item">
         </item>
+
 
     </group>
 </menu>

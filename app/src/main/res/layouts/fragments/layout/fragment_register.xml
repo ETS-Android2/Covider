@@ -62,6 +62,14 @@
                 android:autofillHints=""
                 style="@style/ThemeOverlay.Material3.MaterialTimePicker.Display.TextInputEditText"/>
 
+        <Spinner
+                android:layout_marginBottom="20dp"
+                android:id="@+id/register_usertype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
