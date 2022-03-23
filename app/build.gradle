@@ -74,4 +74,9 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:$nav_version"
+    implementation 'commons-validator:commons-validator:1.7'
+
+}
+
+repositories {
 }

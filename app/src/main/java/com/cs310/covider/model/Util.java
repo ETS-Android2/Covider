@@ -1,5 +1,7 @@
 package com.cs310.covider.model;
 
+import org.apache.commons.validator.routines.EmailValidator;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -66,6 +68,12 @@ public class Util {
         return day == targetDay && year == targetYear;
     }
 
+    public static String emailError(String email){
+        return email != null && EmailValidator.getInstance().isValid(email) ? null : "Invalid Email!";
+    }
 
+    public static String passwordError(String pass){
+        return pass != null && pass.length() >= 8 ? null : "Needs to be at least 8 characters";
+    }
 
 }

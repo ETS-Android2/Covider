@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import com.cs310.covider.database.Database;
 import com.cs310.covider.fragment.*;
@@ -15,9 +16,9 @@ import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+    public Toolbar toolbar;
+    public DrawerLayout drawerLayout;
+    public NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +45,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.auth_menu);
-            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.main_fragment);
-            assert navHostFragment != null;
-            navHostFragment.getNavController().setGraph(R.navigation.auth_nav_graph);
             changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item), LoginFragment.class);
         }
     }
+
+    public void changeToAuthedMenu()
+    {
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu(R.menu.main_menu);
+        changeToFragment(navigationView.getMenu().findItem(R.id.menu_map_item), MapFragment.class);
+    }
+
+    public void changeToUnauthedMenu()
+    {
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu(R.menu.auth_menu);
+        changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item), LoginFragment.class);
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
@@ -78,6 +91,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             case R.id.menu_form_item: {
                 fragmentClass = FormFragment.class;
+                break;
+            }
+            case R.id.menu_logout_item:{
+                fragmentClass = LogoutFragment.class;
                 break;
             }
             default:{
@@ -109,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
-    private void changeToFragment(MenuItem item, Class fragmentClass)
+    public void changeToFragment(MenuItem item, Class fragmentClass)
     {
         Fragment fragment = null;
         try {
@@ -119,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         FragmentManager fragmentManager = getSupportFragmentManager();
         assert fragment != null;
-        fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.main_fragment, fragment).setPrimaryNavigationFragment(fragment).commit();
 
         // Highlight the selected item has been done by NavigationView
         navigationView.setCheckedItem(item.getItemId());

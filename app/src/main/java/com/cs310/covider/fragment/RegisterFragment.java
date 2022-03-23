@@ -1,11 +1,26 @@
 package com.cs310.covider.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
+import com.cs310.covider.model.Util;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,5 +74,75 @@ public class RegisterFragment extends MyFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button button = rootView.findViewById(R.id.register_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText emailView = rootView.findViewById(R.id.register_email);
+                EditText emailConfirmView = rootView.findViewById(R.id.register_email_confirm);
+                EditText passView = rootView.findViewById(R.id.register_password);
+                EditText passConfirmView = rootView.findViewById(R.id.register_password_confirm);
+                boolean ok = true;
+                String email = String.valueOf(emailView.getText());
+                String emailConfirm = String.valueOf(emailConfirmView.getText());
+                String pass = String.valueOf(passView.getText());
+                String passConfirm = String.valueOf(passConfirmView.getText());
+                String error;
+                if((error = Util.emailError(email)) != null)
+                {
+                    ok = false;
+                    emailView.setError(error);
+                }
+                if((error = Util.passwordError(pass)) != null)
+                {
+                    ok = false;
+                    passView.setError(error);
+                }
+                if(!pass.equals(passConfirm))
+                {
+                    ok = false;
+                    passConfirmView.setError("Passwords don't match!");
+                }
+                if(!email.equals(emailConfirm))
+                {
+                    ok = false;
+                    emailConfirmView.setError("Emails don't match!");
+                }
+                if(ok)
+                {
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass).addOnCompleteListener(
+                             new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        MainActivity mainActivity = (MainActivity) getActivity();
+                                        assert mainActivity != null;
+                                        mainActivity.changeToAuthedMenu();
+                                    } else {
+                                        AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+                                        builder1.setMessage(Objects.requireNonNull(task.getException()).getMessage());
+                                        builder1.setCancelable(true);
+                                        builder1.setPositiveButton(
+                                                "Close",
+                                                new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+                                        AlertDialog alert11 = builder1.create();
+                                        alert11.show();
+                                    }
+                                }
+                            }
+                    );
+                }
+            }
+        });
     }
 }

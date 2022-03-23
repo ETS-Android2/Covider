@@ -3,16 +3,26 @@
       xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single" android:id="@+id/menu_loggedin_group">
-    <item android:title="@string/map"
+
+        <item android:title="@string/map"
             android:id="@+id/menu_map_item">
-    </item>
 
-    <item android:title="@string/courses"
+        </item>
+
+
+        <item android:title="@string/courses"
             android:id="@+id/menu_courses_item">
-    </item>
 
-    <item android:title="@string/form"
+        </item>
+
+
+        <item android:title="@string/form"
           android:id="@+id/menu_form_item">
-    </item>
+        </item>
+
+        <item android:title="@string/logout"
+              android:id="@+id/menu_logout_item">
+        </item>
+
     </group>
 </menu>

@@ -1,11 +1,18 @@
 package com.cs310.covider.fragment;
 
 import android.os.Bundle;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.cs310.covider.R;
+import com.cs310.covider.database.Database;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +67,13 @@ public class MapFragment extends MyFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_map, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(Database.getCurrentUser() != null) {
+            ((TextView) (rootView.findViewById(R.id.map_test))).setText(Database.getCurrentUser().getEmail());
+        }
     }
 }
