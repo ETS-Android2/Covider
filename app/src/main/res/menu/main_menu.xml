@@ -4,8 +4,8 @@
 
     <group android:checkableBehavior="single" android:id="@+id/menu_loggedin_group">
 
-        <item android:title="@string/map"
-            android:id="@+id/menu_map_item">
+        <item android:title="@string/building"
+            android:id="@+id/menu_building_item">
 
         </item>
 

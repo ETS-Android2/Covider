@@ -1,0 +1,5 @@
+<resources>
+    <!--  https://developers.google.com/maps/documentation/android/signup
+          https://console.cloud.google.com/apis/credentials?project=covider-345007 -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAFbKLpLJhzI3xL9rhXMpY8Gy_e4DvVg9o</string>
+</resources>

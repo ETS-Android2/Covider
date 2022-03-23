@@ -6,9 +6,9 @@
             app:startDestination="@id/map">
     <fragment
             android:id="@+id/map"
-            android:name="com.cs310.covider.fragment.MapFragment"
+            android:name="com.cs310.covider.fragment.BuildingFragment"
             android:label="fragment_map"
-            tools:layout="@layout/fragment_map"/>
+            tools:layout="@layout/fragment_building"/>
     <activity
             android:id="@+id/mainActivity"
             android:name="com.cs310.covider.MainActivity"

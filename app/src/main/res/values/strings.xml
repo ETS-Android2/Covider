@@ -2,8 +2,9 @@
     <string name="app_name">Covider</string>
     <string name="form">Form</string>
     <string name="courses">Courses</string>
-    <string name="map">Map</string>
+    <string name="building">Building</string>
     <string name="nav_drawer_open">Open Drawer</string>
     <string name="nav_drawer_close">Close Drawer</string>
-
+    <!-- Map/List Part -->
+    <string name="toggle_map">Toggle Map</string>
 </resources>

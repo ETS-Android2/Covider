@@ -1,5 +1,5 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Login/out Part -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register">Register</string>
     <string name="new_user_register_here">New user? Register here</string>

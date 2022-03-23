@@ -4,12 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
+
 import com.cs310.covider.database.Database;
 import com.cs310.covider.fragment.*;
 import com.google.android.material.navigation.NavigationView;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         if(Database.getCurrentUser() != null) {
-            changeToFragment(navigationView.getMenu().findItem(R.id.menu_map_item), MapFragment.class);
+            changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
         }
         else
         {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     {
         navigationView.getMenu().clear();
         navigationView.inflateMenu(R.menu.main_menu);
-        changeToFragment(navigationView.getMenu().findItem(R.id.menu_map_item), MapFragment.class);
+        changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
     }
 
     public void changeToUnauthedMenu()
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Class fragmentClass = null;
         switch (item.getItemId())
         {
-            case R.id.menu_map_item: {
-                fragmentClass = MapFragment.class;
+            case R.id.menu_building_item: {
+                fragmentClass = BuildingFragment.class;
                 break;
             }
             case R.id.menu_courses_item: {
