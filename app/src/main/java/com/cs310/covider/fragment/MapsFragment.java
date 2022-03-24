@@ -13,11 +13,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.cs310.covider.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 
 import java.util.Objects;
 
@@ -70,6 +73,34 @@ public class MapsFragment extends FragmentActivity implements OnMapReadyCallback
     private OnLocationChangedListener mListener;
     private LocationManager locationManager;
 
+    //        private OnMapReadyCallback callback = new OnMapReadyCallback() {
+//
+//        /**
+//         * Manipulates the map once available.
+//         * This callback is triggered when the map is ready to be used.
+//         * This is where we can add markers or lines, add listeners or move the camera.
+//         * In this case, we just add a marker near Sydney, Australia.
+//         * If Google Play services is not installed on the device, the user will be prompted to
+//         * install it inside the SupportMapFragment. This method will only be triggered once the
+//         * user has installed Google Play services and returned to the app.
+//         */
+//        @Override
+//        public void onMapReady(GoogleMap googleMap) {
+//            LatLng usc = new LatLng(34.022415, -118.285530);
+//            googleMap.addMarker(new MarkerOptions().position(usc).title("USC"));
+//            googleMap.moveCamera(CameraUpdateFactory.newLatLng(usc));
+//        }
+//    };
+//
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        SupportMapFragment mapFragment =
+//                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+//        if (mapFragment != null) {
+//            mapFragment.getMapAsync(callback);
+//        }
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,8 +186,7 @@ public class MapsFragment extends FragmentActivity implements OnMapReadyCallback
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);
+            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMapAsync();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
@@ -211,10 +241,21 @@ public class MapsFragment extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onLocationChanged(@NonNull Location location) {
+    public void onLocationChanged(Location location)
+    {
+        if( mListener != null )
+        {
+            mListener.onLocationChanged( location );
 
+            LatLngBounds bounds = this.mMap.getProjection().getVisibleRegion().latLngBounds;
+
+            if(!bounds.contains(new LatLng(location.getLatitude(), location.getLongitude())))
+            {
+                //Move the camera to the user's location if they are off-screen!
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(), location.getLongitude())));
+            }
+        }
     }
-
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
         // TODO Auto-generated method stub
