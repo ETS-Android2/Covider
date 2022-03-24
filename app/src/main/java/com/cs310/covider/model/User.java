@@ -12,12 +12,14 @@ public class User implements Serializable {
     private ArrayList<String> userCoursesIDs;
     private String email = "";
     private Date lastInfectionDate;
+
     public User(UserType userType, ArrayList<String> userCourses, Date lastInfectionDate, String email) {
         this.userType = userType;
         this.userCoursesIDs = userCourses;
         this.email = email;
         this.lastInfectionDate = lastInfectionDate;
     }
+
     public User() {
     }
 

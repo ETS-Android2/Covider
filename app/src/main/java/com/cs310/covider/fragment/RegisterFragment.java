@@ -2,17 +2,19 @@ package com.cs310.covider.fragment;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 import com.cs310.covider.model.User;
@@ -23,14 +25,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -107,51 +108,42 @@ public class RegisterFragment extends MyFragment {
                 String pass = String.valueOf(passView.getText());
                 String passConfirm = String.valueOf(passConfirmView.getText());
                 String error;
-                if((error = Util.emailError(email)) != null)
-                {
+                if ((error = Util.emailError(email)) != null) {
                     ok = false;
                     emailView.setError(error);
                 }
-                if((error = Util.passwordError(pass)) != null)
-                {
+                if ((error = Util.passwordError(pass)) != null) {
                     ok = false;
                     passView.setError(error);
                 }
-                if(!pass.equals(passConfirm))
-                {
+                if (!pass.equals(passConfirm)) {
                     ok = false;
                     passConfirmView.setError("Passwords don't match!");
                 }
-                if(!email.equals(emailConfirm))
-                {
+                if (!email.equals(emailConfirm)) {
                     ok = false;
                     emailConfirmView.setError("Emails don't match!");
                 }
-                if(ok)
-                {
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass).addOnCompleteListener(
-                             new OnCompleteListener<AuthResult>() {
+                if (ok) {
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnCompleteListener(
+                            new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         CollectionReference dbUsers = FirebaseFirestore.getInstance().collection("Users");
                                         User.UserType userType = User.UserType.INSTRUCTOR;
-                                        if(spinner.getSelectedItem().toString().equals(items[1]))
-                                        {
+                                        if (spinner.getSelectedItem().toString().equals(items[1])) {
                                             userType = User.UserType.STUDENT;
                                         }
                                         User user = new User(userType, new ArrayList<>(), new Date(), email);
                                         dbUsers.document(email).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                                if(task.isSuccessful())
-                                                {
+                                                if (task.isSuccessful()) {
                                                     MainActivity mainActivity = (MainActivity) getActivity();
                                                     assert mainActivity != null;
                                                     mainActivity.changeToAuthedMenu();
-                                                }
-                                                else
-                                                {
+                                                } else {
                                                     FirebaseAuth.getInstance().getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void unused) {

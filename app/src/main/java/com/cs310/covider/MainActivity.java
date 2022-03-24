@@ -1,25 +1,27 @@
 package com.cs310.covider;
-import android.location.Location;
+
+import android.os.Bundle;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.cs310.covider.fragment.*;
-import com.cs310.covider.model.Building;
-import com.google.android.gms.maps.model.LatLng;
+import com.cs310.covider.fragment.AddCourseFragment;
+import com.cs310.covider.fragment.BuildingFragment;
+import com.cs310.covider.fragment.CoursesFragment;
+import com.cs310.covider.fragment.FormFragment;
+import com.cs310.covider.fragment.LoginFragment;
+import com.cs310.covider.fragment.LogoutFragment;
+import com.cs310.covider.fragment.RegisterFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public Toolbar toolbar;
@@ -48,26 +50,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
-        }
-        else
-        {
+        } else {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.auth_menu);
             changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item), LoginFragment.class);
         }
     }
 
-    public void changeToAuthedMenu()
-    {
+    public void changeToAuthedMenu() {
         navigationView.getMenu().clear();
         navigationView.inflateMenu(R.menu.main_menu);
         changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
     }
 
-    public void changeToUnauthedMenu()
-    {
+    public void changeToUnauthedMenu() {
         navigationView.getMenu().clear();
         navigationView.inflateMenu(R.menu.auth_menu);
         changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item), LoginFragment.class);
@@ -76,21 +74,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-        if(FirebaseAuth.getInstance().getCurrentUser() != null)
-        {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             return onNavigationItemSelectedLoggedin(item);
-        }
-        else
-        {
+        } else {
             return onNavigationItemSelectedAuth(item);
         }
     }
 
-    private boolean onNavigationItemSelectedLoggedin(@NonNull @NotNull MenuItem item)
-    {
+    private boolean onNavigationItemSelectedLoggedin(@NonNull @NotNull MenuItem item) {
         Class fragmentClass = null;
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.menu_building_item: {
                 fragmentClass = BuildingFragment.class;
                 break;
@@ -107,26 +100,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentClass = FormFragment.class;
                 break;
             }
-            case R.id.menu_logout_item:{
+            case R.id.menu_logout_item: {
                 fragmentClass = LogoutFragment.class;
                 break;
             }
-            case R.id.menu_add_course_item:{
+            case R.id.menu_add_course_item: {
                 fragmentClass = AddCourseFragment.class;
             }
-            default:{
+            default: {
                 break;
             }
         }
-        changeToFragment(item,fragmentClass);
+        changeToFragment(item, fragmentClass);
         return false;
     }
 
-    private boolean onNavigationItemSelectedAuth(@NonNull @NotNull MenuItem item)
-    {
+    private boolean onNavigationItemSelectedAuth(@NonNull @NotNull MenuItem item) {
         Class fragmentClass = null;
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.menu_login_item: {
                 fragmentClass = LoginFragment.class;
                 break;
@@ -135,16 +126,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentClass = RegisterFragment.class;
                 break;
             }
-            default:{
+            default: {
                 break;
             }
         }
-        changeToFragment(item,fragmentClass);
+        changeToFragment(item, fragmentClass);
         return false;
     }
 
-    public void changeToFragment(MenuItem item, Class fragmentClass)
-    {
+    public void changeToFragment(MenuItem item, Class fragmentClass) {
         Fragment fragment = null;
         try {
             fragment = (Fragment) fragmentClass.newInstance();

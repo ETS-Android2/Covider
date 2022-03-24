@@ -27,11 +27,12 @@
                 android:id="@+id/acb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/acb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/acb_comp" />
@@ -41,11 +42,12 @@
                 android:id="@+id/acc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/acc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/acc_comp" />
@@ -55,11 +57,12 @@
                 android:id="@+id/adm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/adm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/adm_comp" />
@@ -69,11 +72,12 @@
                 android:id="@+id/aes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/aes"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/aes_comp" />
@@ -84,11 +88,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ahf1"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahf1_comp" />
@@ -99,11 +104,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ahf2"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahf2_comp" />
@@ -113,11 +119,12 @@
                 android:id="@+id/ahf3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ahf3"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahf3_comp" />
@@ -127,11 +134,12 @@
                 android:id="@+id/ahn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ahn"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahn_comp" />
@@ -141,11 +149,12 @@
                 android:id="@+id/alm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/alm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/alm_comp" />
@@ -155,11 +164,12 @@
                 android:id="@+id/ann"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ann"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ann_comp" />
@@ -169,11 +179,12 @@
                 android:id="@+id/asc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/asc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/asc_comp" />
@@ -183,11 +194,12 @@
                 android:id="@+id/bhe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/bhe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bhe_comp" />
@@ -197,11 +209,12 @@
                 android:id="@+id/bit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/bit"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bit_comp" />
@@ -211,11 +224,12 @@
                 android:id="@+id/bks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/bks"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bks_comp" />
@@ -225,11 +239,12 @@
                 android:id="@+id/bmh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/bmh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bmh_comp" />
@@ -239,11 +254,12 @@
                 android:id="@+id/bri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/bri"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bri_comp" />
@@ -253,11 +269,12 @@
                 android:id="@+id/bsr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/bsr"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bsr_comp" />
@@ -267,11 +284,12 @@
                 android:id="@+id/cal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/cal"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cal_comp" />
@@ -281,11 +299,12 @@
                 android:id="@+id/cas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/cas"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cas_comp" />
@@ -295,11 +314,12 @@
                 android:id="@+id/cdf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/cdf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cdf_comp" />
@@ -309,11 +329,12 @@
                 android:id="@+id/cem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/cem"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cem_comp" />
@@ -323,11 +344,12 @@
                 android:id="@+id/cic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/cic"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cic_comp" />
@@ -337,11 +359,12 @@
                 android:id="@+id/clh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/clh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/clh_comp" />
@@ -351,11 +374,12 @@
                 android:id="@+id/cpa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/cpa"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cpa_comp" />
@@ -365,11 +389,12 @@
                 android:id="@+id/crc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/crc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/crc_comp" />
@@ -379,11 +404,12 @@
                 android:id="@+id/ctf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ctf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ctf_comp" />
@@ -393,11 +419,12 @@
                 android:id="@+id/ctv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ctv"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ctv_comp" />
@@ -407,11 +434,12 @@
                 android:id="@+id/dcc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/dcc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dcc_comp" />
@@ -421,11 +449,12 @@
                 android:id="@+id/den"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/den"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/den_comp" />
@@ -435,11 +464,12 @@
                 android:id="@+id/dml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/dml"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dml_comp" />
@@ -449,11 +479,12 @@
                 android:id="@+id/dmt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/dmt"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dmt_comp" />
@@ -463,11 +494,12 @@
                 android:id="@+id/dps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/dps"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dps_comp" />
@@ -477,11 +509,12 @@
                 android:id="@+id/drb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/drb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/drb_comp" />
@@ -491,11 +524,12 @@
                 android:id="@+id/drc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/drc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/drc_comp" />
@@ -505,11 +539,12 @@
                 android:id="@+id/dxm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/dxm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dxm_comp" />
@@ -519,11 +554,12 @@
                 android:id="@+id/eeb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/eeb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/eeb_comp" />
@@ -533,11 +569,12 @@
                 android:id="@+id/elb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/elb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/elb_comp" />
@@ -547,11 +584,12 @@
                 android:id="@+id/esh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/esh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/esh_comp"
@@ -562,11 +600,12 @@
                 android:id="@+id/fig"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/fig"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/fig_comp" />
@@ -576,11 +615,12 @@
                 android:id="@+id/flt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/flt"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/flt_comp" />
@@ -590,11 +630,12 @@
                 android:id="@+id/gap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/gap"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/gap_comp" />
@@ -604,11 +645,12 @@
                 android:id="@+id/gec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/gec"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/gec_comp" />
@@ -618,11 +660,12 @@
                 android:id="@+id/ger"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ger"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ger_comp" />
@@ -632,11 +675,12 @@
                 android:id="@+id/gfs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/gfs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/gfs_comp" />
@@ -646,11 +690,12 @@
                 android:id="@+id/har"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/har"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/har_comp" />
@@ -660,11 +705,12 @@
                 android:id="@+id/hce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/hce"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hce_comp" />
@@ -674,11 +720,12 @@
                 android:id="@+id/her"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/her"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/her_comp" />
@@ -688,11 +735,12 @@
                 android:id="@+id/hjc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/hjc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hjc_comp" />
@@ -702,11 +750,12 @@
                 android:id="@+id/hmm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/hmm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hmm_comp" />
@@ -716,11 +765,12 @@
                 android:id="@+id/hnb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/hnb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hnb_comp" />
@@ -730,11 +780,12 @@
                 android:id="@+id/hoh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/hoh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hoh_comp" />
@@ -744,11 +795,12 @@
                 android:id="@+id/hsh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/hsh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hsh_comp" />
@@ -758,11 +810,12 @@
                 android:id="@+id/huc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/huc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/huc_comp" />
@@ -772,11 +825,12 @@
                 android:id="@+id/ift"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ift"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ift_comp" />
@@ -786,11 +840,12 @@
                 android:id="@+id/iyh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/iyh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/iyh_comp" />
@@ -800,11 +855,12 @@
                 android:id="@+id/jef"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/jef"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jef_comp" />
@@ -814,11 +870,12 @@
                 android:id="@+id/jep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/jep"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jep_comp" />
@@ -828,11 +885,12 @@
                 android:id="@+id/jff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/jff"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jff_comp" />
@@ -842,11 +900,12 @@
                 android:id="@+id/jhh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/jhh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jhh_comp" />
@@ -856,11 +915,12 @@
                 android:id="@+id/jkp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/jkp"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jkp_comp" />
@@ -870,11 +930,12 @@
                 android:id="@+id/jmc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/jmc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jmc_comp" />
@@ -884,11 +945,12 @@
                 android:id="@+id/jws"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/jws"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jws_comp" />
@@ -898,11 +960,12 @@
                 android:id="@+id/kap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/kap"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/kap_comp" />
@@ -912,11 +975,12 @@
                 android:id="@+id/kdc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/kdc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/kdc_comp" />
@@ -926,11 +990,12 @@
                 android:id="@+id/koh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/koh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/koh_comp" />
@@ -940,11 +1005,12 @@
                 android:id="@+id/ksh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ksh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ksh_comp" />
@@ -954,11 +1020,12 @@
                 android:id="@+id/law"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/law"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/law_comp" />
@@ -968,11 +1035,12 @@
                 android:id="@+id/lhi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/lhi"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lhi_comp" />
@@ -982,11 +1050,12 @@
                 android:id="@+id/ljs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ljs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ljs_comp" />
@@ -996,11 +1065,12 @@
                 android:id="@+id/lrc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/lrc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lrc_comp" />
@@ -1010,11 +1080,12 @@
                 android:id="@+id/lts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/lts"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lts_comp" />
@@ -1024,11 +1095,12 @@
                 android:id="@+id/lvl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/lvl"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lvl_comp" />
@@ -1038,11 +1110,12 @@
                 android:id="@+id/mar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mar"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mar_comp" />
@@ -1052,11 +1125,12 @@
                 android:id="@+id/mcb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mcb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mcb_comp" />
@@ -1066,11 +1140,12 @@
                 android:id="@+id/mcc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mcc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mcc_comp" />
@@ -1080,11 +1155,12 @@
                 android:id="@+id/mhc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mhc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mhc_comp" />
@@ -1094,11 +1170,12 @@
                 android:id="@+id/mhp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mhp"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mhp_comp" />
@@ -1108,11 +1185,12 @@
                 android:id="@+id/mrc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mrc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mrc_comp" />
@@ -1122,11 +1200,12 @@
                 android:id="@+id/mrf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mrf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mrf_comp" />
@@ -1136,11 +1215,12 @@
                 android:id="@+id/mtx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mtx"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mtx_comp" />
@@ -1150,11 +1230,12 @@
                 android:id="@+id/mus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/mus"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mus_comp" />
@@ -1164,11 +1245,12 @@
                 android:id="@+id/nbc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/nbc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/nbc_comp" />
@@ -1178,11 +1260,12 @@
                 android:id="@+id/nct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/nct"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/nct_comp" />
@@ -1192,11 +1275,12 @@
                 android:id="@+id/nrc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/nrc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/nrc_comp" />
@@ -1206,11 +1290,12 @@
                 android:id="@+id/ohe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ohe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ohe_comp" />
@@ -1220,11 +1305,12 @@
                 android:id="@+id/ois"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ois"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ois_comp" />
@@ -1234,11 +1320,12 @@
                 android:id="@+id/osp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/osp"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/osp_comp" />
@@ -1248,11 +1335,12 @@
                 android:id="@+id/pce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/pce"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/pce_comp" />
@@ -1262,11 +1350,12 @@
                 android:id="@+id/ped"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ped"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ped_comp" />
@@ -1276,11 +1365,12 @@
                 android:id="@+id/phe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/phe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/phe_comp" />
@@ -1290,11 +1380,12 @@
                 android:id="@+id/pks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/pks"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/pks_comp" />
@@ -1304,11 +1395,12 @@
                 android:id="@+id/prb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/prb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/prb_comp" />
@@ -1318,11 +1410,12 @@
                 android:id="@+id/ptd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ptd"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ptd_comp" />
@@ -1332,11 +1425,12 @@
                 android:id="@+id/rgl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/rgl"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rgl_comp" />
@@ -1346,11 +1440,12 @@
                 android:id="@+id/rhm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/rhm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rhm_comp" />
@@ -1360,11 +1455,12 @@
                 android:id="@+id/rrb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/rrb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rrb_comp" />
@@ -1374,11 +1470,12 @@
                 android:id="@+id/rri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/rri"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rri_comp" />
@@ -1388,11 +1485,12 @@
                 android:id="@+id/rth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/rth"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rth_comp" />
@@ -1402,11 +1500,12 @@
                 android:id="@+id/rzc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/rzc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rzc_comp" />
@@ -1416,11 +1515,12 @@
                 android:id="@+id/sal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sal"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sal_comp" />
@@ -1430,11 +1530,12 @@
                 android:id="@+id/sca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sca"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sca_comp" />
@@ -1444,11 +1545,12 @@
                 android:id="@+id/scb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/scb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scb_comp" />
@@ -1458,11 +1560,12 @@
                 android:id="@+id/scc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/scc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scc_comp" />
@@ -1472,11 +1575,12 @@
                 android:id="@+id/scd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/scd"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scd_comp" />
@@ -1486,11 +1590,12 @@
                 android:id="@+id/sce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sce"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sce_comp" />
@@ -1500,11 +1605,12 @@
                 android:id="@+id/sci"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sci"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sci_comp" />
@@ -1514,11 +1620,12 @@
                 android:id="@+id/scs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/scs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scs_comp" />
@@ -1528,11 +1635,12 @@
                 android:id="@+id/scx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/scx"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scx_comp" />
@@ -1542,11 +1650,12 @@
                 android:id="@+id/sel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sel"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sel_comp" />
@@ -1556,11 +1665,12 @@
                 android:id="@+id/sgm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sgm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sgm_comp" />
@@ -1570,11 +1680,12 @@
                 android:id="@+id/shr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/shr"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/shr_comp" />
@@ -1584,11 +1695,12 @@
                 android:id="@+id/sks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sks"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sks_comp" />
@@ -1598,11 +1710,12 @@
                 android:id="@+id/slh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/slh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/slh_comp" />
@@ -1612,11 +1725,12 @@
                 android:id="@+id/sos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sos"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sos_comp" />
@@ -1626,11 +1740,12 @@
                 android:id="@+id/ssc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ssc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ssc_comp" />
@@ -1640,11 +1755,12 @@
                 android:id="@+id/sto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/sto"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sto_comp" />
@@ -1654,11 +1770,12 @@
                 android:id="@+id/stu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/stu"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/stu_comp" />
@@ -1668,11 +1785,12 @@
                 android:id="@+id/swc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/swc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/swc_comp" />
@@ -1682,11 +1800,12 @@
                 android:id="@+id/tcc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/tcc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tcc_comp" />
@@ -1696,11 +1815,12 @@
                 android:id="@+id/tgf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/tgf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tgf_comp" />
@@ -1710,11 +1830,12 @@
                 android:id="@+id/thh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/thh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/thh_comp" />
@@ -1724,11 +1845,12 @@
                 android:id="@+id/tmc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/tmc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tmc_comp" />
@@ -1738,11 +1860,12 @@
                 android:id="@+id/trh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/trh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/trh_comp" />
@@ -1752,11 +1875,12 @@
                 android:id="@+id/tro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/tro"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tro_comp" />
@@ -1766,11 +1890,12 @@
                 android:id="@+id/ttl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ttl"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ttl_comp" />
@@ -1780,11 +1905,12 @@
                 android:id="@+id/uac"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/uac"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/uac_comp" />
@@ -1794,11 +1920,12 @@
                 android:id="@+id/ugb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ugb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ugb_comp" />
@@ -1808,11 +1935,12 @@
                 android:id="@+id/ugw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ugw"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ugw_comp" />
@@ -1822,11 +1950,12 @@
                 android:id="@+id/urc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/urc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/urc_comp" />
@@ -1836,11 +1965,12 @@
                 android:id="@+id/ush"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/ush"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ush_comp" />
@@ -1850,11 +1980,12 @@
                 android:id="@+id/uuc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/uuc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/uuc_comp" />
@@ -1864,11 +1995,12 @@
                 android:id="@+id/vhe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/vhe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/vhe_comp" />
@@ -1878,11 +2010,12 @@
                 android:id="@+id/vpd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/vpd"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/vpd_comp" />
@@ -1892,11 +2025,12 @@
                 android:id="@+id/wah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/wah"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/wah_comp" />
@@ -1906,11 +2040,12 @@
                 android:id="@+id/wph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/wph"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/wph_comp" />
@@ -1920,11 +2055,12 @@
                 android:id="@+id/wto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/wto"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/wto_comp" />
@@ -1934,11 +2070,12 @@
                 android:id="@+id/zhs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_border"
                 android:contentDescription="@string/zhs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal"
-                android:background="@drawable/custom_border">
+                android:orientation="horizontal">
+
                 <TextView
                     style="@style/list_building"
                     android:text="@string/zhs_comp" />
