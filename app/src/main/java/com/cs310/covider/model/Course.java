@@ -1,9 +1,14 @@
 package com.cs310.covider.model;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Course {
+
+    CourseMode courseMode;
+    private String id;
+    private String buildingName;
+    private ArrayList<String> studentsEmails;
+    private ArrayList<String> instructorsEmails;
 
     public Course(String id, String buildingName, ArrayList<String> studentsEmails, ArrayList<String> instructorsEmails, CourseMode mode) {
         this.courseMode = mode;
@@ -13,7 +18,7 @@ public class Course {
         this.instructorsEmails = instructorsEmails;
     }
 
-    public Course(){
+    public Course() {
     }
 
     public String toString() {
@@ -60,15 +65,9 @@ public class Course {
         this.instructorsEmails = instructorsEmails;
     }
 
-    public enum CourseMode{
+    public enum CourseMode {
         REMOTE,
         INPERSON
     }
-
-    CourseMode courseMode;
-    private String id;
-    private String buildingName;
-    private ArrayList<String> studentsEmails;
-    private ArrayList<String> instructorsEmails;
 
 }

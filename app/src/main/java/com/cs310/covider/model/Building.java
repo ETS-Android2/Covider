@@ -1,6 +1,5 @@
 package com.cs310.covider.model;
 
-import com.cs310.covider.model.MyLatLng;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -12,42 +11,44 @@ public class Building {
     private MyLatLng location;
     private ArrayList<String> coursesIDs;
 
-    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs)
-    {
+    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs) {
         this.name = name;
         this.coursesIDs = coursesIDs;
         this.location = location;
     }
 
-    public Building(){
+    public Building() {
 
     }
 
-    public int getInfectedNumber(Util.TimeSpan span, Date date){
+    public int getInfectedNumber(Util.TimeSpan span, Date date) {
         //TODO
         return 0;
     }
 
-    public int getRiskFactor(Util.TimeSpan span, Date date)
-    {
+    public int getRiskFactor(Util.TimeSpan span, Date date) {
         //TODO
         return 0;
     }
 
-    public String getName() {return this.name;}
+    public String getName() {
+        return this.name;
+    }
 
-    public void setName(String name) {this.name = name;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public MyLatLng getLocation() {
         return this.location;
     }
 
-    public ArrayList<String> getCoursesIDs() {
-        return this.coursesIDs;
-    }
-
     public void setLocation(MyLatLng location) {
         this.location = location;
+    }
+
+    public ArrayList<String> getCoursesIDs() {
+        return this.coursesIDs;
     }
 
     public void setCoursesIDs(ArrayList<String> coursesIDs) {

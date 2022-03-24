@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-      xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single" android:id="@+id/menu_loggedin_group">
+    <group
+        android:id="@+id/menu_loggedin_group"
+        android:checkableBehavior="single">
 
-        <item android:title="@string/building"
-            android:id="@+id/menu_building_item">
+        <item
+            android:id="@+id/menu_building_item"
+            android:title="@string/building">
+
+        </item>
+
+        <item
+            android:id="@+id/menu_map_item"
+            android:title="@string/map">
+
+        </item>
+
+        <item
+            android:id="@+id/menu_courses_item"
+            android:title="@string/courses">
 
         </item>
 
 
-        <item android:title="@string/courses"
-            android:id="@+id/menu_courses_item">
-
-        </item>
-
-
-        <item android:title="@string/form"
-          android:id="@+id/menu_form_item">
-        </item>
+        <item
+            android:id="@+id/menu_form_item"
+            android:title="@string/form"></item>
 
 
-        <item android:title="@string/add_course"
-              android:id="@+id/menu_add_course_item">
-        </item>
+        <item
+            android:id="@+id/menu_add_course_item"
+            android:title="@string/add_course"></item>
 
-        <item android:title="@string/logout"
-              android:id="@+id/menu_logout_item">
-        </item>
+        <item
+            android:id="@+id/menu_logout_item"
+            android:title="@string/logout"></item>
 
 
     </group>

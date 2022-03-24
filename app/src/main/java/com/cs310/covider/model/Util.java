@@ -7,26 +7,18 @@ import java.util.Date;
 
 public class Util {
 
-    public enum TimeSpan {
-        DAY,
-        WEEK,
-        MONTH
-    }
-
-    public static boolean inTimeFrame(TimeSpan span, Date a, Date b)
-    {
-        switch (span)
-        {
+    public static boolean inTimeFrame(TimeSpan span, Date a, Date b) {
+        switch (span) {
             case DAY: {
                 return sameDay(a, b);
             }
-            case WEEK:{
-                return sameWeek(a,b);
+            case WEEK: {
+                return sameWeek(a, b);
             }
-            case MONTH:{
+            case MONTH: {
                 return sameMonth(a, b);
             }
-            default:{
+            default: {
                 return false;
             }
         }
@@ -68,12 +60,18 @@ public class Util {
         return day == targetDay && year == targetYear;
     }
 
-    public static String emailError(String email){
+    public static String emailError(String email) {
         return email != null && EmailValidator.getInstance().isValid(email) ? null : "Invalid Email!";
     }
 
-    public static String passwordError(String pass){
+    public static String passwordError(String pass) {
         return pass != null && pass.length() >= 8 ? null : "Needs to be at least 8 characters";
+    }
+
+    public enum TimeSpan {
+        DAY,
+        WEEK,
+        MONTH
     }
 
 }

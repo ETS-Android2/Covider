@@ -5,22 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.R;
-
 import com.google.firebase.auth.FirebaseAuth;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BuildingFragment#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class BuildingFragment extends MyFragment {
 
@@ -33,6 +31,10 @@ public class BuildingFragment extends MyFragment {
     private String mParam1;
     private String mParam2;
     private LinearLayout map = null, list = null;
+
+    public BuildingFragment() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -50,10 +52,6 @@ public class BuildingFragment extends MyFragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public BuildingFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -75,22 +73,8 @@ public class BuildingFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             // ((TextView) (rootView.findViewById(R.id.map_test))).setText(Database.getCurrentUser().getEmail());
-            viewMap();
         }
     }
-
-    private void viewMap() {
-        Switch viewToggleSwitch = getView().findViewById(R.id.toggle_view);
-        viewToggleSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-//                MapsActivity m = new MapsActivity();
-                list.setVisibility(View.INVISIBLE);
-            } else {
-                list.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
 }
