@@ -8,32 +8,27 @@ import java.util.Objects;
 
 public class User implements Serializable {
 
+    private UserType userType = UserType.STUDENT;
+    private ArrayList<String> userCoursesIDs;
+    private String email = "";
+    private Date lastInfectionDate;
     public User(UserType userType, ArrayList<String> userCourses, Date lastInfectionDate, String email) {
         this.userType = userType;
         this.userCoursesIDs = userCourses;
         this.email = email;
         this.lastInfectionDate = lastInfectionDate;
     }
-
     public User() {
     }
 
-    public enum UserType implements Serializable {
-        INSTRUCTOR,
-        STUDENT
-    }
-
-    private UserType userType = UserType.STUDENT;
-    private ArrayList<String> userCoursesIDs;
-    private String email = "";
-    private Date lastInfectionDate;
-
-    public boolean risky(Util.TimeSpan span, Date queryDate){
+    public boolean risky(Util.TimeSpan span, Date queryDate) {
         //TODO
         return true;
     }
 
-    public String getEmail() {return email;}
+    public String getEmail() {
+        return email;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -43,20 +38,20 @@ public class User implements Serializable {
         return this.userType;
     }
 
-    public ArrayList<String> getUserCoursesIDs() {
-        return this.userCoursesIDs;
-    }
-
-    public Date getLastInfectionDate() {
-        return this.lastInfectionDate;
-    }
-
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
+    public ArrayList<String> getUserCoursesIDs() {
+        return this.userCoursesIDs;
+    }
+
     public void setUserCoursesIDs(ArrayList<String> userCoursesIDs) {
         this.userCoursesIDs = userCoursesIDs;
+    }
+
+    public Date getLastInfectionDate() {
+        return this.lastInfectionDate;
     }
 
     public void setLastInfectionDate(Date lastInfectionDate) {
@@ -96,5 +91,10 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User(userType=" + this.getUserType() + ", userCourses=" + this.getUserCoursesIDs() + ", lastInfectionDate=" + this.getLastInfectionDate() + ")";
+    }
+
+    public enum UserType implements Serializable {
+        INSTRUCTOR,
+        STUDENT
     }
 }
