@@ -269,36 +269,4 @@ public class AddCourseFragment extends MyFragment{
             }
         });
     }
-
-    public void openDialog(@NotNull @NonNull Task<DocumentSnapshot> task) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-        builder1.setMessage(Objects.requireNonNull(task.getException()).getMessage());
-        builder1.setCancelable(true);
-        builder1.setPositiveButton(
-                "Close",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
-    }
-
-    public void openDialog(String message) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-        builder1.setMessage(message);
-        builder1.setCancelable(true);
-        builder1.setPositiveButton(
-                "Close",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
-    }
 }

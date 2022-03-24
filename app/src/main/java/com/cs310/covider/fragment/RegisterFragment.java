@@ -155,38 +155,14 @@ public class RegisterFragment extends MyFragment {
                                                     FirebaseAuth.getInstance().getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void unused) {
-                                                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-                                                            builder1.setMessage(Objects.requireNonNull(task.getException()).getMessage());
-                                                            builder1.setCancelable(true);
-                                                            builder1.setPositiveButton(
-                                                                    "Close",
-                                                                    new DialogInterface.OnClickListener() {
-                                                                        @Override
-                                                                        public void onClick(DialogInterface dialog, int id) {
-                                                                            dialog.cancel();
-                                                                        }
-                                                                    });
-                                                            AlertDialog alert11 = builder1.create();
-                                                            alert11.show();
+                                                            openDialog(task);
                                                         }
                                                     });
                                                 }
                                             }
                                         });
                                     } else {
-                                        AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-                                        builder1.setMessage(Objects.requireNonNull(task.getException()).getMessage());
-                                        builder1.setCancelable(true);
-                                        builder1.setPositiveButton(
-                                                "Close",
-                                                new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int id) {
-                                                        dialog.cancel();
-                                                    }
-                                                });
-                                        AlertDialog alert11 = builder1.create();
-                                        alert11.show();
+                                        openDialog(task);
                                     }
                                 }
                             }
