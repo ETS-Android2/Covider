@@ -17,6 +17,7 @@ import com.cs310.covider.fragment.CoursesFragment;
 import com.cs310.covider.fragment.FormFragment;
 import com.cs310.covider.fragment.LoginFragment;
 import com.cs310.covider.fragment.LogoutFragment;
+import com.cs310.covider.fragment.MapsFragment;
 import com.cs310.covider.fragment.RegisterFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
