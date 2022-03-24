@@ -12,15 +12,19 @@ public class User implements Serializable {
     private ArrayList<String> userCoursesIDs;
     private String email = "";
     private Date lastInfectionDate;
+    private Date lastCheckDate;
 
-    public User(UserType userType, ArrayList<String> userCourses, Date lastInfectionDate, String email) {
-        this.userType = userType;
-        this.userCoursesIDs = userCourses;
-        this.email = email;
-        this.lastInfectionDate = lastInfectionDate;
-    }
+
 
     public User() {
+    }
+
+    public User(UserType userType, ArrayList<String> userCoursesIDs, String email, Date lastInfectionDate, Date lastCheckDate) {
+        this.userType = userType;
+        this.userCoursesIDs = userCoursesIDs;
+        this.email = email;
+        this.lastInfectionDate = lastInfectionDate;
+        this.lastCheckDate = lastCheckDate;
     }
 
     public boolean risky(Util.TimeSpan span, Date queryDate) {
@@ -93,6 +97,14 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User(userType=" + this.getUserType() + ", userCourses=" + this.getUserCoursesIDs() + ", lastInfectionDate=" + this.getLastInfectionDate() + ")";
+    }
+
+    public Date getLastCheckDate() {
+        return lastCheckDate;
+    }
+
+    public void setLastCheckDate(Date lastCheckDate) {
+        this.lastCheckDate = lastCheckDate;
     }
 
     public enum UserType implements Serializable {

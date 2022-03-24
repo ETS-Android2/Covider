@@ -180,7 +180,7 @@ public class AddCourseFragment extends MyFragment {
                                                                         }).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                     @Override
                                                                     public void onSuccess(Void unused) {
-                                                                        FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCourses", FieldValue.arrayUnion(newCourse.getId()))
+                                                                        FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
                                                                                 .addOnFailureListener(new OnFailureListener() {
                                                                                     @Override
                                                                                     public void onFailure(@NonNull @NotNull Exception e) {
@@ -219,20 +219,7 @@ public class AddCourseFragment extends MyFragment {
                         }
                     });
                 } else {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-                    builder1.setMessage(Objects.requireNonNull(task.getException()).getMessage());
-                    builder1.setCancelable(true);
-                    builder1.setPositiveButton(
-                            "Close",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                    ((MainActivity) getActivity()).changeToAuthedMenu();
-                                }
-                            });
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
+                    openDialog(task);
                 }
             }
         });

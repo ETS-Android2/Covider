@@ -1,10 +1,12 @@
 package com.cs310.covider;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,10 +21,20 @@ import com.cs310.covider.fragment.LoginFragment;
 import com.cs310.covider.fragment.LogoutFragment;
 import com.cs310.covider.fragment.MapsFragment;
 import com.cs310.covider.fragment.RegisterFragment;
+import com.cs310.covider.model.User;
+import com.cs310.covider.model.Util;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Date;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public Toolbar toolbar;
@@ -52,11 +64,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
+            changeToAuthedMenu();
         } else {
-            navigationView.getMenu().clear();
-            navigationView.inflateMenu(R.menu.auth_menu);
-            changeToFragment(navigationView.getMenu().findItem(R.id.menu_login_item), LoginFragment.class);
+            changeToUnauthedMenu();
         }
     }
 
@@ -64,6 +74,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().clear();
         navigationView.inflateMenu(R.menu.main_menu);
         changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
+        FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User user = documentSnapshot.toObject(User.class);
+                if(user.getLastCheckDate() == null || !Util.sameDay(new Date(), user.getLastCheckDate()))
+                {
+                    openDialog("You have not completed today's check form!");
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                openDialog(e.getMessage());
+            }
+        });
     }
 
     public void changeToUnauthedMenu() {
@@ -152,6 +177,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setTitle(item.getTitle());
         // Close the navigation drawer
         drawerLayout.closeDrawers();
+    }
+
+    public void openDialog(@NotNull @NonNull Task task) {
+        openDialog(Objects.requireNonNull(task.getException()).getMessage());
+    }
+
+    public void openDialog(String message) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage(message);
+        builder1.setCancelable(true);
+        builder1.setPositiveButton(
+                "Close",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     @Override
