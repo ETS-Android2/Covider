@@ -2,7 +2,6 @@ package com.cs310.covider.fragment;
 
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +49,7 @@ public class MapsFragment extends Fragment implements LocationListener, Location
             LatLng usc = new LatLng(34.022415, -118.285530);
             googleMap.addMarker(new MarkerOptions().position(usc).title("USC"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(usc));
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(usc,17));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(usc, 17));
         }
     };
 
@@ -87,8 +86,8 @@ public class MapsFragment extends Fragment implements LocationListener, Location
         }
     }
 }
-//
-//public class MapsFragment extends FragmentActivity implements OnMapReadyCallback, LocationListener, LocationSource {
+
+// public class MapsFragment extends FragmentActivity implements OnMapReadyCallback, LocationListener, LocationSource {
 //    /**
 //     * Note that this may be null if the Google Play services APK is not available.
 //     */
