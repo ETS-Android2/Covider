@@ -6,7 +6,7 @@
     <string name="nav_drawer_open">Open Drawer</string>
     <string name="nav_drawer_close">Close Drawer</string>
     <!-- Map/List Part -->
-    <string name="toggle_map">Toggle Map</string>
+    <string name="toggle_map">Map</string>
     <string name="acb">acb</string>
     <string name="acb_comp">Ahmanson Center for Biological Research (ACB)</string>
     <string name="acb_whole">Ahmanson Center for Biological Research</string>
@@ -23,8 +23,11 @@
     <string name="ahf1_comp">Allan Hancock Foundation Building (AHF)</string>
     <string name="ahf1_whole">Allan Hancock Foundation Building</string>
     <string name="ahf2">ahf2</string>
-    <string name="ahf2_comp">Newman Recital Hall</string>
-    <string name="ahf2_whole">Newman Recital Hall</string>
+    <string name="ahf2_comp">Hancock Memorial Museum (AHF)</string>
+    <string name="ahf2_whole">Hancock Memorial Museum</string>
+    <string name="ahf3">ahf3</string>
+    <string name="ahf3_comp">Newman Recital Hall (AHF)</string>
+    <string name="ahf3_whole">Newman Recital Hall</string>
     <string name="ahn">ahn</string>
     <string name="ahn_comp">Ahn Family House (AHN)</string>
     <string name="ahn_whole">Ahn Family House </string>
@@ -416,3 +419,4 @@
     <string name="zhs_comp">Zumberge Hall of Science (ZHS)</string>
     <string name="zhs_whole">Zumberge Hall of Science</string>
 </resources>
+

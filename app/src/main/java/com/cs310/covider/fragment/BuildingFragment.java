@@ -75,22 +75,8 @@ public class BuildingFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             // ((TextView) (rootView.findViewById(R.id.map_test))).setText(Database.getCurrentUser().getEmail());
-            viewMap();
         }
     }
-
-    private void viewMap() {
-        Switch viewToggleSwitch = getView().findViewById(R.id.toggle_view);
-        viewToggleSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-//                MapsActivity m = new MapsActivity();
-                list.setVisibility(View.INVISIBLE);
-            } else {
-                list.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
 }
