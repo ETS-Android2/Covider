@@ -20,6 +20,8 @@
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/menu/login_menu.xml" value="0.121875" />
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/menu/main_menu.xml" value="0.15476190476190477" />
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/menu/top_app_bar.xml" value="0.22760416666666666" />
+        <entry key="app/src/main/res/drawable/custom_border.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.195" />
         <entry key="app/src/main/res/layouts/activities/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_building.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_map.xml" value="0.1" />

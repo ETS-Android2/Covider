@@ -27,12 +27,11 @@
                 android:id="@+id/acb"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-
                 android:contentDescription="@string/acb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/acb_comp" />
@@ -42,12 +41,11 @@
                 android:id="@+id/acc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:contentDescription="@string/acc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/acc_comp" />
@@ -60,8 +58,8 @@
                 android:contentDescription="@string/adm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/adm_comp" />
@@ -74,8 +72,8 @@
                 android:contentDescription="@string/aes"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/aes_comp" />
@@ -89,8 +87,8 @@
                 android:contentDescription="@string/ahf1"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahf1_comp" />
@@ -104,8 +102,8 @@
                 android:contentDescription="@string/ahf2"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahf2_comp" />
@@ -118,8 +116,8 @@
                 android:contentDescription="@string/ahf3"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahf3_comp" />
@@ -129,12 +127,11 @@
                 android:id="@+id/ahn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:contentDescription="@string/ahn"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ahn_comp" />
@@ -147,8 +144,8 @@
                 android:contentDescription="@string/alm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/alm_comp" />
@@ -161,8 +158,8 @@
                 android:contentDescription="@string/ann"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ann_comp" />
@@ -175,11 +172,10 @@
                 android:contentDescription="@string/asc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
-
                     android:text="@string/asc_comp" />
             </LinearLayout>
 
@@ -190,8 +186,8 @@
                 android:contentDescription="@string/bhe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bhe_comp" />
@@ -201,12 +197,11 @@
                 android:id="@+id/bit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:contentDescription="@string/bit"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bit_comp" />
@@ -219,8 +214,8 @@
                 android:contentDescription="@string/bks"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bks_comp" />
@@ -233,8 +228,8 @@
                 android:contentDescription="@string/bmh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bmh_comp" />
@@ -247,8 +242,8 @@
                 android:contentDescription="@string/bri"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bri_comp" />
@@ -261,8 +256,8 @@
                 android:contentDescription="@string/bsr"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/bsr_comp" />
@@ -275,8 +270,8 @@
                 android:contentDescription="@string/cal"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cal_comp" />
@@ -289,8 +284,8 @@
                 android:contentDescription="@string/cas"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cas_comp" />
@@ -300,12 +295,11 @@
                 android:id="@+id/cdf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:contentDescription="@string/cdf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cdf_comp" />
@@ -315,12 +309,11 @@
                 android:id="@+id/cem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:contentDescription="@string/cem"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cem_comp" />
@@ -333,8 +326,8 @@
                 android:contentDescription="@string/cic"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cic_comp" />
@@ -347,8 +340,8 @@
                 android:contentDescription="@string/clh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/clh_comp" />
@@ -361,8 +354,8 @@
                 android:contentDescription="@string/cpa"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/cpa_comp" />
@@ -375,8 +368,8 @@
                 android:contentDescription="@string/crc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/crc_comp" />
@@ -389,8 +382,8 @@
                 android:contentDescription="@string/ctf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ctf_comp" />
@@ -403,8 +396,8 @@
                 android:contentDescription="@string/ctv"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ctv_comp" />
@@ -417,8 +410,8 @@
                 android:contentDescription="@string/dcc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dcc_comp" />
@@ -431,8 +424,8 @@
                 android:contentDescription="@string/den"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/den_comp" />
@@ -445,8 +438,8 @@
                 android:contentDescription="@string/dml"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dml_comp" />
@@ -459,8 +452,8 @@
                 android:contentDescription="@string/dmt"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dmt_comp" />
@@ -473,8 +466,8 @@
                 android:contentDescription="@string/dps"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dps_comp" />
@@ -487,8 +480,8 @@
                 android:contentDescription="@string/drb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/drb_comp" />
@@ -501,8 +494,8 @@
                 android:contentDescription="@string/drc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/drc_comp" />
@@ -515,8 +508,8 @@
                 android:contentDescription="@string/dxm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/dxm_comp" />
@@ -529,8 +522,8 @@
                 android:contentDescription="@string/eeb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/eeb_comp" />
@@ -543,8 +536,8 @@
                 android:contentDescription="@string/elb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/elb_comp" />
@@ -557,8 +550,8 @@
                 android:contentDescription="@string/esh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/esh_comp"
@@ -569,12 +562,11 @@
                 android:id="@+id/fig"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:contentDescription="@string/fig"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/fig_comp" />
@@ -587,8 +579,8 @@
                 android:contentDescription="@string/flt"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/flt_comp" />
@@ -601,8 +593,8 @@
                 android:contentDescription="@string/gap"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/gap_comp" />
@@ -615,8 +607,8 @@
                 android:contentDescription="@string/gec"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/gec_comp" />
@@ -629,8 +621,8 @@
                 android:contentDescription="@string/ger"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ger_comp" />
@@ -643,8 +635,8 @@
                 android:contentDescription="@string/gfs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/gfs_comp" />
@@ -657,8 +649,8 @@
                 android:contentDescription="@string/har"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/har_comp" />
@@ -671,8 +663,8 @@
                 android:contentDescription="@string/hce"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hce_comp" />
@@ -685,8 +677,8 @@
                 android:contentDescription="@string/her"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/her_comp" />
@@ -699,8 +691,8 @@
                 android:contentDescription="@string/hjc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hjc_comp" />
@@ -713,8 +705,8 @@
                 android:contentDescription="@string/hmm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hmm_comp" />
@@ -727,8 +719,8 @@
                 android:contentDescription="@string/hnb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hnb_comp" />
@@ -741,8 +733,8 @@
                 android:contentDescription="@string/hoh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hoh_comp" />
@@ -755,8 +747,8 @@
                 android:contentDescription="@string/hsh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hsh_comp" />
@@ -769,8 +761,8 @@
                 android:contentDescription="@string/huc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/huc_comp" />
@@ -783,8 +775,8 @@
                 android:contentDescription="@string/ift"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ift_comp" />
@@ -797,8 +789,8 @@
                 android:contentDescription="@string/iyh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/iyh_comp" />
@@ -811,8 +803,8 @@
                 android:contentDescription="@string/jef"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jef_comp" />
@@ -825,8 +817,8 @@
                 android:contentDescription="@string/jep"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jep_comp" />
@@ -839,8 +831,8 @@
                 android:contentDescription="@string/jff"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jff_comp" />
@@ -853,11 +845,10 @@
                 android:contentDescription="@string/jhh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
-
                     android:text="@string/jhh_comp" />
             </LinearLayout>
 
@@ -868,8 +859,8 @@
                 android:contentDescription="@string/jkp"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jkp_comp" />
@@ -882,8 +873,8 @@
                 android:contentDescription="@string/jmc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jmc_comp" />
@@ -896,8 +887,8 @@
                 android:contentDescription="@string/jws"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/jws_comp" />
@@ -910,8 +901,8 @@
                 android:contentDescription="@string/kap"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/kap_comp" />
@@ -924,8 +915,8 @@
                 android:contentDescription="@string/kdc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/kdc_comp" />
@@ -938,8 +929,8 @@
                 android:contentDescription="@string/koh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/koh_comp" />
@@ -952,8 +943,8 @@
                 android:contentDescription="@string/ksh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ksh_comp" />
@@ -966,8 +957,8 @@
                 android:contentDescription="@string/law"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/law_comp" />
@@ -980,8 +971,8 @@
                 android:contentDescription="@string/lhi"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lhi_comp" />
@@ -994,8 +985,8 @@
                 android:contentDescription="@string/ljs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ljs_comp" />
@@ -1008,8 +999,8 @@
                 android:contentDescription="@string/lrc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lrc_comp" />
@@ -1022,8 +1013,8 @@
                 android:contentDescription="@string/lts"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lts_comp" />
@@ -1036,8 +1027,8 @@
                 android:contentDescription="@string/lvl"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/lvl_comp" />
@@ -1050,8 +1041,8 @@
                 android:contentDescription="@string/mar"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mar_comp" />
@@ -1064,8 +1055,8 @@
                 android:contentDescription="@string/mcb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mcb_comp" />
@@ -1078,8 +1069,8 @@
                 android:contentDescription="@string/mcc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mcc_comp" />
@@ -1092,8 +1083,8 @@
                 android:contentDescription="@string/mhc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mhc_comp" />
@@ -1106,8 +1097,8 @@
                 android:contentDescription="@string/mhp"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mhp_comp" />
@@ -1120,8 +1111,8 @@
                 android:contentDescription="@string/mrc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mrc_comp" />
@@ -1134,8 +1125,8 @@
                 android:contentDescription="@string/mrf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mrf_comp" />
@@ -1148,8 +1139,8 @@
                 android:contentDescription="@string/mtx"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mtx_comp" />
@@ -1162,8 +1153,8 @@
                 android:contentDescription="@string/mus"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/mus_comp" />
@@ -1176,8 +1167,8 @@
                 android:contentDescription="@string/nbc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/nbc_comp" />
@@ -1190,8 +1181,8 @@
                 android:contentDescription="@string/nct"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/nct_comp" />
@@ -1204,8 +1195,8 @@
                 android:contentDescription="@string/nrc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/nrc_comp" />
@@ -1218,8 +1209,8 @@
                 android:contentDescription="@string/ohe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ohe_comp" />
@@ -1232,8 +1223,8 @@
                 android:contentDescription="@string/ois"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ois_comp" />
@@ -1246,8 +1237,8 @@
                 android:contentDescription="@string/osp"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/osp_comp" />
@@ -1260,8 +1251,8 @@
                 android:contentDescription="@string/pce"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/pce_comp" />
@@ -1274,8 +1265,8 @@
                 android:contentDescription="@string/ped"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ped_comp" />
@@ -1288,8 +1279,8 @@
                 android:contentDescription="@string/phe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/phe_comp" />
@@ -1302,8 +1293,8 @@
                 android:contentDescription="@string/pks"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/pks_comp" />
@@ -1316,8 +1307,8 @@
                 android:contentDescription="@string/prb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/prb_comp" />
@@ -1330,8 +1321,8 @@
                 android:contentDescription="@string/ptd"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ptd_comp" />
@@ -1344,8 +1335,8 @@
                 android:contentDescription="@string/rgl"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rgl_comp" />
@@ -1358,8 +1349,8 @@
                 android:contentDescription="@string/rhm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rhm_comp" />
@@ -1372,8 +1363,8 @@
                 android:contentDescription="@string/rrb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rrb_comp" />
@@ -1386,8 +1377,8 @@
                 android:contentDescription="@string/rri"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rri_comp" />
@@ -1400,8 +1391,8 @@
                 android:contentDescription="@string/rth"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rth_comp" />
@@ -1414,8 +1405,8 @@
                 android:contentDescription="@string/rzc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/rzc_comp" />
@@ -1428,8 +1419,8 @@
                 android:contentDescription="@string/sal"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sal_comp" />
@@ -1442,8 +1433,8 @@
                 android:contentDescription="@string/sca"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sca_comp" />
@@ -1456,8 +1447,8 @@
                 android:contentDescription="@string/scb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scb_comp" />
@@ -1470,8 +1461,8 @@
                 android:contentDescription="@string/scc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scc_comp" />
@@ -1484,8 +1475,8 @@
                 android:contentDescription="@string/scd"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scd_comp" />
@@ -1498,8 +1489,8 @@
                 android:contentDescription="@string/sce"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sce_comp" />
@@ -1512,8 +1503,8 @@
                 android:contentDescription="@string/sci"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sci_comp" />
@@ -1526,8 +1517,8 @@
                 android:contentDescription="@string/scs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scs_comp" />
@@ -1540,8 +1531,8 @@
                 android:contentDescription="@string/scx"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/scx_comp" />
@@ -1554,8 +1545,8 @@
                 android:contentDescription="@string/sel"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sel_comp" />
@@ -1568,8 +1559,8 @@
                 android:contentDescription="@string/sgm"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sgm_comp" />
@@ -1582,8 +1573,8 @@
                 android:contentDescription="@string/shr"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/shr_comp" />
@@ -1596,8 +1587,8 @@
                 android:contentDescription="@string/sks"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sks_comp" />
@@ -1610,8 +1601,8 @@
                 android:contentDescription="@string/slh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/slh_comp" />
@@ -1624,8 +1615,8 @@
                 android:contentDescription="@string/sos"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sos_comp" />
@@ -1638,8 +1629,8 @@
                 android:contentDescription="@string/ssc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ssc_comp" />
@@ -1652,8 +1643,8 @@
                 android:contentDescription="@string/sto"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/sto_comp" />
@@ -1666,8 +1657,8 @@
                 android:contentDescription="@string/stu"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/stu_comp" />
@@ -1680,8 +1671,8 @@
                 android:contentDescription="@string/swc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/swc_comp" />
@@ -1694,8 +1685,8 @@
                 android:contentDescription="@string/tcc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tcc_comp" />
@@ -1708,8 +1699,8 @@
                 android:contentDescription="@string/tgf"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tgf_comp" />
@@ -1722,8 +1713,8 @@
                 android:contentDescription="@string/thh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/thh_comp" />
@@ -1736,8 +1727,8 @@
                 android:contentDescription="@string/tmc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tmc_comp" />
@@ -1750,8 +1741,8 @@
                 android:contentDescription="@string/trh"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/trh_comp" />
@@ -1764,8 +1755,8 @@
                 android:contentDescription="@string/tro"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/tro_comp" />
@@ -1778,8 +1769,8 @@
                 android:contentDescription="@string/ttl"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ttl_comp" />
@@ -1792,8 +1783,8 @@
                 android:contentDescription="@string/uac"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/uac_comp" />
@@ -1806,8 +1797,8 @@
                 android:contentDescription="@string/ugb"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ugb_comp" />
@@ -1820,8 +1811,8 @@
                 android:contentDescription="@string/ugw"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ugw_comp" />
@@ -1834,8 +1825,8 @@
                 android:contentDescription="@string/urc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/urc_comp" />
@@ -1848,8 +1839,8 @@
                 android:contentDescription="@string/ush"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/ush_comp" />
@@ -1862,8 +1853,8 @@
                 android:contentDescription="@string/uuc"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/uuc_comp" />
@@ -1876,8 +1867,8 @@
                 android:contentDescription="@string/vhe"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/vhe_comp" />
@@ -1890,8 +1881,8 @@
                 android:contentDescription="@string/vpd"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/vpd_comp" />
@@ -1904,7 +1895,8 @@
                 android:contentDescription="@string/wah"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/wah_comp" />
@@ -1917,8 +1909,8 @@
                 android:contentDescription="@string/wph"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/wph_comp" />
@@ -1931,8 +1923,8 @@
                 android:contentDescription="@string/wto"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/wto_comp" />
@@ -1945,8 +1937,8 @@
                 android:contentDescription="@string/zhs"
                 android:gravity="center_vertical"
                 android:minHeight="59dp"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border">
                 <TextView
                     style="@style/list_building"
                     android:text="@string/zhs_comp" />
