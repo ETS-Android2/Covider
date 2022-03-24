@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentClass = BuildingFragment.class;
                 break;
             }
+            case R.id.menu_map_item: {
+                fragmentClass = MapsFragment.class;
+                break;
+            }
             case R.id.menu_courses_item: {
                 fragmentClass = CoursesFragment.class;
                 break;

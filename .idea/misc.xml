@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layouts/activities/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_building.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_map.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/fragments/layout/fragment_maps.xml" value="0.16875" />
         <entry key="app/src/main/res/menu/auth_menu.xml" value="0.15" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.1" />
       </map>
