@@ -5,10 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -69,5 +73,18 @@ public class FormFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Button button = (Button) rootView.findViewById(R.id.form_test_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.main_fragment,FormFragment.newInstance("apple","orange"));
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
     }
 }
