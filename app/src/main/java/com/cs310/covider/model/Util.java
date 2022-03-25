@@ -1,11 +1,35 @@
 package com.cs310.covider.model;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class Util {
+
+    public static boolean userDidTodayCheck(User user)
+    {
+        assert user != null;
+        return user.getLastCheckDate() != null && Util.sameDay(new Date(), user.getLastCheckDate());
+    }
+
+    public static Task<DocumentSnapshot> getCurrentUserTask() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null)
+        {
+            return null;
+        }
+        return getUserWithEmailTask(user.getEmail());
+    }
+
+    public static Task<DocumentSnapshot> getUserWithEmailTask(String email) {
+        return FirebaseFirestore.getInstance().collection("Users").document(email).get();
+    }
 
     public static boolean inTimeFrame(TimeSpan span, Date a, Date b) {
         switch (span) {

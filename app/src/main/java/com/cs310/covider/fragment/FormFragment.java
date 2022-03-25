@@ -1,13 +1,17 @@
 package com.cs310.covider.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import androidx.fragment.app.FragmentManager;
@@ -15,7 +19,17 @@ import androidx.fragment.app.FragmentTransaction;
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 
+import com.cs310.covider.model.User;
+import com.cs310.covider.model.Util;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,17 +87,69 @@ public class FormFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) rootView.findViewById(R.id.form_test_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Spinner spinner = (Spinner) rootView.findViewById(R.id.form_symptoms_selection);
+        String[] items = new String[]{"Yes", "No"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        spinner.setAdapter(adapter);
+        Button button = (Button) rootView.findViewById(R.id.form_button);
+        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.main_fragment,FormFragment.newInstance("apple","orange"));
-                transaction.addToBackStack(null);
-                transaction.commit();
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User user = documentSnapshot.toObject(User.class);
+                if(Util.userDidTodayCheck(user))
+                {
+                    ((MainActivity)getActivity()).changeToAuthedMenu();
+                    openDialog("You already did today's check!");
+                }
+                else
+                {
+                   button.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View view) {
+                           String selection = spinner.getSelectedItem().toString();
+                           String message = "Are you sure you have covid symptoms?";
+                           if(selection.equals(items[1]))
+                           {
+                               message = "Are you sure you don't have covid symptoms?";
+                           }
+                           AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+                           builder1.setMessage(message);
+                           builder1.setCancelable(false);
+                           builder1.setPositiveButton(
+                                   "Yes",
+                                   new DialogInterface.OnClickListener() {
+                                       @Override
+                                       public void onClick(DialogInterface dialog, int id) {
+                                           user.setLastCheckDate(new Date());
+                                           if(selection.equals(items[0]))
+                                           {
+                                               user.setLastInfectionDate(new Date());
+                                           }
+                                           FirebaseFirestore.getInstance().collection("Users").document(user.getEmail()).set(user).addOnFailureListener(new OnFailureListener() {
+                                               @Override
+                                               public void onFailure(@NonNull @NotNull Exception e) {
+                                                   openDialog(e.getMessage());
+                                               }
+                                           }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                               @Override
+                                               public void onSuccess(Void unused) {
+                                                   ((MainActivity)getActivity()).changeToAuthedMenu();
+                                                   openDialog("Thank you for completing today's check!");
+                                               }
+                                           });
+                                       }
+                                   });
+                           builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialog, int id) {
+                                   dialog.cancel();
+                               }
+                           });
+                           AlertDialog alert11 = builder1.create();
+                           alert11.show();
+                       }
+                   });
+                }
             }
         });
     }

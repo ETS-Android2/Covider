@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 User user = documentSnapshot.toObject(User.class);
-                if(user.getLastCheckDate() == null || !Util.sameDay(new Date(), user.getLastCheckDate()))
+                if(!Util.userDidTodayCheck(user))
                 {
                     openDialog("You have not completed today's check form!");
                 }

@@ -14,4 +14,6 @@
     <string name="section_ie_39456d">Section (39456D)</string>
     <string name="course_name_ie_math_125g">Name (MATH 125g)</string>
     <string name="map">Map</string>
+    <string name="submit">Submit</string>
+    <string name="daily_health_form">Daily Health Form</string>
 </resources>

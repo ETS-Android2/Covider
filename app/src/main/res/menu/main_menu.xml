@@ -25,17 +25,17 @@
 
 
         <item
-            android:id="@+id/menu_form_item"
-            android:title="@string/form"></item>
+                android:id="@+id/menu_form_item"
+                android:title="@string/daily_health_form"/>
 
 
         <item
-            android:id="@+id/menu_add_course_item"
-            android:title="@string/add_course"></item>
+                android:id="@+id/menu_add_course_item"
+                android:title="@string/add_course"/>
 
         <item
-            android:id="@+id/menu_logout_item"
-            android:title="@string/logout"></item>
+                android:id="@+id/menu_logout_item"
+                android:title="@string/logout"/>
 
 
     </group>

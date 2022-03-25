@@ -19,6 +19,7 @@ import com.cs310.covider.R;
 import com.cs310.covider.model.Building;
 import com.cs310.covider.model.Course;
 import com.cs310.covider.model.User;
+import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -117,8 +118,7 @@ public class AddCourseFragment extends MyFragment {
                                             openDialog("Course building is incorrect!");
                                             return;
                                         }
-                                        FirebaseFirestore.getInstance().collection("Users").
-                                                document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                             @Override
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 User currentUser = documentSnapshot.toObject(User.class);
@@ -153,8 +153,7 @@ public class AddCourseFragment extends MyFragment {
                                             }
                                         });
                                     } else {
-                                        FirebaseFirestore.getInstance().collection("Users").
-                                                document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                             @Override
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 User currentUser = documentSnapshot.toObject(User.class);

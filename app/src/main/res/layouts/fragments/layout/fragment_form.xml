@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.FormFragment">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            tools:context=".fragment.FormFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <Button
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/form_test_button"
-            android:text="test me!">
-    </Button>
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Do you have any covid-like symptoms?"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="20dp">
+            </TextView>
 
-</FrameLayout>
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/form_symptoms_selection">
+            </Spinner>
+
+        <Button
+                android:id="@+id/form_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"/>
+
+    </LinearLayout>
+</ScrollView>

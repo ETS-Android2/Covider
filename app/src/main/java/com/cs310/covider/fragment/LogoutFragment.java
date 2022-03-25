@@ -71,7 +71,7 @@ public class LogoutFragment extends MyFragment {
         super.onViewCreated(view, savedInstanceState);
         AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
         builder1.setMessage("Do you want to log out?");
-        builder1.setCancelable(true);
+        builder1.setCancelable(false);
         builder1.setPositiveButton(
                 "Yes",
                 new DialogInterface.OnClickListener() {
