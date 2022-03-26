@@ -6,7 +6,6 @@
     <string name="nav_drawer_open">Open Drawer</string>
     <string name="nav_drawer_close">Close Drawer</string>
     <!-- Map/List Part -->
-    <string name="toggle_map">Map</string>
     <string name="acb">acb</string>
     <string name="acb_comp">Ahmanson Center for Biological Research (ACB)</string>
     <string name="acb_whole">Ahmanson Center for Biological Research</string>

@@ -23,7 +23,12 @@
         <entry key="app/src/main/res/drawable/custom_border.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.195" />
         <entry key="app/src/main/res/layouts/activities/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/fragments/drawable/risk_indicator.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/fragments/layout/details.xml" value="0.3440826416015625" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_building.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/fragments/layout/fragment_detail.xml" value="0.16314199395770393" />
+        <entry key="app/src/main/res/layouts/fragments/layout/fragment_form.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/fragments/layout/fragment_logout.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_map.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_maps.xml" value="0.16875" />
         <entry key="app/src/main/res/menu/auth_menu.xml" value="0.15" />

@@ -16,4 +16,12 @@
     <string name="map">Map</string>
     <string name="submit">Submit</string>
     <string name="daily_health_form">Daily Health Form</string>
+    <string name="exposure_risk_level"><i>Exposure Risk Level</i></string>
+    <string name="low_risk_per">Low Risk Percentage: %d</string>
+    <string name="high_risk_per">High Risk Percentage: %d</string>
+    <string name="infected_per">Infected Percentage: %d</string>
+    <string name="return_to_previous_page">Return</string>
+    <string name="past_week">During the Past Week</string>
+    <string name="entry_req"><i>Entry Requirements: \n</i></string>
+    <string name="ways_to_satisfy_req"><i>Ways to Satisfy Requirements: \n</i></string>
 </resources>
