@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.Objects;
 
 public class User implements Serializable {
-
     private UserType userType = UserType.STUDENT;
     private ArrayList<String> userCoursesIDs;
     private String email = "";

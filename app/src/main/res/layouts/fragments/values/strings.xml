@@ -24,4 +24,5 @@
     <string name="past_week">During the Past Week</string>
     <string name="entry_req"><i>Entry Requirements: \n</i></string>
     <string name="ways_to_satisfy_req"><i>Ways to Satisfy Requirements: \n</i></string>
+    <string name="building_checkin_form">Building checkin Form</string>
 </resources>

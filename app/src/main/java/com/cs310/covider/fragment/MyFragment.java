@@ -3,16 +3,19 @@ package com.cs310.covider.fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-
+import com.cs310.covider.MainActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class MyFragment extends Fragment {
@@ -46,6 +49,21 @@ public class MyFragment extends Fragment {
                         dialog.cancel();
                     }
                 });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
+    public void redirectToHome(){
+        assert getActivity() != null;
+        ((MainActivity)getActivity()).changeToAuthedMenu();
+    }
+
+    protected void showYesNoDialog(DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener, String message){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+        builder1.setMessage(message);
+        builder1.setCancelable(false);
+        builder1.setPositiveButton("Yes", yesListener);
+        builder1.setNegativeButton("No", noListener);
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }

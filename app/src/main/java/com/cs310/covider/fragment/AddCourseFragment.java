@@ -106,6 +106,7 @@ public class AddCourseFragment extends MyFragment {
                                 public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
                                     if (!task.isSuccessful()) {
                                         openDialog(task);
+                                        redirectToHome();
                                         return;
                                     }
                                     if (task.getResult().exists()) {

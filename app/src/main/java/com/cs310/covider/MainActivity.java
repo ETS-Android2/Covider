@@ -14,14 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.cs310.covider.fragment.AddCourseFragment;
-import com.cs310.covider.fragment.BuildingFragment;
-import com.cs310.covider.fragment.CoursesFragment;
-import com.cs310.covider.fragment.FormFragment;
-import com.cs310.covider.fragment.LoginFragment;
-import com.cs310.covider.fragment.LogoutFragment;
-import com.cs310.covider.fragment.MapsFragment;
-import com.cs310.covider.fragment.RegisterFragment;
+import com.cs310.covider.fragment.*;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -145,6 +138,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             case R.id.menu_add_course_item: {
                 fragmentClass = AddCourseFragment.class;
+                break;
+            }
+            case R.id.menu_checkin_item: {
+                fragmentClass = CheckInFormFragment.class;
+                break;
             }
             default: {
                 break;

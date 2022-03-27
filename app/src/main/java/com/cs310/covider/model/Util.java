@@ -18,6 +18,12 @@ public class Util {
         return user.getLastCheckDate() != null && Util.sameDay(new Date(), user.getLastCheckDate());
     }
 
+    public static boolean buildingCheckinDataValidForToday(Building building)
+    {
+        assert building != null;
+        return building.getCheckinDataValidDate() != null && Util.sameDay(new Date(), building.getCheckinDataValidDate());
+    }
+
     public static Task<DocumentSnapshot> getCurrentUserTask() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
@@ -28,6 +34,26 @@ public class Util {
 
     public static Task<DocumentSnapshot> getUserWithEmailTask(String email) {
         return FirebaseFirestore.getInstance().collection("Users").document(email).get();
+    }
+
+    public static boolean withInTwoWeeks(Date date)
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, 14);
+        Calendar today = Calendar.getInstance();
+        today.setTime(new Date());
+        return !calendar.before(today);
+    }
+
+    public static boolean userCheckedIn(Building building, String email)
+    {
+        assert building != null && email != null;
+        if(building.getCheckinDataValidDate() != null && sameDay(new Date(), building.getCheckinDataValidDate()))
+        {
+            return building.getCheckedInUserEmails() != null && building.getCheckedInUserEmails().contains(email);
+        }
+        return false;
     }
 
     public static boolean inTimeFrame(TimeSpan span, Date a, Date b) {

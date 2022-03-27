@@ -7,14 +7,18 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Building {
-    String name;
+    private String name;
     private MyLatLng location;
     private ArrayList<String> coursesIDs;
+    private Date checkinDataValidDate;
+    private ArrayList<String> checkedInUserEmails;
 
-    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs) {
+    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs, Date checkinDataValidDate, ArrayList<String> checkedInUserEmails) {
         this.name = name;
         this.coursesIDs = coursesIDs;
         this.location = location;
+        this.checkedInUserEmails = checkedInUserEmails;
+        this.checkinDataValidDate = checkinDataValidDate;
     }
 
     public Building() {
@@ -89,5 +93,21 @@ public class Building {
     @Override
     public String toString() {
         return "Building(name=" + this.getName() + ", location=" + this.getLocation() + ", courses=" + this.getCoursesIDs() + ")";
+    }
+
+    public Date getCheckinDataValidDate() {
+        return checkinDataValidDate;
+    }
+
+    public void setCheckinDataValidDate(Date checkinDataValidDate) {
+        this.checkinDataValidDate = checkinDataValidDate;
+    }
+
+    public ArrayList<String> getCheckedInUserEmails() {
+        return checkedInUserEmails;
+    }
+
+    public void setCheckedInUserEmails(ArrayList<String> checkedInUserEmails) {
+        this.checkedInUserEmails = checkedInUserEmails;
     }
 }
