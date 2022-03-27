@@ -14,7 +14,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.cs310.covider.fragment.*;
+import com.cs310.covider.fragment.AddCourseFragment;
+import com.cs310.covider.fragment.BuildingFragment;
+import com.cs310.covider.fragment.CheckInFormFragment;
+import com.cs310.covider.fragment.CoursesFragment;
+import com.cs310.covider.fragment.FormFragment;
+import com.cs310.covider.fragment.LoginFragment;
+import com.cs310.covider.fragment.LogoutFragment;
+import com.cs310.covider.fragment.MapsFragment;
+import com.cs310.covider.fragment.RegisterFragment;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnFailureListener;

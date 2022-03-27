@@ -7,20 +7,19 @@
 
         <item
             android:id="@+id/menu_form_item"
-            android:title="@string/daily_health_form"/>
+            android:title="@string/daily_health_form" />
 
         <item
             android:id="@+id/menu_checkin_item"
-            android:title="@string/building_checkin_form">
-        </item>
+            android:title="@string/building_checkin_form"></item>
 
         <item
             android:id="@+id/menu_building_item"
-            android:title="@string/building"/>
+            android:title="@string/building" />
 
         <item
             android:id="@+id/menu_map_item"
-            android:title="@string/map"/>
+            android:title="@string/map" />
 
         <item
             android:id="@+id/menu_courses_item"
@@ -31,11 +30,11 @@
 
         <item
             android:id="@+id/menu_add_course_item"
-            android:title="@string/add_course"/>
+            android:title="@string/add_course" />
 
         <item
             android:id="@+id/menu_logout_item"
-            android:title="@string/logout"/>
+            android:title="@string/logout" />
 
     </group>
 </menu>

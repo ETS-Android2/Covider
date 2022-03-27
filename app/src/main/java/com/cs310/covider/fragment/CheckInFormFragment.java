@@ -5,35 +5,26 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.R;
-
 import com.cs310.covider.model.Building;
-import com.cs310.covider.model.Course;
-import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,8 +85,7 @@ public class CheckInFormFragment extends MyFragment {
         FirebaseFirestore.getInstance().collection("Buildings").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-                if(!task.isSuccessful())
-                {
+                if (!task.isSuccessful()) {
                     openDialog(task);
                     redirectToHome();
                     return;
@@ -112,12 +102,12 @@ public class CheckInFormFragment extends MyFragment {
                     @Override
                     public void onClick(View view) {
                         Building selection = buildings.get(spinner.getSelectedItemPosition());
-                        if(Util.userCheckedIn(selection, FirebaseAuth.getInstance().getCurrentUser().getEmail()))
-                        {
+                        if (Util.userCheckedIn(selection, FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
                             openDialog("You already checked in to this building!");
                             redirectToHome();
                             return;
-                        };
+                        }
+                        ;
                         showYesNoDialog(new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
