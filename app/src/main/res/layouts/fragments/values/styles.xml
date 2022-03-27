@@ -8,4 +8,9 @@
         <item name="android:textSize">12.9sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/grey</item>
+        <item name="colorControlActivated">@color/gold</item>
+    </style>
 </resources>

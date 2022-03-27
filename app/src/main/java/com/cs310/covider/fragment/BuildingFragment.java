@@ -234,7 +234,7 @@ public class BuildingFragment extends MyFragment {
                 buildingAbbrev + "_comp", "string", "com.cs310.covider");
         ((TextView) pop.getContentView().findViewById(R.id.building_comp)).setText(getResources().getString(building));
         RatingBar bar = pop.getContentView().findViewById(R.id.ratingBar);
-        bar.setNumStars(3);
+        bar.setRating(3.5F);
         pop.showAtLocation(view, Gravity.CENTER, 0, 0);
         pop.getContentView().findViewById(R.id.return_to_previous).setOnClickListener((View popup) -> {
             pop.dismiss();
