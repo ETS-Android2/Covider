@@ -25,4 +25,12 @@
     <string name="entry_req"><i>Entry Requirements: \n</i></string>
     <string name="ways_to_satisfy_req"><i>Ways to Satisfy Requirements: \n</i></string>
     <string name="building_checkin_form">Building Check-in Form</string>
+    <string name="wear_mask">Buy and Wear a Mask</string>
+    <string name="wear_N95">Buy and Wear a N95 Mask</string>
+    <string name="test_and_wear_N95">Schedule a COVID-19 Test Appointment in Advance and Wear a N95 Mask</string>
+    <string name="quaratine_reminder">Complete the 14-Day Quarantine</string>
+    <string name="buy_mask">Buy at USC bookstore ($2/each) or Target</string>
+    <string name="buy_n95">Go to USC Pharmacy or a Nearby CVS/Walgreens Store</string>
+    <string name="make_appointment_or_walk_in">Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites</string>
+    <string name="self_quarantine">Go to USC Hotel and Self-Quarantine for at least 14-Days</string>
 </resources>
