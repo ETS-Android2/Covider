@@ -11,8 +11,7 @@ public class Pair implements Serializable {
         this.value = value;
     }
 
-    public Pair()
-    {
+    public Pair() {
 
     }
 

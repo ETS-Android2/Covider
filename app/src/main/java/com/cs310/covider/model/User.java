@@ -15,7 +15,6 @@ public class User implements Serializable {
     private Date lastCheckDate;
 
 
-
     public User() {
     }
 

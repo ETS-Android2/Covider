@@ -1,6 +1,5 @@
 package com.cs310.covider.fragment;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.MainActivity;
@@ -21,8 +19,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.

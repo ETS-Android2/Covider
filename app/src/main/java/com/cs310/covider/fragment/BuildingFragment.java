@@ -1,7 +1,6 @@
 package com.cs310.covider.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -93,7 +92,6 @@ public class BuildingFragment extends MyFragment {
         view.findViewById(R.id.aes).setOnClickListener(clickListener);
         view.findViewById(R.id.ahf1).setOnClickListener(clickListener);
         view.findViewById(R.id.ahf2).setOnClickListener(clickListener);
-        view.findViewById(R.id.ahf3).setOnClickListener(clickListener);
         view.findViewById(R.id.ahn).setOnClickListener(clickListener);
         view.findViewById(R.id.alm).setOnClickListener(clickListener);
         view.findViewById(R.id.ann).setOnClickListener(clickListener);
@@ -228,7 +226,7 @@ public class BuildingFragment extends MyFragment {
 
     private void showDetails(@NonNull View view) {
         String buildingAbbrev = view.getContentDescription().toString();
-        @SuppressLint("InflateParams") View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.details, null);
+        @SuppressLint("InflateParams") View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.building_details, null);
         PopupWindow pop = new PopupWindow(popupView, (int) (getResources().getDisplayMetrics().widthPixels * 0.9), LinearLayout.LayoutParams.WRAP_CONTENT, true);
         int building = getResources().getIdentifier(
                 buildingAbbrev + "_comp", "string", "com.cs310.covider");

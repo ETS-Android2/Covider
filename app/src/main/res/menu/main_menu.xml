@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
-        android:id="@+id/menu_loggedin_group"
+        android:id="@+id/menu_loggedIn_group"
         android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/menu_building_item"
-            android:title="@string/building">
-
-        </item>
 
         <item
             android:id="@+id/menu_map_item"
             android:title="@string/map">
+
+        </item>
+
+        <item
+            android:id="@+id/menu_building_item"
+            android:title="@string/building">
 
         </item>
 
@@ -25,17 +25,17 @@
 
 
         <item
-                android:id="@+id/menu_form_item"
-                android:title="@string/daily_health_form"/>
+            android:id="@+id/menu_form_item"
+            android:title="@string/daily_health_form" />
 
 
         <item
-                android:id="@+id/menu_add_course_item"
-                android:title="@string/add_course"/>
+            android:id="@+id/menu_add_course_item"
+            android:title="@string/add_course" />
 
         <item
-                android:id="@+id/menu_logout_item"
-                android:title="@string/logout"/>
+            android:id="@+id/menu_logout_item"
+            android:title="@string/logout" />
 
 
     </group>

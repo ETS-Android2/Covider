@@ -1,6 +1,5 @@
 package com.cs310.covider.fragment;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +11,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 
-import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 import com.cs310.covider.model.Building;
 import com.cs310.covider.model.Course;
@@ -24,7 +21,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -118,11 +114,11 @@ public class AddCourseFragment extends MyFragment {
                                             openDialog("Course building is incorrect!");
                                             return;
                                         }
-                                        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        Objects.requireNonNull(Util.getCurrentUserTask()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                             @Override
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 User currentUser = documentSnapshot.toObject(User.class);
-                                                switch (currentUser.getUserType()) {
+                                                switch (Objects.requireNonNull(currentUser).getUserType()) {
                                                     case INSTRUCTOR: {
                                                         if (course.getInstructorsEmails().contains(currentUser.getEmail())) {
                                                             openDialog("Course already in your account!");
@@ -146,72 +142,49 @@ public class AddCourseFragment extends MyFragment {
                                                     }
                                                 }
                                             }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull @NotNull Exception e) {
-                                                openDialog(task);
-                                            }
-                                        });
+                                        }).addOnFailureListener(e -> openDialog(task));
                                     } else {
-                                        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                User currentUser = documentSnapshot.toObject(User.class);
-                                                switch (currentUser.getUserType()) {
-                                                    case INSTRUCTOR: {
-                                                        ArrayList<String> instructorEmails = new ArrayList<>();
-                                                        instructorEmails.add(currentUser.getEmail());
-                                                        Course newCourse = new Course(courseID, buildingName, new ArrayList<>(), instructorEmails, Course.CourseMode.INPERSON);
-                                                        FirebaseFirestore.getInstance().collection("Courses").document(newCourse.getId()).set(newCourse).addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull @NotNull Exception e) {
-                                                                openDialog(task);
-                                                            }
-                                                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void unused) {
-                                                                FirebaseFirestore.getInstance().collection("Buildings").document(buildingName).update("coursesIDs", FieldValue.arrayUnion(newCourse.getId()))
-                                                                        .addOnFailureListener(new OnFailureListener() {
-                                                                            @Override
-                                                                            public void onFailure(@NonNull @NotNull Exception e) {
-                                                                                openDialog(task);
-                                                                            }
-                                                                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                    @Override
-                                                                    public void onSuccess(Void unused) {
-                                                                        FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
-                                                                                .addOnFailureListener(new OnFailureListener() {
-                                                                                    @Override
-                                                                                    public void onFailure(@NonNull @NotNull Exception e) {
-                                                                                        openDialog(task);
-                                                                                    }
-                                                                                }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                            @Override
-                                                                            public void onSuccess(Void unused) {
-                                                                                openDialog("Success!");
-                                                                            }
-                                                                        });
-                                                                    }
-                                                                });
-                                                            }
-                                                        });
-                                                        break;
-                                                    }
-                                                    case STUDENT: {
-                                                        openDialog("It's a new course, and new courses can only be added by instructors!");
-                                                        break;
-                                                    }
-                                                    default: {
-                                                        break;
-                                                    }
+                                        Util.getCurrentUserTask().addOnSuccessListener(documentSnapshot -> {
+                                            User currentUser = documentSnapshot.toObject(User.class);
+                                            switch (currentUser.getUserType()) {
+                                                case INSTRUCTOR: {
+                                                    ArrayList<String> instructorEmails = new ArrayList<>();
+                                                    instructorEmails.add(currentUser.getEmail());
+                                                    Course newCourse = new Course(courseID, buildingName, new ArrayList<>(), instructorEmails, Course.CourseMode.INPERSON);
+                                                    FirebaseFirestore.getInstance().collection("Courses").document(newCourse.getId()).set(newCourse).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull @NotNull Exception e) {
+                                                            openDialog(task);
+                                                        }
+                                                    }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void unused) {
+                                                            FirebaseFirestore.getInstance().collection("Buildings").document(buildingName).update("coursesIDs", FieldValue.arrayUnion(newCourse.getId()))
+                                                                    .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void unused) {
+                                                                    FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
+                                                                            .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void unused) {
+                                                                            openDialog("Success!");
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                    break;
+                                                }
+                                                case STUDENT: {
+                                                    openDialog("It's a new course, and new courses can only be added by instructors!");
+                                                    break;
+                                                }
+                                                default: {
+                                                    break;
                                                 }
                                             }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull @NotNull Exception e) {
-                                                openDialog(task);
-                                            }
-                                        });
+                                        }).addOnFailureListener(e -> openDialog(task));
                                     }
                                 }
                             });

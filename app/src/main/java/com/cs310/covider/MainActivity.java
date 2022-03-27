@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -30,12 +29,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -69,23 +67,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onBackStackChanged() {
                 if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true); // show back button
-                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            onBackPressed();
-                        }
-                    });
+                    Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true); // show back button
+                    toolbar.setNavigationOnClickListener(v -> onBackPressed());
                 } else {
                     //show hamburger
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
                     actionBarDrawerToggle.syncState();
-                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            drawerLayout.openDrawer(GravityCompat.START);
-                        }
-                    });
+                    toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
                 }
             }
         });
@@ -99,13 +87,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void changeToAuthedMenu() {
         navigationView.getMenu().clear();
         navigationView.inflateMenu(R.menu.main_menu);
-        changeToFragment(navigationView.getMenu().findItem(R.id.menu_building_item), BuildingFragment.class);
-        FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        changeToFragment(navigationView.getMenu().findItem(R.id.menu_map_item), MapsFragment.class);
+        FirebaseFirestore.getInstance().collection("Users").document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getEmail())).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 User user = documentSnapshot.toObject(User.class);
-                if(!Util.userDidTodayCheck(user))
-                {
+                if (!Util.userDidTodayCheck(user)) {
                     openDialog("You have not completed today's check form!");
                 }
             }
@@ -127,21 +114,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            return onNavigationItemSelectedLoggedin(item);
+            return onNavigationItemSelectedLoggedIn(item);
         } else {
             return onNavigationItemSelectedAuth(item);
         }
     }
 
-    private boolean onNavigationItemSelectedLoggedin(@NonNull @NotNull MenuItem item) {
+    private boolean onNavigationItemSelectedLoggedIn(@NonNull @NotNull MenuItem item) {
         Class fragmentClass = null;
         switch (item.getItemId()) {
-            case R.id.menu_building_item: {
-                fragmentClass = BuildingFragment.class;
-                break;
-            }
             case R.id.menu_map_item: {
                 fragmentClass = MapsFragment.class;
+                break;
+            }
+            case R.id.menu_building_item: {
+                fragmentClass = BuildingFragment.class;
                 break;
             }
             case R.id.menu_courses_item: {
