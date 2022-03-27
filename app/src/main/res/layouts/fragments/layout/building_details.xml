@@ -40,16 +40,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:text="@string/entry_req"
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/req"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/ways_to_satisfy_req"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ways"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

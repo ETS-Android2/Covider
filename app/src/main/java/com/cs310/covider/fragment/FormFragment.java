@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -17,13 +17,13 @@ import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
-
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
@@ -85,100 +85,90 @@ public class FormFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Spinner symptomsSpinner = rootView.findViewById(R.id.form_symptoms_selection);
-        Spinner testSpiner = rootView.findViewById(R.id.form_test_selection);
+        Spinner symptomsSpinner = (Spinner) rootView.findViewById(R.id.form_symptoms_selection);
+        Spinner testSpiner = (Spinner) rootView.findViewById(R.id.form_test_selection);
         String[] symptomsItems = new String[]{"Yes", "No"};
         String[] testItems = new String[]{"Positive", "Negative"};
         ArrayAdapter<String> symptomsAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, symptomsItems);
         ArrayAdapter<String> testAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, testItems);
         symptomsSpinner.setAdapter(symptomsAdapter);
         testSpiner.setAdapter(testAdapter);
-        Button button = rootView.findViewById(R.id.form_button);
+        Button button = (Button) rootView.findViewById(R.id.form_button);
         Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 User user = documentSnapshot.toObject(User.class);
-                if(Util.userDidTodayCheck(user))
-                {
-                    ((MainActivity)getActivity()).changeToAuthedMenu();
+                if (Util.userDidTodayCheck(user)) {
+                    ((MainActivity) getActivity()).changeToAuthedMenu();
                     openDialog("You already did today's check!");
-                }
-                else
-                {
-                   button.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           CheckBox checkBox = rootView.findViewById(R.id.form_checkbox_agree);
-                           if(!checkBox.isChecked())
-                           {
-                               openDialog("Agree to share your data is not checked!");
-                               return;
-                           }
-                           boolean hasSymptoms = true;
-                           boolean hasPositiveTest = true;
-                           String symptomsSelection = symptomsSpinner.getSelectedItem().toString();
-                           String message = "Are you sure you have covid symptoms ";
-                           if(symptomsSelection.equals(symptomsItems[1]))
-                           {
-                               message = "Are you sure you don't have covid symptoms ";
-                               hasSymptoms = false;
-                           }
-                           String testSelection = testSpiner.getSelectedItem().toString();
-                           if(testSelection.equals(testItems[0]))
-                           {
-                               message += "and have a positive covid test result?";
-                           }
-                           else {
-                               hasPositiveTest = false;
-                               message += "and have a negative covid test result?";
-                           }
-                           AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
-                           builder1.setMessage(message);
-                           builder1.setCancelable(false);
-                           boolean finalHasPositiveTest = hasPositiveTest;
-                           boolean finalHasSymptoms = hasSymptoms;
-                           builder1.setPositiveButton(
-                                   "Yes",
-                                   new DialogInterface.OnClickListener() {
-                                       @Override
-                                       public void onClick(DialogInterface dialog, int id) {
-                                           user.setLastCheckDate(new Date());
-                                           if(finalHasPositiveTest || finalHasSymptoms)
-                                           {
-                                               user.setLastInfectionDate(new Date());
-                                               if(finalHasPositiveTest)
-                                               {
-                                                   //TODO
-                                               }
-                                               else //Only hasSymptoms
-                                               {
-                                                   //TODO
-                                               }
-                                           }
-                                           FirebaseFirestore.getInstance().collection("Users").document(user.getEmail()).set(user).addOnFailureListener(new OnFailureListener() {
-                                               @Override
-                                               public void onFailure(@NonNull @NotNull Exception e) {
-                                                   openDialog(e.getMessage());
-                                               }
-                                           }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                               @Override
-                                               public void onSuccess(Void unused) {
-                                                   ((MainActivity)getActivity()).changeToAuthedMenu();
-                                                   openDialog("Thank you for completing today's check!");
-                                               }
-                                           });
-                                       }
-                                   });
-                           builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                               @Override
-                               public void onClick(DialogInterface dialog, int id) {
-                                   dialog.cancel();
-                               }
-                           });
-                           AlertDialog alert11 = builder1.create();
-                           alert11.show();
-                       }
-                   });
+                } else {
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            CheckBox checkBox = (CheckBox) rootView.findViewById(R.id.form_checkbox_agree);
+                            if (!checkBox.isChecked()) {
+                                openDialog("Agree to share your data is not checked!");
+                                return;
+                            }
+                            boolean hasSymptoms = true;
+                            boolean hasPositiveTest = true;
+                            String symptomsSelection = symptomsSpinner.getSelectedItem().toString();
+                            String message = "Are you sure you have covid symptoms ";
+                            if (symptomsSelection.equals(symptomsItems[1])) {
+                                message = "Are you sure you don't have covid symptoms ";
+                                hasSymptoms = false;
+                            }
+                            String testSelection = testSpiner.getSelectedItem().toString();
+                            if (testSelection.equals(testItems[0])) {
+                                message += "and have a positive covid test result?";
+                            } else {
+                                hasPositiveTest = false;
+                                message += "and have a negative covid test result?";
+                            }
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+                            builder1.setMessage(message);
+                            builder1.setCancelable(false);
+                            boolean finalHasPositiveTest = hasPositiveTest;
+                            boolean finalHasSymptoms = hasSymptoms;
+                            builder1.setPositiveButton(
+                                    "Yes",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            user.setLastCheckDate(new Date());
+                                            if (finalHasPositiveTest || finalHasSymptoms) {
+                                                user.setLastInfectionDate(new Date());
+                                                if (finalHasPositiveTest) {
+                                                    //TODO
+                                                } else //Only hasSymptoms
+                                                {
+                                                    //TODO
+                                                }
+                                            }
+                                            FirebaseFirestore.getInstance().collection("Users").document(user.getEmail()).set(user).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull @NotNull Exception e) {
+                                                    openDialog(e.getMessage());
+                                                }
+                                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    ((MainActivity) getActivity()).changeToAuthedMenu();
+                                                    openDialog("Thank you for completing today's check!");
+                                                }
+                                            });
+                                        }
+                                    });
+                            builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                            AlertDialog alert11 = builder1.create();
+                            alert11.show();
+                        }
+                    });
                 }
             }
         });

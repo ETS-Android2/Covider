@@ -232,7 +232,23 @@ public class BuildingFragment extends MyFragment {
                 buildingAbbrev + "_comp", "string", "com.cs310.covider");
         ((TextView) pop.getContentView().findViewById(R.id.building_comp)).setText(getResources().getString(building));
         RatingBar bar = pop.getContentView().findViewById(R.id.ratingBar);
-        bar.setRating(3.5F);
+        TextView tv = pop.getContentView().findViewById(R.id.req);
+        TextView way = pop.getContentView().findViewById(R.id.ways);
+        double risk = 0.7;
+        bar.setRating((float) (risk * 10 - 2));
+        if (risk <= 0.3) {
+            tv.setText(R.string.wear_mask);
+            way.setText(R.string.buy_mask);
+        } else if (risk <= 0.5) {
+            tv.setText(R.string.wear_N95);
+            way.setText(R.string.buy_n95);
+        } else if (risk <= 0.7) {
+            tv.setText(R.string.test_and_wear_N95);
+            way.setText(R.string.make_appointment_or_walk_in);
+        } else {
+            tv.setText(R.string.quaratine_reminder);
+            way.setText(R.string.self_quarantine);
+        }
         pop.showAtLocation(view, Gravity.CENTER, 0, 0);
         pop.getContentView().findViewById(R.id.return_to_previous).setOnClickListener((View popup) -> {
             pop.dismiss();

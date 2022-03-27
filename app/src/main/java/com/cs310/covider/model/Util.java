@@ -18,8 +18,7 @@ public class Util {
         return user.getLastCheckDate() != null && Util.sameDay(new Date(), user.getLastCheckDate());
     }
 
-    public static boolean buildingCheckinDataValidForToday(Building building)
-    {
+    public static boolean buildingCheckinDataValidForToday(Building building) {
         assert building != null;
         return building.getCheckinDataValidDate() != null && Util.sameDay(new Date(), building.getCheckinDataValidDate());
     }
@@ -36,8 +35,7 @@ public class Util {
         return FirebaseFirestore.getInstance().collection("Users").document(email).get();
     }
 
-    public static boolean withInTwoWeeks(Date date)
-    {
+    public static boolean withInTwoWeeks(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, 14);
@@ -46,11 +44,9 @@ public class Util {
         return !calendar.before(today);
     }
 
-    public static boolean userCheckedIn(Building building, String email)
-    {
+    public static boolean userCheckedIn(Building building, String email) {
         assert building != null && email != null;
-        if(building.getCheckinDataValidDate() != null && sameDay(new Date(), building.getCheckinDataValidDate()))
-        {
+        if (building.getCheckinDataValidDate() != null && sameDay(new Date(), building.getCheckinDataValidDate())) {
             return building.getCheckedInUserEmails() != null && building.getCheckedInUserEmails().contains(email);
         }
         return false;
