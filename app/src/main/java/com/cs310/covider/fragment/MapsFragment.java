@@ -15,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment {
@@ -32,9 +33,13 @@ public class MapsFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             LatLng usc = new LatLng(34.022415, -118.285530);
-            googleMap.addMarker(new MarkerOptions().position(usc).title("USC"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(usc));
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(usc, 17));
+            googleMap.addMarker(new MarkerOptions().position(usc).title("USC"));
+            LatLngBounds campusBounds = new LatLngBounds(
+                    new LatLng(34.018469, -118.291323), // SW bounds
+                    new LatLng(34.025292, -118.279989)  // NE bounds
+            );
+            googleMap.setLatLngBoundsForCameraTarget(campusBounds);
         }
     };
 
