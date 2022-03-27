@@ -2,11 +2,12 @@ package com.cs310.covider.model;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-public class Building {
+public class Building implements Serializable {
     private String name;
     private MyLatLng location;
     private ArrayList<String> coursesIDs;
@@ -68,13 +69,10 @@ public class Building {
             return false;
         }
         final Building other = (Building) o;
-        if (!other.canEqual((Object) this)) {
+        if (!other.canEqual(this)) {
             return false;
         }
-        if (!Objects.equals(this.getName(), other.getName())) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.getName(), other.getName());
     }
 
     protected boolean canEqual(final Object other) {

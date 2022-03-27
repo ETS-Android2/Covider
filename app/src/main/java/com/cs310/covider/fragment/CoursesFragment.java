@@ -5,13 +5,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.R;
 
+import com.cs310.covider.model.Course;
+import com.cs310.covider.model.CoursesAdapter;
+import com.cs310.covider.model.User;
+import com.cs310.covider.model.Util;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,5 +85,44 @@ public class CoursesFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        RefrashList();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        RefrashList();
+    }
+
+    public void RefrashList() {
+        Util.getCurrentUserTask().addOnSuccessListener((DocumentSnapshot d) -> {
+            User user = d.toObject(User.class);
+            ArrayList<Task> tasks = new ArrayList<>();
+            if (user.getUserCoursesIDs().isEmpty()) {
+                openDialog("You have 0 courses added, please add course to your schedule!");
+                redirectToHome();
+                return;
+            }
+            for (String courseID : user.getUserCoursesIDs()) {
+                tasks.add(FirebaseFirestore.getInstance().collection("Courses").document(courseID).get());
+            }
+            ListView listView = rootView.findViewById(R.id.courses_main_list);
+            Tasks.whenAllComplete(tasks.toArray(new Task[0])).addOnSuccessListener(new OnSuccessListener<List<Task<?>>>() {
+                @Override
+                public void onSuccess(List<Task<?>> tasks) {
+                    ArrayList<Course> courses = new ArrayList<>();
+                    for (Task task : tasks) {
+                        courses.add(((DocumentSnapshot) task.getResult()).toObject(Course.class));
+                    }
+                    CoursesAdapter adapter = new CoursesAdapter(getActivity(), 0, courses);
+                    listView.setAdapter(adapter);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                    openDialog(e.getMessage());
+                }
+            });
+        });
     }
 }

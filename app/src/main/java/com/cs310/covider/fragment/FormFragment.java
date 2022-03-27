@@ -85,15 +85,15 @@ public class FormFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Spinner symptomsSpinner = (Spinner) rootView.findViewById(R.id.form_symptoms_selection);
-        Spinner testSpiner = (Spinner) rootView.findViewById(R.id.form_test_selection);
+        Spinner symptomsSpinner = rootView.findViewById(R.id.form_symptoms_selection);
+        Spinner testSpiner = rootView.findViewById(R.id.form_test_selection);
         String[] symptomsItems = new String[]{"Yes", "No"};
         String[] testItems = new String[]{"Positive", "Negative"};
         ArrayAdapter<String> symptomsAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, symptomsItems);
         ArrayAdapter<String> testAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, testItems);
         symptomsSpinner.setAdapter(symptomsAdapter);
         testSpiner.setAdapter(testAdapter);
-        Button button = (Button) rootView.findViewById(R.id.form_button);
+        Button button = rootView.findViewById(R.id.form_button);
         Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -108,7 +108,7 @@ public class FormFragment extends MyFragment {
                    button.setOnClickListener(new View.OnClickListener() {
                        @Override
                        public void onClick(View view) {
-                           CheckBox checkBox = (CheckBox) rootView.findViewById(R.id.form_checkbox_agree);
+                           CheckBox checkBox = rootView.findViewById(R.id.form_checkbox_agree);
                            if(!checkBox.isChecked())
                            {
                                openDialog("Agree to share your data is not checked!");

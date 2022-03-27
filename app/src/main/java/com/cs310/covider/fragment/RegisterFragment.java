@@ -86,7 +86,7 @@ public class RegisterFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Spinner spinner = (Spinner) rootView.findViewById(R.id.register_usertype);
+        Spinner spinner = rootView.findViewById(R.id.register_usertype);
         String[] items = new String[]{"I'm a instructor", "I'm a student"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
         spinner.setAdapter(adapter);

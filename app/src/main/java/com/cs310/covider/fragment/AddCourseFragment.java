@@ -86,14 +86,14 @@ public class AddCourseFragment extends MyFragment {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    Spinner spinner = (Spinner) rootView.findViewById(R.id.add_course_building_list);
+                    Spinner spinner = rootView.findViewById(R.id.add_course_building_list);
                     ArrayList<Building> buildings = new ArrayList<>(task.getResult().toObjects(Building.class));
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, new ArrayList<>());
                     for (Building building : buildings) {
                         adapter.add(building.getName());
                     }
                     spinner.setAdapter(adapter);
-                    Button button = (Button) rootView.findViewById(R.id.add_course_button);
+                    Button button = rootView.findViewById(R.id.add_course_button);
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -162,17 +162,18 @@ public class AddCourseFragment extends MyFragment {
                                                         public void onSuccess(Void unused) {
                                                             FirebaseFirestore.getInstance().collection("Buildings").document(buildingName).update("coursesIDs", FieldValue.arrayUnion(newCourse.getId()))
                                                                     .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void unused) {
-                                                                    FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
-                                                                            .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                         @Override
                                                                         public void onSuccess(Void unused) {
-                                                                            openDialog("Success!");
+                                                                            FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
+                                                                                    .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                        @Override
+                                                                                        public void onSuccess(Void unused) {
+                                                                                            openDialog("Success!");
+                                                                                            redirectToHome();
+                                                                                        }
+                                                                                    });
                                                                         }
                                                                     });
-                                                                }
-                                                            });
                                                         }
                                                     });
                                                     break;

@@ -71,7 +71,7 @@ public class User implements Serializable {
             return false;
         }
         final User other = (User) o;
-        if (!other.canEqual((Object) this)) {
+        if (!other.canEqual(this)) {
             return false;
         }
         final Object this$id = this.getEmail();

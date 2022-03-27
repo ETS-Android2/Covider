@@ -94,34 +94,48 @@ public class CheckInFormFragment extends MyFragment {
         FirebaseFirestore.getInstance().collection("Buildings").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-                if(!task.isSuccessful())
-                {
+                if (!task.isSuccessful()) {
                     openDialog(task);
                     redirectToHome();
                     return;
                 }
-                Spinner spinner = (Spinner) rootView.findViewById(R.id.checkin_buildings_selection);
+                Spinner spinner = rootView.findViewById(R.id.checkin_buildings_selection);
                 ArrayList<Building> buildings = new ArrayList<>(task.getResult().toObjects(Building.class));
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, new ArrayList<>());
                 for (Building building : buildings) {
                     adapter.add(building.getName());
                 }
                 spinner.setAdapter(adapter);
-                Button button = (Button) rootView.findViewById(R.id.checkin_submit_button);
+                Button button = rootView.findViewById(R.id.checkin_submit_button);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Building selection = buildings.get(spinner.getSelectedItemPosition());
-                        if(Util.userCheckedIn(selection, FirebaseAuth.getInstance().getCurrentUser().getEmail()))
-                        {
+                        if (Util.userCheckedIn(selection, FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
                             openDialog("You already checked in to this building!");
                             redirectToHome();
                             return;
-                        };
+                        }
                         showYesNoDialog(new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
+                                if (!Util.buildingCheckinDataValidForToday(selection)) {
+                                    selection.setCheckedInUserEmails(new ArrayList<>());
+                                    selection.setCheckinDataValidDate(new Date());
+                                }
+                                selection.getCheckedInUserEmails().add(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                                FirebaseFirestore.getInstance().collection(selection.getName()).document(selection.getName()).set(selection).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        openDialog("Success!");
+                                        redirectToHome();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull @NotNull Exception e) {
+                                        openDialog(e.getMessage());
+                                    }
+                                });
                             }
                         }, new DialogInterface.OnClickListener() {
                             @Override

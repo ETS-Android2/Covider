@@ -29,7 +29,6 @@ public class LogoutFragment extends MyFragment {
     private String mParam2;
 
     public LogoutFragment() {
-        // Required empty public constructor
     }
 
     /**
