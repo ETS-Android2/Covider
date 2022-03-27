@@ -125,7 +125,7 @@ public class FormFragment extends MyFragment {
                                 hasPositiveTest = false;
                                 message += "and have a negative covid test result?";
                             }
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(requireActivity());
                             builder1.setMessage(message);
                             builder1.setCancelable(false);
                             boolean finalHasPositiveTest = hasPositiveTest;
@@ -159,12 +159,7 @@ public class FormFragment extends MyFragment {
                                             });
                                         }
                                     });
-                            builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
+                            builder1.setNegativeButton("No", (dialog, id) -> dialog.cancel());
                             AlertDialog alert11 = builder1.create();
                             alert11.show();
                         }

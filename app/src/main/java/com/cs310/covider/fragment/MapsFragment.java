@@ -204,7 +204,7 @@ public class MapsFragment extends Fragment {
             tv.setText(R.string.test_and_wear_N95);
             way.setText(R.string.make_appointment_or_walk_in);
         } else {
-            tv.setText(R.string.quaratine_reminder);
+            tv.setText(R.string.quarantine_reminder);
             way.setText(R.string.self_quarantine);
         }
         pop.showAtLocation(view, Gravity.CENTER, 0, 0);
