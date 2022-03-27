@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 
 import com.cs310.covider.model.Course;
@@ -101,6 +102,7 @@ public class CourseDetailFragment extends MyFragment {
                             instructors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
                         }
                         ((ListView) rootView.findViewById(R.id.courses_detail_instructors_list)).setAdapter(instructors);
+                        MainActivity.ListUtils.setDynamicHeight(rootView.findViewById(R.id.courses_detail_instructors_list));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -119,6 +121,7 @@ public class CourseDetailFragment extends MyFragment {
                             students.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
                         }
                         ((ListView) rootView.findViewById(R.id.courses_detail_student_list)).setAdapter(students);
+                        MainActivity.ListUtils.setDynamicHeight(rootView.findViewById(R.id.courses_detail_student_list));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

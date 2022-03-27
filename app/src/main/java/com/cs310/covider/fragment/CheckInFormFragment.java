@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,23 +16,18 @@ import androidx.fragment.app.Fragment;
 import com.cs310.covider.R;
 
 import com.cs310.covider.model.Building;
-import com.cs310.covider.model.Course;
-import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -121,10 +115,10 @@ public class CheckInFormFragment extends MyFragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (!Util.buildingCheckinDataValidForToday(selection)) {
                                     selection.setCheckedInUserEmails(new ArrayList<>());
-                                    selection.setCheckinDataValidDate(new Date());
+                                    selection.setCheckInDataValidDate(new Date());
                                 }
                                 selection.getCheckedInUserEmails().add(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                                FirebaseFirestore.getInstance().collection(selection.getName()).document(selection.getName()).set(selection).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                FirebaseFirestore.getInstance().collection("Buildings").document(selection.getName()).set(selection).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         openDialog("Success!");

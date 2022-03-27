@@ -20,7 +20,7 @@ public class Util {
 
     public static boolean buildingCheckinDataValidForToday(Building building) {
         assert building != null;
-        return building.getCheckinDataValidDate() != null && Util.sameDay(new Date(), building.getCheckinDataValidDate());
+        return building.getCheckInDataValidDate() != null && Util.sameDay(new Date(), building.getCheckInDataValidDate());
     }
 
     public static Task<DocumentSnapshot> getCurrentUserTask() {
@@ -46,7 +46,7 @@ public class Util {
 
     public static boolean userCheckedIn(Building building, String email) {
         assert building != null && email != null;
-        if (building.getCheckinDataValidDate() != null && sameDay(new Date(), building.getCheckinDataValidDate())) {
+        if (building.getCheckInDataValidDate() != null && sameDay(new Date(), building.getCheckInDataValidDate())) {
             return building.getCheckedInUserEmails() != null && building.getCheckedInUserEmails().contains(email);
         }
         return false;

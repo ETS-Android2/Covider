@@ -5,21 +5,20 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 
 public class Building implements Serializable {
     private String name;
     private MyLatLng location;
     private ArrayList<String> coursesIDs;
-    private Date checkinDataValidDate;
+    private Date checkInDataValidDate;
     private ArrayList<String> checkedInUserEmails;
 
-    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs, Date checkinDataValidDate, ArrayList<String> checkedInUserEmails) {
+    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs, Date checkInDataValidDate, ArrayList<String> checkedInUserEmails) {
         this.name = name;
         this.coursesIDs = coursesIDs;
         this.location = location;
         this.checkedInUserEmails = checkedInUserEmails;
-        this.checkinDataValidDate = checkinDataValidDate;
+        this.checkInDataValidDate = checkInDataValidDate;
     }
 
     public Building() {
@@ -60,45 +59,18 @@ public class Building implements Serializable {
         this.coursesIDs = coursesIDs;
     }
 
-    @Override
-    public boolean equals(final Object o) {
-        if (o == this) {
-            return true;
-        }
-        if (!(o instanceof Building)) {
-            return false;
-        }
-        final Building other = (Building) o;
-        if (!other.canEqual(this)) {
-            return false;
-        }
-        return Objects.equals(this.getName(), other.getName());
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof Building;
-    }
-
-    @Override
-    public int hashCode() {
-        final int PRIME = 59;
-        int result = 1;
-        result = result * PRIME + this.getName().hashCode();
-        return result;
-    }
-
     @NotNull
     @Override
     public String toString() {
         return "Building(name=" + this.getName() + ", location=" + this.getLocation() + ", courses=" + this.getCoursesIDs() + ")";
     }
 
-    public Date getCheckinDataValidDate() {
-        return checkinDataValidDate;
+    public Date getCheckInDataValidDate() {
+        return checkInDataValidDate;
     }
 
-    public void setCheckinDataValidDate(Date checkinDataValidDate) {
-        this.checkinDataValidDate = checkinDataValidDate;
+    public void setCheckInDataValidDate(Date checkInDataValidDate) {
+        this.checkInDataValidDate = checkInDataValidDate;
     }
 
     public ArrayList<String> getCheckedInUserEmails() {

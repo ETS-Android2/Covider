@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:context=".fragment.CourseDetailFragment"
-              android:background="@color/white"
-              android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".fragment.CourseDetailFragment"
+            android:background="@color/white"
+            android:fillViewport="true"
         >
 
-    <TextView
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/course_detail_name_section"
-            android:textSize="20sp"
-            android:layout_margin="10dp">
-    </TextView>
+            android:orientation="vertical">
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Instructors:"
-            android:textStyle="bold"
-            android:layout_margin="10dp">
-    </TextView>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/course_detail_name_section"
+                android:textSize="20sp"
+                android:layout_margin="10dp">
+        </TextView>
 
-    <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/courses_detail_instructors_list"
-            android:layout_margin="10dp">
-    </ListView>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Instructors:"
+                android:textStyle="bold"
+                android:layout_margin="10dp">
+        </TextView>
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Students:"
-            android:textStyle="bold"
-            android:layout_margin="10dp">
-    </TextView>
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/courses_detail_instructors_list"
+                android:layout_margin="10dp">
+        </ListView>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="There is no student yet"
-            android:visibility="gone"
-            android:id="@+id/course_details_no_student_message"
-            android:layout_margin="10dp">
-    </TextView>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Students:"
+                android:textStyle="bold"
+                android:layout_margin="10dp">
+        </TextView>
 
-    <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/courses_detail_student_list"
-            android:layout_margin="10dp">
-    </ListView>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="There is no student yet"
+                android:visibility="gone"
+                android:id="@+id/course_details_no_student_message"
+                android:layout_margin="10dp">
+        </TextView>
 
-</LinearLayout>
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/courses_detail_student_list"
+                android:layout_margin="10dp">
+        </ListView>
+    </LinearLayout>
+
+</ScrollView>

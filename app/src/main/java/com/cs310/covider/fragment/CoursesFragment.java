@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 
 import com.cs310.covider.model.Course;
@@ -116,6 +117,7 @@ public class CoursesFragment extends MyFragment {
                     }
                     CoursesAdapter adapter = new CoursesAdapter(getActivity(), 0, courses);
                     listView.setAdapter(adapter);
+                    MainActivity.ListUtils.setDynamicHeight(listView);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
