@@ -111,3 +111,6 @@ Go to `File -> Settings -> Appearence & Behavior -> System Settings -> Android S
 **Switch to the `SDK Tools bar` and enable all Google Play related tools.**
 
 All dependencies are listed in the app level build.gradle file and should be automaticly resolved.
+
+# The Detailed Steps to Run the App - PART 3
+Lastly, you must turn on the **wifi** and **notification** to make the app fully function.
