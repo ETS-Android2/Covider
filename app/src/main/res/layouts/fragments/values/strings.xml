@@ -33,4 +33,7 @@
     <string name="buy_n95">Go to the USC Pharmacy or a Nearby CVS/Walgreens Store to Purchase</string>
     <string name="make_appointment_or_walk_in">Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites</string>
     <string name="self_quarantine">Go to USC Hotel and Self-Quarantine for At Least 14-Days</string>
+    <string name="daily_schedule">Buildings in my Daily Schedule</string>
+    <string name="frequent_visit">Frequently Visited Buildings</string>
+    <string name="whole_list">All USC Buildings</string>
 </resources>

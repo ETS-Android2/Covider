@@ -23,6 +23,45 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/daily_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="9dp"
+                android:paddingBottom="9dp"
+                android:text="@string/daily_schedule"
+                android:theme="@style/special" />
+
+            <LinearLayout
+                android:id="@+id/buildings_in_daily_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/frequent_visit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="9dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="9dp"
+                android:text="@string/frequent_visit"
+                android:theme="@style/special" />
+
+            <LinearLayout
+                android:id="@+id/frequently_visited_buildings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingHorizontal="10dp"
+                android:text="@string/whole_list"
+                android:theme="@style/special" />
+
             <LinearLayout
                 android:id="@+id/acb"
                 android:layout_width="match_parent"

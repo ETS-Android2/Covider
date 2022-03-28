@@ -17,9 +17,9 @@ import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.R;
 import com.cs310.covider.model.Building;
+import com.cs310.covider.model.Course;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
@@ -87,12 +87,78 @@ public class BuildingFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        showSpecialBuildings();
         addListener(view);
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             // ((TextView) (rootView.findViewById(R.id.map_test))).setText(Database.getCurrentUser().getEmail());
         }
     }
 
+    private void showSpecialBuildings() {
+        // call to show buildings in the current user's enrolled courses
+        showBuildingsInDailySchedule();
+        // call to show buildings frequently visited by the current user
+        showFrequentlyVisitedBuildings();
+    }
+
+    private void showBuildingsInDailySchedule() {
+
+
+        final float scale = getResources().getDisplayMetrics().density;
+        LinearLayout scheduleBuildingsContainer = getActivity().findViewById(R.id.buildings_in_daily_schedule);
+        scheduleBuildingsContainer.removeAllViews();
+        for (Course course : enrolledCourses) {
+            int buildingId = getResources().getIdentifier(
+                    course.getBuildingName() + "_comp", "string", "com.cs310.covider");
+            LinearLayout view = new LinearLayout(getContext());
+            view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            view.setOrientation(LinearLayout.HORIZONTAL);
+            view.setMinimumHeight((int) (70 * scale + 0.5f));
+            view.setGravity(Gravity.CENTER_VERTICAL);
+            view.setContentDescription(course.getBuildingName());
+            view.setOnClickListener(this::showDetails);
+            TextView building = new TextView(getContext());
+            building.setText(getString(buildingId));
+            building.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            building.setTextSize(17);
+            building.setPadding(10, 0, 0, 0);
+            view.addView(building);
+            scheduleBuildingsContainer.addView(view);
+            getActivity().findViewById(R.id.daily_schedule).setVisibility(View.VISIBLE);
+            return;
+        }
+        getActivity().findViewById(R.id.daily_schedule).setVisibility(View.GONE);
+    }
+
+    private void showFrequentlyVisitedBuildings() {
+
+
+        final float scale = getResources().getDisplayMetrics().density;
+
+        LinearLayout frequentBuildingsContainer = getActivity().findViewById(R.id.frequently_visited_buildings);
+        frequentBuildingsContainer.removeAllViews();
+        for (String buildingAbbrev : frequentlyVisitedBuildingAbbrevs) {
+            int buildingId = getResources().getIdentifier(
+                    buildingAbbrev + "_comp", "string", "com.cs310.covider");
+            LinearLayout view = new LinearLayout(getContext());
+            view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            view.setOrientation(LinearLayout.HORIZONTAL);
+            view.setMinimumHeight((int) (70 * scale + 0.5f));
+            view.setGravity(Gravity.CENTER_VERTICAL);
+            view.setContentDescription(buildingAbbrev);
+            view.setOnClickListener(this::showDetails);
+            TextView building = new TextView(getContext());
+            building.setText(getString(buildingId));
+            building.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            building.setTextSize(17);
+            building.setPadding(10, 0, 0, 0);
+            view.addView(building);
+            frequentBuildingsContainer.addView(view);
+            getActivity().findViewById(R.id.frequent_visit).setVisibility(View.VISIBLE);
+            return;
+        }
+        getActivity().findViewById(R.id.frequent_visit).setVisibility(View.GONE);
+    }
 
     private void addListener(View view) {
         LinearLayout.OnClickListener clickListener = this::showDetails;
@@ -245,40 +311,37 @@ public class BuildingFragment extends MyFragment {
         RatingBar bar = pop.getContentView().findViewById(R.id.ratingBar);
         TextView tv = pop.getContentView().findViewById(R.id.req);
         TextView way = pop.getContentView().findViewById(R.id.ways);
-        FirebaseFirestore.getInstance().collection("Buildings").document(buildingAbbrev).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Building currBuilding = documentSnapshot.toObject(Building.class);
-                ArrayList<Task> checkedInUserTasks = new ArrayList<>();
-                assert currBuilding != null;
-                if (Util.buildingCheckinDataValidForToday(currBuilding)) {
-                    for (String checkedInEmail : currBuilding.getCheckedInUserEmails()) {
-                        checkedInUserTasks.add(Util.getUserWithEmailTask(checkedInEmail));
+        FirebaseFirestore.getInstance().collection("Buildings").document(buildingAbbrev).get().addOnSuccessListener(documentSnapshot -> {
+            Building currBuilding = documentSnapshot.toObject(Building.class);
+            ArrayList<Task> checkedInUserTasks = new ArrayList<>();
+            assert currBuilding != null;
+            if (Util.buildingCheckinDataValidForToday(currBuilding)) {
+                for (String checkedInEmail : currBuilding.getCheckedInUserEmails()) {
+                    checkedInUserTasks.add(Util.getUserWithEmailTask(checkedInEmail));
+                }
+                Tasks.whenAllComplete(checkedInUserTasks.toArray(new Task[0])).addOnCompleteListener(tasks -> {
+                    if (!tasks.isSuccessful()) {
+                        openDialog(tasks);
+                        redirectToHome();
+                        return;
                     }
-                    Tasks.whenAllComplete(checkedInUserTasks.toArray(new Task[0])).addOnCompleteListener(tasks -> {
-                        if (!tasks.isSuccessful()) {
-                            openDialog(tasks);
-                            redirectToHome();
-                            return;
+                    ArrayList<User> visitors = new ArrayList<>();
+                    for (Task task : tasks.getResult())
+                        visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
+                    if (!visitors.isEmpty()) {
+                        int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
+                        for (User user : visitors) {
+                            if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
+                                infectedCount++;
+                            else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
+                                symptomsCount++;
                         }
-                        ArrayList<User> visitors = new ArrayList<>();
-                        for (Task task : tasks.getResult())
-                            visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
-                        if (!visitors.isEmpty()) {
-                            int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
-                            for (User user : visitors) {
-                                if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
-                                    infectedCount++;
-                                else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
-                                    symptomsCount++;
-                            }
-                            float risk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
-                            displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
-                        }
-                    });
-                } else
-                    displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
-            }
+                        float risk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
+                        displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
+                    }
+                });
+            } else
+                displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
         }).addOnFailureListener(e -> openDialog(e.getMessage()));
     }
 
