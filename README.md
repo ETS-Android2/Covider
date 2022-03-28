@@ -107,6 +107,7 @@ applications or configured settings.
 On the Tool Bar of Android Studio click File -> Open to open the project in Android Studio.
 
 Goto File -> Settings -> Appearence & Behavior -> System Settings -> Android SDK
+
 **Switch to the SDK Tools bar and enable all Google Play related tools.**
 
 All dependencies are listed in the app level build.gradle file and should be automaticly resolved.
