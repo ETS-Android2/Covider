@@ -116,5 +116,7 @@ All dependencies are listed in the app level build.gradle file and should be aut
 Lastly, you must turn on the **wifi** and **notification** to make the app fully function.
 
 **For Fixing Network Problem on Android Emulator - No Internet Error**
-For Mac, please See the [Video](https://www.youtube.com/watch?v=TNIz3P2r4rU) 
+
+For Mac, please See the [Video](https://www.youtube.com/watch?v=TNIz3P2r4rU).
+
 For Win, please See the [Video](https://www.youtube.com/results?search_query=fixing+network+problem+on+android+emulator+on+windows).
