@@ -57,7 +57,7 @@ public class MyFragment extends Fragment {
     }
 
     protected void showYesNoDialog(DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener, String message) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(requireActivity());
         builder1.setMessage(message);
         builder1.setCancelable(false);
         builder1.setPositiveButton("Yes", yesListener);

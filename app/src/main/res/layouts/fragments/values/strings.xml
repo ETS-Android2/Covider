@@ -29,8 +29,8 @@
     <string name="wear_N95">Buy and Wear a N95 Mask</string>
     <string name="test_and_wear_N95">Schedule a COVID-19 Test Appointment and Wear a N95 Mask</string>
     <string name="quarantine_reminder">Complete the 14-Day Quarantine</string>
-    <string name="buy_mask">Buy at USC bookstore ($2/each) or Target</string>
-    <string name="buy_n95">Go to USC Pharmacy or a Nearby CVS/Walgreens Store</string>
+    <string name="buy_mask">Masks Can Be Purchased at USC bookstore ($2/each) or Target</string>
+    <string name="buy_n95">Go to the USC Pharmacy or a Nearby CVS/Walgreens Store to Purchase</string>
     <string name="make_appointment_or_walk_in">Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites</string>
     <string name="self_quarantine">Go to USC Hotel and Self-Quarantine for At Least 14-Days</string>
 </resources>

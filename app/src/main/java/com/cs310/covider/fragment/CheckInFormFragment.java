@@ -28,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +40,7 @@ public class CheckInFormFragment extends MyFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    public static HashMap<String, Integer> map = new HashMap<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -121,6 +122,7 @@ public class CheckInFormFragment extends MyFragment {
                                 FirebaseFirestore.getInstance().collection("Buildings").document(selection.getName()).set(selection).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
+                                        map.merge(selection.getName(), 1, Integer::sum);
                                         openDialog("Success!");
                                         redirectToHome();
                                     }
