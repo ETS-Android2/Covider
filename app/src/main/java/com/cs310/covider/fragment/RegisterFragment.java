@@ -28,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -131,7 +132,7 @@ public class RegisterFragment extends MyFragment {
                                         if (spinner.getSelectedItem().toString().equals(items[1])) {
                                             userType = User.UserType.STUDENT;
                                         }
-                                        User user = new User(userType, new ArrayList<>(), email, null, null, null);
+                                        User user = new User(userType, new ArrayList<>(), email, null, null, null, new HashMap<>());
                                         dbUsers.document(email).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull @NotNull Task<Void> task) {

@@ -4,6 +4,7 @@ package com.cs310.covider.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class User implements Serializable {
@@ -13,12 +14,14 @@ public class User implements Serializable {
     private Date lastSymptomsDate;
     private Date lastCheckDate;
     private Date lastInfectionDate;
+    private HashMap<String, Integer> buildingCheckedinTimes;
 
 
     public User() {
     }
 
-    public User(UserType userType, ArrayList<String> userCoursesIDs, String email, Date lastSymptomsDate, Date lastCheckDate, Date lastInfectionDate) {
+    public User(UserType userType, ArrayList<String> userCoursesIDs, String email, Date lastSymptomsDate, Date lastCheckDate, Date lastInfectionDate, HashMap<String, Integer> buildingCheckedinTimes) {
+        this.buildingCheckedinTimes = buildingCheckedinTimes;
         this.userType = userType;
         this.userCoursesIDs = userCoursesIDs;
         this.email = email;
@@ -78,6 +81,14 @@ public class User implements Serializable {
 
     public void setLastInfectionDate(Date lastInfectionDate) {
         this.lastInfectionDate = lastInfectionDate;
+    }
+
+    public HashMap<String, Integer> getBuildingCheckedinTimes() {
+        return buildingCheckedinTimes;
+    }
+
+    public void setBuildingCheckedinTimes(HashMap<String, Integer> buildingCheckedinTimes) {
+        this.buildingCheckedinTimes = buildingCheckedinTimes;
     }
 
     public enum UserType implements Serializable {

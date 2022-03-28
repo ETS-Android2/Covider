@@ -17,12 +17,14 @@ import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 
 import com.cs310.covider.model.Building;
+import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import org.jetbrains.annotations.NotNull;
@@ -123,9 +125,33 @@ public class CheckInFormFragment extends MyFragment {
                                 FirebaseFirestore.getInstance().collection("Buildings").document(selection.getName()).set(selection).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-//                                        map.merge(selection.getName(), 1, Integer::sum);
-                                        openDialog("Success!");
-                                        redirectToHome();
+                                        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                User user = documentSnapshot.toObject(User.class);
+                                                if (user.getBuildingCheckedinTimes() == null) {
+                                                    user.setBuildingCheckedinTimes(new HashMap<>());
+                                                }
+                                                user.getBuildingCheckedinTimes().merge(selection.getName(), 1, Integer::sum);
+                                                FirebaseFirestore.getInstance().collection("Users").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        openDialog("Success");
+                                                        redirectToHome();
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull @NotNull Exception e) {
+                                                        openDialog(e.getMessage());
+                                                    }
+                                                });
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull @NotNull Exception e) {
+                                                openDialog(e.getMessage());
+                                            }
+                                        });
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
