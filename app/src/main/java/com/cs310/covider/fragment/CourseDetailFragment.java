@@ -100,6 +100,7 @@ public class CourseDetailFragment extends MyFragment {
                         UsersAdapter instructors = new UsersAdapter(getActivity(), new ArrayList<>());
                         for (Task task : tasks) {
                             instructors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
+
                         }
                         ((ListView) rootView.findViewById(R.id.courses_detail_instructors_list)).setAdapter(instructors);
                         MainActivity.ListUtils.setDynamicHeight(rootView.findViewById(R.id.courses_detail_instructors_list));

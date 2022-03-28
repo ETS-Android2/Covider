@@ -114,6 +114,7 @@ public class CoursesFragment extends MyFragment {
                     ArrayList<Course> courses = new ArrayList<>();
                     for (Task task : tasks) {
                         courses.add(((DocumentSnapshot) task.getResult()).toObject(Course.class));
+
                     }
                     CoursesAdapter adapter = new CoursesAdapter(getActivity(), 0, courses);
                     listView.setAdapter(adapter);
