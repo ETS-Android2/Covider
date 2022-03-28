@@ -111,3 +111,12 @@ Go to `File -> Settings -> Appearence & Behavior -> System Settings -> Android S
 **Switch to the `SDK Tools bar` and enable all Google Play related tools.**
 
 All dependencies are listed in the app level build.gradle file and should be automaticly resolved.
+
+# The Detailed Steps to Run the App - PART 3
+Lastly, you must turn on the **wifi** and **notification** to make the app fully function.
+
+**For Fixing Network Problem on Android Emulator - No Internet Error**
+
+For Mac, please follow the steps in this [Video](https://www.youtube.com/watch?v=TNIz3P2r4rU).
+
+For Win, please follow the steps in this [Video](https://www.youtube.com/results?search_query=fixing+network+problem+on+android+emulator+on+windows).
