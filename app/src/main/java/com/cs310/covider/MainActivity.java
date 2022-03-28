@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true); // show back button
                     toolbar.setNavigationOnClickListener(v -> onBackPressed());
                 } else {
-                    //show hamburger
                     Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
                     actionBarDrawerToggle.syncState();
                     toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
