@@ -103,11 +103,11 @@ There are many other features in Android Studio that let you customize your
 device. For example, you can create custom images with pre-installed
 applications or configured settings.
 
-## The Detailed Steps to Run the App - PART 2
+# The Detailed Steps to Run the App - PART 2
 On the Tool Bar of Android Studio click File -> Open to open the project in Android Studio.
 
-Go to File -> Settings -> Appearence & Behavior -> System Settings -> Android SDK
+Go to `File -> Settings -> Appearence & Behavior -> System Settings -> Android SDK`
 
-**Switch to the SDK Tools bar and enable all Google Play related tools.**
+**Switch to the `SDK Tools bar` and enable all Google Play related tools.**
 
 All dependencies are listed in the app level build.gradle file and should be automaticly resolved.
