@@ -12,13 +12,17 @@ public class Building implements Serializable {
     private ArrayList<String> coursesIDs;
     private Date checkInDataValidDate;
     private ArrayList<String> checkedInUserEmails;
+    private String entryRequirement;
+    private String howToSatisfyRequirement;
 
-    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs, Date checkInDataValidDate, ArrayList<String> checkedInUserEmails) {
+    public Building(String name, MyLatLng location, ArrayList<String> coursesIDs, Date checkInDataValidDate, ArrayList<String> checkedInUserEmails, String entryRequirement, String howToSatisfyRequirement) {
         this.name = name;
         this.coursesIDs = coursesIDs;
         this.location = location;
         this.checkedInUserEmails = checkedInUserEmails;
         this.checkInDataValidDate = checkInDataValidDate;
+        this.howToSatisfyRequirement = howToSatisfyRequirement;
+        this.entryRequirement = entryRequirement;
     }
 
     public Building() {
@@ -79,5 +83,21 @@ public class Building implements Serializable {
 
     public void setCheckedInUserEmails(ArrayList<String> checkedInUserEmails) {
         this.checkedInUserEmails = checkedInUserEmails;
+    }
+
+    public String getEntryRequirement() {
+        return entryRequirement;
+    }
+
+    public void setEntryRequirement(String entryRequirement) {
+        this.entryRequirement = entryRequirement;
+    }
+
+    public String getHowToSatisfyRequirement() {
+        return howToSatisfyRequirement;
+    }
+
+    public void setHowToSatisfyRequirement(String howToSatisfyRequirement) {
+        this.howToSatisfyRequirement = howToSatisfyRequirement;
     }
 }

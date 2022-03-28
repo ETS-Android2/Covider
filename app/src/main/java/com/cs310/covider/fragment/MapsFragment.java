@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.R;
-import com.cs310.covider.model.RiskCalculator;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -194,7 +193,7 @@ public class MapsFragment extends Fragment {
         TextView tv = pop.getContentView().findViewById(R.id.req);
         TextView way = pop.getContentView().findViewById(R.id.ways);
         assert buildingAbbrev != null;
-        double risk = RiskCalculator.getRiskAtBuilding(buildingAbbrev);
+        double risk = 0;
         bar.setRating((float) (risk * 10 - 2));
         if (risk <= 0.3) {
             tv.setText(R.string.wear_mask);

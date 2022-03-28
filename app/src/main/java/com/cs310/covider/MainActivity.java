@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -27,6 +28,8 @@ import com.cs310.covider.fragment.LoginFragment;
 import com.cs310.covider.fragment.LogoutFragment;
 import com.cs310.covider.fragment.MapsFragment;
 import com.cs310.covider.fragment.RegisterFragment;
+import com.cs310.covider.model.Building;
+import com.cs310.covider.model.MyLatLng;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,6 +42,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -246,5 +250,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
+    }
+
+    public String buildingAbrevToFullName(String buildingAbbrev) {
+        int building = getResources().getIdentifier(
+                buildingAbbrev + "_comp", "string", "com.cs310.covider");
+        return getResources().getString(building);
     }
 }

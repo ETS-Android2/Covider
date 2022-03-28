@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 import com.cs310.covider.model.Building;
 import com.cs310.covider.model.Course;
@@ -90,14 +91,14 @@ public class AddCourseFragment extends MyFragment {
                     ArrayList<Building> buildings = new ArrayList<>(task.getResult().toObjects(Building.class));
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, new ArrayList<>());
                     for (Building building : buildings) {
-                        adapter.add(building.getName());
+                        adapter.add(((MainActivity) getActivity()).buildingAbrevToFullName(building.getName()));
                     }
                     spinner.setAdapter(adapter);
                     Button button = rootView.findViewById(R.id.add_course_button);
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            String buildingName = spinner.getSelectedItem().toString();
+                            String buildingName = buildings.get(spinner.getSelectedItemPosition()).getName();
                             String courseName = ((EditText) rootView.findViewById(R.id.add_course_course_name)).getText().toString().toUpperCase();
                             String section = ((EditText) rootView.findViewById(R.id.add_course_section)).getText().toString().toUpperCase();
                             String courseID = courseName + '=' + section;

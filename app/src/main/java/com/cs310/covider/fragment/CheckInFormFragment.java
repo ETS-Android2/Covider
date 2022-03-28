@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 
 import com.cs310.covider.model.Building;
@@ -40,7 +41,7 @@ public class CheckInFormFragment extends MyFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-//    public static HashMap<String, Integer> map = new HashMap<>();
+    //    public static HashMap<String, Integer> map = new HashMap<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -98,7 +99,7 @@ public class CheckInFormFragment extends MyFragment {
                 ArrayList<Building> buildings = new ArrayList<>(task.getResult().toObjects(Building.class));
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, new ArrayList<>());
                 for (Building building : buildings) {
-                    adapter.add(building.getName());
+                    adapter.add(((MainActivity) (getActivity())).buildingAbrevToFullName(building.getName()));
                 }
                 spinner.setAdapter(adapter);
                 Button button = rootView.findViewById(R.id.checkin_submit_button);
