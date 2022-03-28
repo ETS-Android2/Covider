@@ -34,7 +34,7 @@ public class CoursesAdapter extends ArrayAdapter<Course> {
         nameAndSection.setText(nameSection);
         String courseModeText = "Course mode: " + course.getCourseMode().toString();
         courseMode.setText(courseModeText);
-        String locationText = "Location: " + course.getBuildingName();
+        String locationText = "Location: " + ((MainActivity) getContext()).buildingAbrevToFullName(course.getBuildingName());
         building.setText(locationText);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

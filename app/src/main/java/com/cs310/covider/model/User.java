@@ -10,19 +10,21 @@ public class User implements Serializable {
     private UserType userType = UserType.STUDENT;
     private ArrayList<String> userCoursesIDs;
     private String email = "";
-    private Date lastInfectionDate;
+    private Date lastSymptomsDate;
     private Date lastCheckDate;
+    private Date lastInfectionDate;
 
 
     public User() {
     }
 
-    public User(UserType userType, ArrayList<String> userCoursesIDs, String email, Date lastInfectionDate, Date lastCheckDate) {
+    public User(UserType userType, ArrayList<String> userCoursesIDs, String email, Date lastSymptomsDate, Date lastCheckDate, Date lastInfectionDate) {
         this.userType = userType;
         this.userCoursesIDs = userCoursesIDs;
         this.email = email;
-        this.lastInfectionDate = lastInfectionDate;
+        this.lastSymptomsDate = lastSymptomsDate;
         this.lastCheckDate = lastCheckDate;
+        this.lastInfectionDate = lastInfectionDate;
     }
 
     public boolean risky(Util.TimeSpan span, Date queryDate) {
@@ -54,47 +56,12 @@ public class User implements Serializable {
         this.userCoursesIDs = userCoursesIDs;
     }
 
-    public Date getLastInfectionDate() {
-        return this.lastInfectionDate;
+    public Date getLastSymptomsDate() {
+        return this.lastSymptomsDate;
     }
 
-    public void setLastInfectionDate(Date lastInfectionDate) {
-        this.lastInfectionDate = lastInfectionDate;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (o == this) {
-            return true;
-        }
-        if (!(o instanceof User)) {
-            return false;
-        }
-        final User other = (User) o;
-        if (!other.canEqual(this)) {
-            return false;
-        }
-        final Object this$id = this.getEmail();
-        final Object other$id = other.getEmail();
-        return Objects.equals(this$id, other$id);
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof User;
-    }
-
-    @Override
-    public int hashCode() {
-        final int PRIME = 59;
-        int result = 1;
-        final Object $id = this.getEmail();
-        result = result * PRIME + ($id == null ? 43 : $id.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "User(userType=" + this.getUserType() + ", userCourses=" + this.getUserCoursesIDs() + ", lastInfectionDate=" + this.getLastInfectionDate() + ")";
+    public void setLastSymptomsDate(Date lastSymptomsDate) {
+        this.lastSymptomsDate = lastSymptomsDate;
     }
 
     public Date getLastCheckDate() {
@@ -103,6 +70,14 @@ public class User implements Serializable {
 
     public void setLastCheckDate(Date lastCheckDate) {
         this.lastCheckDate = lastCheckDate;
+    }
+
+    public Date getLastInfectionDate() {
+        return lastInfectionDate;
+    }
+
+    public void setLastInfectionDate(Date lastInfectionDate) {
+        this.lastInfectionDate = lastInfectionDate;
     }
 
     public enum UserType implements Serializable {

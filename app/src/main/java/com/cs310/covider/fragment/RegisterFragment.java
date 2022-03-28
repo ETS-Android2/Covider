@@ -131,7 +131,7 @@ public class RegisterFragment extends MyFragment {
                                         if (spinner.getSelectedItem().toString().equals(items[1])) {
                                             userType = User.UserType.STUDENT;
                                         }
-                                        User user = new User(userType, new ArrayList<>(), email, null, null);
+                                        User user = new User(userType, new ArrayList<>(), email, null, null, null);
                                         dbUsers.document(email).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull @NotNull Task<Void> task) {

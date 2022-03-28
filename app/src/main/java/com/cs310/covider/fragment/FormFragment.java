@@ -27,7 +27,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +38,7 @@ public class FormFragment extends MyFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-//    public static HashMap<String, Integer> map = new HashMap<>();
+    //    public static HashMap<String, Integer> map = new HashMap<>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -85,15 +84,15 @@ public class FormFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Spinner symptomsSpinner = (Spinner) rootView.findViewById(R.id.form_symptoms_selection);
-        Spinner testSpiner = (Spinner) rootView.findViewById(R.id.form_test_selection);
+        Spinner symptomsSpinner = rootView.findViewById(R.id.form_symptoms_selection);
+        Spinner testSpiner = rootView.findViewById(R.id.form_test_selection);
         String[] symptomsItems = new String[]{"Yes", "No"};
         String[] testItems = new String[]{"Positive", "Negative"};
         ArrayAdapter<String> symptomsAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, symptomsItems);
         ArrayAdapter<String> testAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, testItems);
         symptomsSpinner.setAdapter(symptomsAdapter);
         testSpiner.setAdapter(testAdapter);
-        Button button = (Button) rootView.findViewById(R.id.form_button);
+        Button button = rootView.findViewById(R.id.form_button);
         Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -105,7 +104,7 @@ public class FormFragment extends MyFragment {
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            CheckBox checkBox = (CheckBox) rootView.findViewById(R.id.form_checkbox_agree);
+                            CheckBox checkBox = rootView.findViewById(R.id.form_checkbox_agree);
                             if (!checkBox.isChecked()) {
                                 openDialog("Agree to share your data is not checked!");
                                 return;
@@ -136,14 +135,11 @@ public class FormFragment extends MyFragment {
                                         @Override
                                         public void onClick(DialogInterface dialog, int id) {
                                             user.setLastCheckDate(new Date());
-                                            if (finalHasPositiveTest || finalHasSymptoms) {
+                                            if (finalHasPositiveTest) {
                                                 user.setLastInfectionDate(new Date());
-                                                if (finalHasPositiveTest) {
-                                                    //TODO
-                                                } else //Only hasSymptoms
-                                                {
-                                                    //TODO
-                                                }
+                                            }
+                                            if (finalHasSymptoms) {
+                                                user.setLastSymptomsDate(new Date());
                                             }
                                             FirebaseFirestore.getInstance().collection("Users").document(user.getEmail()).set(user).addOnFailureListener(new OnFailureListener() {
                                                 @Override
