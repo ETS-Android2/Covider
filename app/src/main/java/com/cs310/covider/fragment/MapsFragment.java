@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.R;
 import com.cs310.covider.model.Building;
@@ -27,13 +26,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.*;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MapsFragment extends MyFragment {
 
@@ -193,6 +192,7 @@ public class MapsFragment extends MyFragment {
     };
 
     private void showDetails(Marker marker, View view) {
+        double defaultRisk = 1.5;
         String buildingAbbrev = marker.getTitle();
         @SuppressLint("InflateParams") View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.building_details, null);
         PopupWindow pop = new PopupWindow(popupView, (int) (getResources().getDisplayMetrics().widthPixels * 0.9), LinearLayout.LayoutParams.WRAP_CONTENT, true);
@@ -208,55 +208,41 @@ public class MapsFragment extends MyFragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Building currBuilding = documentSnapshot.toObject(Building.class);
                 ArrayList<Task> checkedInUserTasks = new ArrayList<>();
+                assert currBuilding != null;
                 if (Util.buildingCheckinDataValidForToday(currBuilding)) {
-                    for (String checkedInEmail : currBuilding.getCheckedInUserEmails()) {
+                    for (String checkedInEmail : currBuilding.getCheckedInUserEmails())
                         checkedInUserTasks.add(Util.getUserWithEmailTask(checkedInEmail));
-                    }
-                    Tasks.whenAllComplete(checkedInUserTasks.toArray(new Task[0])).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
-                        @Override
-                        public void onComplete(@NonNull @NotNull Task<List<Task<?>>> tasks) {
-                            if (!tasks.isSuccessful()) {
-                                openDialog(tasks);
-                                redirectToHome();
-                                return;
-                            }
-                            ArrayList<User> visitors = new ArrayList<>();
-                            for (Task task : tasks.getResult()) {
-                                visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
-                            }
-                            double risk = 0;
-                            if (!visitors.isEmpty()) {
-                                int totalVisitor = visitors.size();
-                                int infectedCount = 0;
-                                int symtomsCount = 0;
-                                for (User user : visitors) {
-                                    if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate())) {
-                                        infectedCount++;
-                                    } else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate())) {
-                                        symtomsCount++;
-                                    }
+                    Tasks.whenAllComplete(checkedInUserTasks.toArray(new Task[0])).addOnCompleteListener(tasks -> {
+                        if (!tasks.isSuccessful()) {
+                            openDialog(tasks);
+                            redirectToHome();
+                            return;
+                        }
+                        ArrayList<User> visitors = new ArrayList<>();
+                        for (Task task : tasks.getResult())
+                            visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
+                        if (!visitors.isEmpty()) {
+                            int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
+                            for (User user : visitors) {
+                                if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate())) {
+                                    infectedCount++;
+                                } else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate())) {
+                                    symptomsCount++;
                                 }
-                                risk = (1.0 * infectedCount + 0.5 * symtomsCount) / totalVisitor;
-                                displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
                             }
+                            double risk = defaultRisk + (1.0 * infectedCount + 0.5 * symptomsCount + 0.3 * totalVisitor) / totalVisitor;
+                            displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
                         }
                     });
                 } else {
-                    double risk = 0.0;
-                    displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
+                    displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
                 }
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                openDialog(e.getMessage());
-            }
-        });
-
+        }).addOnFailureListener(e -> openDialog(e.getMessage()));
     }
 
     private void displayPopUp(double risk, RatingBar bar, TextView tv, Building currBuilding, TextView way, PopupWindow pop, @NonNull View view) {
-        bar.setRating((float) (risk * 10 - 2));
+        bar.setRating((float) risk);
         tv.setText(currBuilding.getEntryRequirement());
         way.setText(currBuilding.getHowToSatisfyRequirement());
         pop.showAtLocation(view, Gravity.CENTER, 0, 0);

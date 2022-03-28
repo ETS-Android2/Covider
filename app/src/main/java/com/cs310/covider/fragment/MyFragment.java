@@ -36,7 +36,7 @@ public class MyFragment extends Fragment {
     }
 
     public void openDialog(String message) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(requireActivity());
         builder1.setMessage(message);
         builder1.setCancelable(true);
         builder1.setPositiveButton(
