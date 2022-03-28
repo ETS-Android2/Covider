@@ -248,6 +248,7 @@ public class BuildingFragment extends MyFragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Building currBuilding = documentSnapshot.toObject(Building.class);
                 ArrayList<Task> checkedInUserTasks = new ArrayList<>();
+                assert currBuilding != null;
                 if (Util.buildingCheckinDataValidForToday(currBuilding)) {
                     for (String checkedInEmail : currBuilding.getCheckedInUserEmails()) {
                         checkedInUserTasks.add(Util.getUserWithEmailTask(checkedInEmail));
@@ -268,30 +269,25 @@ public class BuildingFragment extends MyFragment {
                             if (!visitors.isEmpty()) {
                                 int totalVisitor = visitors.size();
                                 int infectedCount = 0;
-                                int symtomsCount = 0;
+                                int symptomsCount = 0;
                                 for (User user : visitors) {
                                     if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate())) {
                                         infectedCount++;
                                     } else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate())) {
-                                        symtomsCount++;
+                                        symptomsCount++;
                                     }
                                 }
-                                risk = (1.0 * infectedCount + 0.5 * symtomsCount) / totalVisitor;
+                                risk = (1.0 * infectedCount + 0.5 * symptomsCount) / totalVisitor;
                                 displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
                             }
                         }
                     });
                 } else {
-                    double risk = 0.0;
-                    displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
+                    double defaultRisk = 0.5;
+                    displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
                 }
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                openDialog(e.getMessage());
-            }
-        });
+        }).addOnFailureListener(e -> openDialog(e.getMessage()));
     }
 
     private void displayPopUp(double risk, RatingBar bar, TextView tv, Building currBuilding, TextView way, PopupWindow pop, @NonNull View view) {
