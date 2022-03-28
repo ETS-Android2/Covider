@@ -192,10 +192,10 @@ public class MapsFragment extends MyFragment {
     };
 
     private void showDetails(Marker marker, View view) {
-        double defaultRisk = 1.5;
+        float defaultRisk = 1.5F;
         String buildingAbbrev = marker.getTitle();
         @SuppressLint("InflateParams") View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.building_details, null);
-        PopupWindow pop = new PopupWindow(popupView, (int) (getResources().getDisplayMetrics().widthPixels * 0.9), LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        PopupWindow pop = new PopupWindow(popupView, (int) (getResources().getDisplayMetrics().widthPixels * 0.93), LinearLayout.LayoutParams.WRAP_CONTENT, true);
         int building = getResources().getIdentifier(
                 buildingAbbrev + "_comp", "string", "com.cs310.covider");
         ((TextView) pop.getContentView().findViewById(R.id.building_comp)).setText(getResources().getString(building));
@@ -224,25 +224,23 @@ public class MapsFragment extends MyFragment {
                         if (!visitors.isEmpty()) {
                             int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
                             for (User user : visitors) {
-                                if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate())) {
+                                if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
                                     infectedCount++;
-                                } else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate())) {
+                                else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
                                     symptomsCount++;
-                                }
                             }
-                            double risk = defaultRisk + (1.0 * infectedCount + 0.5 * symptomsCount + 0.3 * totalVisitor) / totalVisitor;
+                            float risk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
                             displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
                         }
                     });
-                } else {
+                } else
                     displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
-                }
             }
         }).addOnFailureListener(e -> openDialog(e.getMessage()));
     }
 
-    private void displayPopUp(double risk, RatingBar bar, TextView tv, Building currBuilding, TextView way, PopupWindow pop, @NonNull View view) {
-        bar.setRating((float) risk);
+    private void displayPopUp(float risk, RatingBar bar, TextView tv, Building currBuilding, TextView way, PopupWindow pop, @NonNull View view) {
+        bar.setRating(risk);
         tv.setText(currBuilding.getEntryRequirement());
         way.setText(currBuilding.getHowToSatisfyRequirement());
         pop.showAtLocation(view, Gravity.CENTER, 0, 0);

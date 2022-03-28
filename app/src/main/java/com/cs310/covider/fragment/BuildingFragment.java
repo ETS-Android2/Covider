@@ -19,15 +19,16 @@ import com.cs310.covider.R;
 import com.cs310.covider.model.Building;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
-import com.google.android.gms.tasks.*;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -234,10 +235,10 @@ public class BuildingFragment extends MyFragment {
     }
 
     private void showDetails(@NonNull View view) {
-        double defaultRisk = 1.5;
+        float defaultRisk = 1.5F;
         String buildingAbbrev = view.getContentDescription().toString();
         @SuppressLint("InflateParams") View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.building_details, null);
-        PopupWindow pop = new PopupWindow(popupView, (int) (getResources().getDisplayMetrics().widthPixels * 0.9), LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        PopupWindow pop = new PopupWindow(popupView, (int) (getResources().getDisplayMetrics().widthPixels * 0.92), LinearLayout.LayoutParams.WRAP_CONTENT, true);
         int building = getResources().getIdentifier(
                 buildingAbbrev + "_comp", "string", "com.cs310.covider");
         ((TextView) pop.getContentView().findViewById(R.id.building_comp)).setText(getResources().getString(building));
@@ -261,31 +262,28 @@ public class BuildingFragment extends MyFragment {
                             return;
                         }
                         ArrayList<User> visitors = new ArrayList<>();
-                        for (Task task : tasks.getResult()) {
+                        for (Task task : tasks.getResult())
                             visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
-                        }
                         if (!visitors.isEmpty()) {
                             int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
                             for (User user : visitors) {
-                                if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate())) {
+                                if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
                                     infectedCount++;
-                                } else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate())) {
+                                else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
                                     symptomsCount++;
-                                }
                             }
-                            double risk = defaultRisk + (1.0 * infectedCount + 0.5 * symptomsCount + 0.3 * totalVisitor) / totalVisitor;
+                            float risk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
                             displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
                         }
                     });
-                } else {
+                } else
                     displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
-                }
             }
         }).addOnFailureListener(e -> openDialog(e.getMessage()));
     }
 
-    private void displayPopUp(double risk, RatingBar bar, TextView tv, Building currBuilding, TextView way, PopupWindow pop, @NonNull View view) {
-        bar.setRating((float) risk);
+    private void displayPopUp(float risk, RatingBar bar, TextView tv, Building currBuilding, TextView way, PopupWindow pop, @NonNull View view) {
+        bar.setRating(risk);
         tv.setText(currBuilding.getEntryRequirement());
         way.setText(currBuilding.getHowToSatisfyRequirement());
         pop.showAtLocation(view, Gravity.CENTER, 0, 0);
