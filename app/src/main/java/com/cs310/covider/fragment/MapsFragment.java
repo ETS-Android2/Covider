@@ -191,23 +191,12 @@ public class MapsFragment extends Fragment {
         ((TextView) pop.getContentView().findViewById(R.id.building_comp)).setText(getResources().getString(building));
         RatingBar bar = pop.getContentView().findViewById(R.id.ratingBar);
         TextView tv = pop.getContentView().findViewById(R.id.req);
+//        tv.setText(from firestore);
         TextView way = pop.getContentView().findViewById(R.id.ways);
+//        way.setText(from firestore);
         assert buildingAbbrev != null;
-        double risk = 0;
-        bar.setRating((float) (risk * 10 - 2));
-        if (risk <= 0.3) {
-            tv.setText(R.string.wear_mask);
-            way.setText(R.string.buy_mask);
-        } else if (risk <= 0.5) {
-            tv.setText(R.string.wear_N95);
-            way.setText(R.string.buy_n95);
-        } else if (risk <= 0.7) {
-            tv.setText(R.string.test_and_wear_N95);
-            way.setText(R.string.make_appointment_or_walk_in);
-        } else {
-            tv.setText(R.string.quarantine_reminder);
-            way.setText(R.string.self_quarantine);
-        }
+//        double risk = getRiskAtBuilding(buildingAbbrev) from firestore;
+//        bar.setRating((float) (risk * 10 - 2));
         pop.showAtLocation(view, Gravity.CENTER, 0, 0);
         pop.getContentView().findViewById(R.id.return_to_previous).setOnClickListener((View popup) -> {
             pop.dismiss();
