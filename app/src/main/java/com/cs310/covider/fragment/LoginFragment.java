@@ -92,6 +92,7 @@ public class LoginFragment extends MyFragment {
                                 if (task.isSuccessful()) {
                                     MainActivity mainActivity = (MainActivity) getActivity();
                                     assert mainActivity != null;
+                                    mainActivity.updateDeviceToken();
                                     mainActivity.changeToAuthedMenu();
                                 } else {
                                     openDialog(task);

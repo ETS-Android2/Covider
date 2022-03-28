@@ -12,8 +12,13 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
+import com.cs310.covider.model.Pair;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -76,10 +81,17 @@ public class LogoutFragment extends MyFragment {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        FirebaseAuth.getInstance().signOut();
-                        MainActivity mainActivity = (MainActivity) getActivity();
-                        assert mainActivity != null;
-                        mainActivity.changeToUnauthedMenu();
+                        FirebaseFirestore.getInstance().collection("DeviceTokens").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                FirebaseAuth.getInstance().signOut();
+                                FirebaseMessaging.getInstance().deleteToken();
+                                MainActivity mainActivity = (MainActivity) getActivity();
+                                assert mainActivity != null;
+                                mainActivity.changeToUnauthedMenu();
+                            }
+                        });
+
                     }
                 });
         builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {

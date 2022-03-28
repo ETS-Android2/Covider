@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -28,8 +27,7 @@ import com.cs310.covider.fragment.LoginFragment;
 import com.cs310.covider.fragment.LogoutFragment;
 import com.cs310.covider.fragment.MapsFragment;
 import com.cs310.covider.fragment.RegisterFragment;
-import com.cs310.covider.model.Building;
-import com.cs310.covider.model.MyLatLng;
+import com.cs310.covider.model.Pair;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,9 +38,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,13 +48,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public DrawerLayout drawerLayout;
     public NavigationView navigationView;
 
-    private void dummy() {
+    public void updateDeviceToken() {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            FirebaseMessaging.getInstance().getToken().addOnSuccessListener(new OnSuccessListener<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    FirebaseFirestore.getInstance().collection("DeviceTokens").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).set(new Pair("id", s)).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+                            openDialog(e.getMessage());
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                    openDialog(e.getMessage());
+                }
+            });
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dummy();
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -87,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            updateDeviceToken();
             changeToAuthedMenu();
         } else {
             changeToUnauthedMenu();
