@@ -13,6 +13,10 @@ import java.util.Date;
 
 public class Util {
 
+    public static void sendNotificationToTopic(String title, String message, String topic) {
+
+    }
+
     public static boolean userDidTodayCheck(User user) {
         assert user != null;
         return user.getLastCheckDate() != null && Util.sameDay(new Date(), user.getLastCheckDate());

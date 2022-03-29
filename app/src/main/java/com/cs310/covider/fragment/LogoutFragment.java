@@ -13,14 +13,20 @@ import androidx.appcompat.app.AlertDialog;
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 import com.cs310.covider.model.Pair;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.cs310.covider.model.User;
+import com.cs310.covider.model.Util;
+import com.google.android.gms.tasks.*;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class LogoutFragment extends MyFragment {
@@ -84,11 +90,32 @@ public class LogoutFragment extends MyFragment {
                         FirebaseFirestore.getInstance().collection("DeviceTokens").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                FirebaseAuth.getInstance().signOut();
-                                FirebaseMessaging.getInstance().deleteToken();
-                                MainActivity mainActivity = (MainActivity) getActivity();
-                                assert mainActivity != null;
-                                mainActivity.changeToUnauthedMenu();
+                                Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        User user = documentSnapshot.toObject(User.class);
+                                        ArrayList<Task> tasks = new ArrayList<>();
+                                        if (user.getUserCoursesIDs() != null) {
+                                            for (String courseID : user.getUserCoursesIDs()) {
+                                                try {
+                                                    tasks.add(FirebaseMessaging.getInstance().unsubscribeFromTopic(URLEncoder.encode(courseID, "UTF-8")));
+                                                } catch (UnsupportedEncodingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }
+                                        Tasks.whenAllComplete(tasks.toArray(new Task[0])).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
+                                            @Override
+                                            public void onComplete(@NonNull @NotNull Task<List<Task<?>>> task) {
+                                                FirebaseAuth.getInstance().signOut();
+                                                FirebaseMessaging.getInstance().deleteToken();
+                                                MainActivity mainActivity = (MainActivity) getActivity();
+                                                assert mainActivity != null;
+                                                mainActivity.changeToUnauthedMenu();
+                                            }
+                                        });
+                                    }
+                                });
                             }
                         });
 

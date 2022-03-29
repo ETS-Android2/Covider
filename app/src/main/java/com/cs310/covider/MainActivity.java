@@ -2,6 +2,7 @@ package com.cs310.covider;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.MenuItem;
 
 import android.view.View;
@@ -39,8 +40,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,6 +61,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void onFailure(@NonNull @NotNull Exception e) {
                             openDialog(e.getMessage());
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    User user = documentSnapshot.toObject(User.class);
+                                    if (user.getUserCoursesIDs() != null) {
+                                        for (String courseID : user.getUserCoursesIDs()) {
+                                            try {
+                                                FirebaseMessaging.getInstance().subscribeToTopic(URLEncoder.encode(courseID, "UTF-8")).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                    }
+                                                });
+                                            } catch (UnsupportedEncodingException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull @NotNull Exception e) {
+                                    openDialog(e.getMessage());
+                                }
+                            });
                         }
                     });
                 }
