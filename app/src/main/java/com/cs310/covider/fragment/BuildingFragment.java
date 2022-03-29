@@ -299,14 +299,10 @@ public class BuildingFragment extends MyFragment {
         view.findViewById(R.id.ger).setOnClickListener(clickListener);
         view.findViewById(R.id.gfs).setOnClickListener(clickListener);
         view.findViewById(R.id.har).setOnClickListener(clickListener);
-        view.findViewById(R.id.hce).setOnClickListener(clickListener);
         view.findViewById(R.id.her).setOnClickListener(clickListener);
-        view.findViewById(R.id.hjc).setOnClickListener(clickListener);
-        view.findViewById(R.id.hmm).setOnClickListener(clickListener);
         view.findViewById(R.id.hnb).setOnClickListener(clickListener);
         view.findViewById(R.id.hoh).setOnClickListener(clickListener);
         view.findViewById(R.id.hsh).setOnClickListener(clickListener);
-        view.findViewById(R.id.huc).setOnClickListener(clickListener);
         view.findViewById(R.id.ift).setOnClickListener(clickListener);
         view.findViewById(R.id.iyh).setOnClickListener(clickListener);
         view.findViewById(R.id.jef).setOnClickListener(clickListener);
@@ -340,7 +336,6 @@ public class BuildingFragment extends MyFragment {
         view.findViewById(R.id.nrc).setOnClickListener(clickListener);
         view.findViewById(R.id.ohe).setOnClickListener(clickListener);
         view.findViewById(R.id.ois).setOnClickListener(clickListener);
-        view.findViewById(R.id.osp).setOnClickListener(clickListener);
         view.findViewById(R.id.pce).setOnClickListener(clickListener);
         view.findViewById(R.id.ped).setOnClickListener(clickListener);
         view.findViewById(R.id.phe).setOnClickListener(clickListener);
@@ -362,7 +357,6 @@ public class BuildingFragment extends MyFragment {
         view.findViewById(R.id.sci).setOnClickListener(clickListener);
         view.findViewById(R.id.scs).setOnClickListener(clickListener);
         view.findViewById(R.id.scx).setOnClickListener(clickListener);
-        view.findViewById(R.id.sel).setOnClickListener(clickListener);
         view.findViewById(R.id.sgm).setOnClickListener(clickListener);
         view.findViewById(R.id.shr).setOnClickListener(clickListener);
         view.findViewById(R.id.sks).setOnClickListener(clickListener);
@@ -383,7 +377,6 @@ public class BuildingFragment extends MyFragment {
         view.findViewById(R.id.ugb).setOnClickListener(clickListener);
         view.findViewById(R.id.ugw).setOnClickListener(clickListener);
         view.findViewById(R.id.urc).setOnClickListener(clickListener);
-        view.findViewById(R.id.ush).setOnClickListener(clickListener);
         view.findViewById(R.id.uuc).setOnClickListener(clickListener);
         view.findViewById(R.id.vhe).setOnClickListener(clickListener);
         view.findViewById(R.id.vpd).setOnClickListener(clickListener);

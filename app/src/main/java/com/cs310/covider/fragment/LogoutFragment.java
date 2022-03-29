@@ -12,19 +12,19 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
-import com.cs310.covider.model.Pair;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
-import com.google.android.gms.tasks.*;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.jetbrains.annotations.NotNull;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;

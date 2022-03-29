@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="11dp"
-                android:paddingBottom="5.5dp"
+                android:paddingBottom="11dp"
                 android:text="@string/daily_schedule"
                 android:theme="@style/special" />
 
@@ -41,8 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="11dp"
-                android:paddingTop="5.5dp"
-                android:paddingBottom="5.5dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
                 android:text="@string/frequent_visit"
                 android:theme="@style/special" />
 
@@ -55,8 +55,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:paddingHorizontal="11dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
                 android:text="@string/whole_list"
                 android:theme="@style/special" />
 
@@ -724,21 +725,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/hce"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:contentDescription="@string/hce"
-                android:gravity="center_vertical"
-                android:minHeight="59dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/list_building"
-                    android:text="@string/hce_comp" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/her"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -751,36 +737,6 @@
                 <TextView
                     style="@style/list_building"
                     android:text="@string/her_comp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/hjc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:contentDescription="@string/hjc"
-                android:gravity="center_vertical"
-                android:minHeight="59dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/list_building"
-                    android:text="@string/hjc_comp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/hmm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:contentDescription="@string/hmm"
-                android:gravity="center_vertical"
-                android:minHeight="59dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/list_building"
-                    android:text="@string/hmm_comp" />
             </LinearLayout>
 
             <LinearLayout
@@ -826,21 +782,6 @@
                 <TextView
                     style="@style/list_building"
                     android:text="@string/hsh_comp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/huc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:contentDescription="@string/huc"
-                android:gravity="center_vertical"
-                android:minHeight="59dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/list_building"
-                    android:text="@string/huc_comp" />
             </LinearLayout>
 
             <LinearLayout
@@ -1339,21 +1280,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/osp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:contentDescription="@string/osp"
-                android:gravity="center_vertical"
-                android:minHeight="59dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/list_building"
-                    android:text="@string/osp_comp" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/pce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1669,21 +1595,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/sel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:contentDescription="@string/sel"
-                android:gravity="center_vertical"
-                android:minHeight="59dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/list_building"
-                    android:text="@string/sel_comp" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/sgm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1981,21 +1892,6 @@
                 <TextView
                     style="@style/list_building"
                     android:text="@string/urc_comp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ush"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:contentDescription="@string/ush"
-                android:gravity="center_vertical"
-                android:minHeight="59dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/list_building"
-                    android:text="@string/ush_comp" />
             </LinearLayout>
 
             <LinearLayout
