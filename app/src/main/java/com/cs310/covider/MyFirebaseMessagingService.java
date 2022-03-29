@@ -73,7 +73,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setContentIntent(pendingIntentClick);
+                .setContentIntent(pendingIntentClick)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message));
 
         // Post the push notification.
         final NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

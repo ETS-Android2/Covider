@@ -25,7 +25,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
@@ -97,11 +99,7 @@ public class LogoutFragment extends MyFragment {
                                         ArrayList<Task> tasks = new ArrayList<>();
                                         if (user.getUserCoursesIDs() != null) {
                                             for (String courseID : user.getUserCoursesIDs()) {
-                                                try {
-                                                    tasks.add(FirebaseMessaging.getInstance().unsubscribeFromTopic(URLEncoder.encode(courseID, "UTF-8")));
-                                                } catch (UnsupportedEncodingException e) {
-                                                    e.printStackTrace();
-                                                }
+                                                tasks.add(FirebaseMessaging.getInstance().unsubscribeFromTopic(Base64.getEncoder().encodeToString(courseID.getBytes(StandardCharsets.UTF_8))));
                                             }
                                         }
                                         Tasks.whenAllComplete(tasks.toArray(new Task[0])).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {

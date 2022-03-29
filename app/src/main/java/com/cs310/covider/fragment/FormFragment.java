@@ -21,6 +21,7 @@ import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -135,12 +136,31 @@ public class FormFragment extends MyFragment {
                                         @Override
                                         public void onClick(DialogInterface dialog, int id) {
                                             user.setLastCheckDate(new Date());
+                                            String title = null;
+                                            String message = null;
                                             if (finalHasPositiveTest) {
                                                 user.setLastInfectionDate(new Date());
+                                                title = "New Positive Test Alert";
+                                                message = "User " + FirebaseAuth.getInstance().getCurrentUser().getEmail() + " in your course reported positive COVID test! Please get checked ASAP!";
                                             }
                                             if (finalHasSymptoms) {
                                                 user.setLastSymptomsDate(new Date());
+                                                if (title == null && message == null) {
+                                                    title = "New Symptoms Alert";
+                                                    message = "User " + FirebaseAuth.getInstance().getCurrentUser().getEmail() + " in your course reported likely COVID symptoms, stay safe!";
+                                                }
                                             }
+                                            String finalTitle = title;
+                                            String finalMessage = message;
+                                            Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    User user = documentSnapshot.toObject(User.class);
+                                                    for (String courseID : user.getUserCoursesIDs()) {
+                                                        ((MainActivity) getActivity()).sendNotificationToTopic(finalTitle, finalMessage, courseID);
+                                                    }
+                                                }
+                                            });
                                             FirebaseFirestore.getInstance().collection("Users").document(user.getEmail()).set(user).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull @NotNull Exception e) {

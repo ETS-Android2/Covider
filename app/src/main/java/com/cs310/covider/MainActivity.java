@@ -19,6 +19,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.cs310.covider.fragment.AddCourseFragment;
 import com.cs310.covider.fragment.BuildingFragment;
 import com.cs310.covider.fragment.CheckInFormFragment;
@@ -35,6 +39,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.common.net.UrlEscapers;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,9 +47,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -71,15 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                     User user = documentSnapshot.toObject(User.class);
                                     if (user.getUserCoursesIDs() != null) {
                                         for (String courseID : user.getUserCoursesIDs()) {
-                                            try {
-                                                FirebaseMessaging.getInstance().subscribeToTopic(URLEncoder.encode(courseID, "UTF-8")).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void unused) {
-                                                    }
-                                                });
-                                            } catch (UnsupportedEncodingException e) {
-                                                e.printStackTrace();
-                                            }
+                                            FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(courseID.getBytes(StandardCharsets.UTF_8)));
                                         }
                                     }
                                 }
@@ -303,5 +306,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int building = getResources().getIdentifier(
                 buildingAbbrev + "_comp", "string", "com.cs310.covider");
         return getResources().getString(building);
+    }
+
+    public void sendNotificationToTopic(String title, String body, String courseID) {
+        String topic = Base64.getEncoder().encodeToString(courseID.getBytes(StandardCharsets.UTF_8));
+        RequestQueue mRequestQue = Volley.newRequestQueue(this);
+        JSONObject json = new JSONObject();
+        try {
+            json.put("to", "/topics/" + topic);
+            JSONObject notificationObj = new JSONObject();
+            notificationObj.put("title", title);
+            notificationObj.put("body", body);
+            json.put("notification", notificationObj);
+            String URL = "https://fcm.googleapis.com/fcm/send";
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL,
+                    json,
+                    response -> {
+                    },
+                    error -> {
+                    }
+            ) {
+                @Override
+                public Map<String, String> getHeaders() {
+                    Map<String, String> header = new HashMap<>();
+                    header.put("content-type", "application/json");
+                    header.put("authorization", "key=AAAAj2t5Vvk:APA91bFOAe4_gl7xXBrt6vBRxa0FzaK6E5T8SzcKAoytUUDuStDVIdfMfQfsf62w_2UoTmNp1TKgu6ZkuhRV3lvofsxIuSdlcvvLZu21okeet35NTBEbx5CJ4BI2lP_Ghhty1tswSSta");
+                    return header;
+                }
+            };
+            mRequestQue.add(request);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 }
