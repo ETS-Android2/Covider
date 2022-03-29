@@ -6,7 +6,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
@@ -29,13 +28,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.*;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
 
 public class MapsFragment extends MyFragment {
 
@@ -54,66 +56,41 @@ public class MapsFragment extends MyFragment {
             LatLng usc = new LatLng(34.022415, -118.285530);
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(usc, 17));
 
-            FirebaseFirestore.getInstance().collection("Buildings").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    ArrayList<Building> buildingArrayList = new ArrayList<>(queryDocumentSnapshots.toObjects(Building.class));
-                    HashMap<String, Building> buildingHashMap = new HashMap<>();
-                    for (Building building : buildingArrayList) {
-                        buildingHashMap.put(building.getName(), building);
-                    }
-                    ArrayList<Building> scheduleBuildings = new ArrayList<>();
-                    ArrayList<Building> frequentBuildings = new ArrayList<>();
-                    Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            User user = documentSnapshot.toObject(User.class);
-                            ArrayList<Task> courseTask = new ArrayList<>();
-                            if (user.getUserCoursesIDs() != null && !user.getUserCoursesIDs().isEmpty()) {
-                                for (String id : user.getUserCoursesIDs()) {
-                                    courseTask.add(FirebaseFirestore.getInstance().collection("Courses").document(id).get());
-                                }
-                                Tasks.whenAllComplete(courseTask.toArray(new Task[0]))
-                                        .addOnCompleteListener(
-                                                new OnCompleteListener<List<Task<?>>>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull @NotNull Task<List<Task<?>>> task) {
-                                                        if (!task.isSuccessful()) {
-                                                            openDialog(task);
-                                                            return;
-                                                        }
-                                                        ArrayList<Course> enrolledCourses = new ArrayList<>();
-                                                        for (Task task1 : task.getResult()) {
-                                                            enrolledCourses.add(((DocumentSnapshot) task1.getResult()).toObject(Course.class));
-                                                        }
-                                                        for (Course course : enrolledCourses) {
-                                                            if (buildingHashMap.containsKey(course.getBuildingName())) {
-                                                                scheduleBuildings.add(buildingHashMap.get(course.getBuildingName()));
-                                                                buildingHashMap.remove(course.getBuildingName());
-                                                            }
-                                                        }
-                                                        addMarkers(user, buildingHashMap, frequentBuildings, scheduleBuildings, googleMap);
-                                                    }
+            FirebaseFirestore.getInstance().collection("Buildings").get().addOnSuccessListener(queryDocumentSnapshots -> {
+                ArrayList<Building> buildingArrayList = new ArrayList<>(queryDocumentSnapshots.toObjects(Building.class));
+                HashMap<String, Building> buildingHashMap = new HashMap<>();
+                for (Building building : buildingArrayList)
+                    buildingHashMap.put(building.getName(), building);
+                ArrayList<Building> scheduleBuildings = new ArrayList<>(), frequentBuildings = new ArrayList<>();
+                Objects.requireNonNull(Util.getCurrentUserTask()).addOnSuccessListener(documentSnapshot -> {
+                    User user = documentSnapshot.toObject(User.class);
+                    ArrayList<Task> courseTask = new ArrayList<>();
+                    assert user != null;
+                    if (user.getUserCoursesIDs() != null && !user.getUserCoursesIDs().isEmpty()) {
+                        for (String id : user.getUserCoursesIDs())
+                            courseTask.add(FirebaseFirestore.getInstance().collection("Courses").document(id).get());
+                        Tasks.whenAllComplete(courseTask.toArray(new Task[0]))
+                                .addOnCompleteListener(
+                                        task -> {
+                                            if (!task.isSuccessful()) {
+                                                openDialog(task);
+                                                return;
+                                            }
+                                            ArrayList<Course> enrolledCourses = new ArrayList<>();
+                                            for (Task t : task.getResult())
+                                                enrolledCourses.add(((DocumentSnapshot) t.getResult()).toObject(Course.class));
+                                            for (Course course : enrolledCourses)
+                                                if (buildingHashMap.containsKey(course.getBuildingName())) {
+                                                    scheduleBuildings.add(buildingHashMap.get(course.getBuildingName()));
+                                                    buildingHashMap.remove(course.getBuildingName());
                                                 }
-                                        );
-                            } else {
-                                addMarkers(user, buildingHashMap, frequentBuildings, scheduleBuildings, googleMap);
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull @NotNull Exception e) {
-                            openDialog(e.getMessage());
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull @NotNull Exception e) {
-                    openDialog(e.getMessage());
-                }
-            });
-
+                                            addMarkers(user, buildingHashMap, frequentBuildings, scheduleBuildings, googleMap);
+                                        }
+                                );
+                    } else
+                        addMarkers(user, buildingHashMap, frequentBuildings, scheduleBuildings, googleMap);
+                }).addOnFailureListener(e -> openDialog(e.getMessage()));
+            }).addOnFailureListener(e -> openDialog(e.getMessage()));
             LatLngBounds campusBounds = new LatLngBounds(
                     new LatLng(34.018469, -118.291199), // SW bounds
                     new LatLng(34.026839, -118.276909)  // NE bounds
@@ -128,28 +105,26 @@ public class MapsFragment extends MyFragment {
 
     private void addMarkers(User user, HashMap<String, Building> buildingHashMap, ArrayList<Building> frequentBuildings, ArrayList<Building> scheduleBuildings, GoogleMap googleMap) {
         HashSet<String> frequentlyVisitedBuildingAbbrevs = new HashSet<>();
-        if (user.getBuildingCheckedinTimes() != null && !user.getBuildingCheckedinTimes().isEmpty()) {
-            for (Map.Entry<String, Integer> entry : user.getBuildingCheckedinTimes().entrySet()) {
-                if (entry.getValue() > 1) {
+        if (user.getBuildingCheckedinTimes() != null && !user.getBuildingCheckedinTimes().isEmpty())
+            for (Map.Entry<String, Integer> entry : user.getBuildingCheckedinTimes().entrySet())
+                if (entry.getValue() > 1)
                     frequentlyVisitedBuildingAbbrevs.add(String.valueOf(entry.getKey()));
-                }
-            }
-        }
-        for (String name : frequentlyVisitedBuildingAbbrevs) {
+
+        for (String name : frequentlyVisitedBuildingAbbrevs)
             if (buildingHashMap.containsKey(name)) {
                 frequentBuildings.add(buildingHashMap.get(name));
                 buildingHashMap.remove(name);
             }
-        }
-        for (Building b : scheduleBuildings) {
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(b.getLocation().getLatitude(), b.getLocation().getLongitude())).title(b.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)).alpha((float) .7));
-        }
-        for (Building b : frequentBuildings) {
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(b.getLocation().getLatitude(), b.getLocation().getLongitude())).title(b.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)).alpha((float) .7));
-        }
+
+        for (Building b : scheduleBuildings)
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(b.getLocation().getLatitude(), b.getLocation().getLongitude())).title(b.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).alpha((float) .7));
+
+        for (Building b : frequentBuildings)
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(b.getLocation().getLatitude(), b.getLocation().getLongitude())).title(b.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)).alpha((float) .7));
+
         for (Map.Entry<String, Building> entry : buildingHashMap.entrySet()) {
             Building b = entry.getValue();
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(b.getLocation().getLatitude(), b.getLocation().getLongitude())).title(b.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)).alpha((float) .7));
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(b.getLocation().getLatitude(), b.getLocation().getLongitude())).title(b.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)).alpha((float) .7));
         }
     }
 
@@ -180,25 +155,22 @@ public class MapsFragment extends MyFragment {
                         return;
                     }
                     ArrayList<User> visitors = new ArrayList<>();
-                    for (Task task : tasks.getResult()) {
+                    for (Task task : tasks.getResult())
                         visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
-                    }
                     if (!visitors.isEmpty()) {
                         int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
                         for (User user : visitors) {
-                            if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate())) {
+                            if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
                                 infectedCount++;
-                            } else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate())) {
+                            else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
                                 symptomsCount++;
-                            }
                         }
-                        float risk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
-                        displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
+                        float updatedRisk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
+                        displayPopUp(updatedRisk, bar, tv, currBuilding, way, pop, view);
                     }
                 });
-            } else {
+            } else
                 displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
-            }
         }).addOnFailureListener(e -> openDialog(e.getMessage()));
     }
 
@@ -225,8 +197,7 @@ public class MapsFragment extends MyFragment {
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
+        if (mapFragment != null)
             mapFragment.getMapAsync(callback);
-        }
     }
 }

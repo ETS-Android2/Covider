@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
 import com.cs310.covider.fragment.CourseDetailFragment;

@@ -17,11 +17,7 @@
     <string name="submit">Submit</string>
     <string name="daily_health_form">Daily Health Form</string>
     <string name="exposure_risk_level"><i>Exposure Risk Level</i></string>
-    <string name="low_risk_per">Low Risk Percentage: %d</string>
-    <string name="high_risk_per">High Risk Percentage: %d</string>
-    <string name="infected_per">Infected Percentage: %d</string>
     <string name="return_to_previous_page">touch here or outside to close</string>
-    <string name="past_two_week">During the Past Two Week</string>
     <string name="entry_req"><i>Entry Requirements: \n</i></string>
     <string name="ways_to_satisfy_req"><i>Ways to Satisfy Requirements: \n</i></string>
     <string name="building_checkin_form">Building Check-in Form</string>
@@ -33,7 +29,7 @@
     <string name="buy_n95">Go to the USC Pharmacy or a Nearby CVS/Walgreens Store to Purchase</string>
     <string name="make_appointment_or_walk_in">Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites</string>
     <string name="self_quarantine">Go to USC Hotel and Self-Quarantine for At Least 14-Days</string>
-    <string name="daily_schedule">Buildings in my Daily Schedule</string>
+    <string name="daily_schedule">Buildings in My Daily Schedule</string>
     <string name="frequent_visit">Frequently Visited Buildings</string>
     <string name="whole_list">All USC Buildings</string>
 </resources>

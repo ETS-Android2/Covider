@@ -20,21 +20,16 @@ import com.cs310.covider.model.Building;
 import com.cs310.covider.model.Course;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,9 +90,6 @@ public class BuildingFragment extends MyFragment {
         super.onViewCreated(view, savedInstanceState);
         showSpecialBuildings();
         addListener(rootView);
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            // ((TextView) (rootView.findViewById(R.id.map_test))).setText(Database.getCurrentUser().getEmail());
-        }
     }
 
     private void showSpecialBuildings() {
@@ -107,116 +99,102 @@ public class BuildingFragment extends MyFragment {
         showFrequentlyVisitedBuildings();
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void showBuildingsInDailySchedule() {
-
         BuildingFragment buildingFragment = this;
         final float scale = getResources().getDisplayMetrics().density;
         LinearLayout scheduleBuildingsContainer = getActivity().findViewById(R.id.buildings_in_daily_schedule);
         scheduleBuildingsContainer.removeAllViews();
-        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                User user = documentSnapshot.toObject(User.class);
-                ArrayList<Task> courseTask = new ArrayList<>();
-                if (user.getUserCoursesIDs() != null && !user.getUserCoursesIDs().isEmpty()) {
-                    for (String id : user.getUserCoursesIDs()) {
-                        courseTask.add(FirebaseFirestore.getInstance().collection("Courses").document(id).get());
-                    }
-                    Tasks.whenAllComplete(courseTask.toArray(new Task[0])).addOnCompleteListener(new OnCompleteListener<List<Task<?>>>() {
-                        @Override
-                        public void onComplete(@NonNull @NotNull Task<List<Task<?>>> task) {
-                            if (!task.isSuccessful()) {
-                                openDialog(task);
-                                if (getActivity() == null) {
-                                    return;
-                                }
-                                getActivity().findViewById(R.id.daily_schedule).setVisibility(View.GONE);
-                                return;
-                            }
-                            ArrayList<Course> enrolledCourses = new ArrayList<>();
-                            for (Task task1 : task.getResult()) {
-                                enrolledCourses.add(((DocumentSnapshot) task1.getResult()).toObject(Course.class));
-                            }
-                            for (Course course : enrolledCourses) {
-                                if (getActivity() == null) {
-                                    return;
-                                }
-                                int buildingId = getResources().getIdentifier(
-                                        course.getBuildingName() + "_comp", "string", "com.cs310.covider");
-                                LinearLayout view = new LinearLayout(getContext());
-                                view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                                view.setOrientation(LinearLayout.HORIZONTAL);
-                                view.setMinimumHeight((int) (70 * scale + 0.5f));
-                                view.setGravity(Gravity.CENTER_VERTICAL);
-                                view.setContentDescription(course.getBuildingName());
-                                view.setOnClickListener(buildingFragment::showDetails);
-                                TextView building = new TextView(getContext());
-                                building.setText(getString(buildingId));
-                                building.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                                building.setTextSize(17);
-                                building.setPadding(10, 0, 0, 0);
-                                view.addView(building);
-                                scheduleBuildingsContainer.addView(view);
-                                getActivity().findViewById(R.id.daily_schedule).setVisibility(View.VISIBLE);
-                            }
-                        }
-                    });
-                } else {
-                    if (getActivity() == null) {
+        Objects.requireNonNull(Util.getCurrentUserTask()).addOnSuccessListener(documentSnapshot -> {
+            User user = documentSnapshot.toObject(User.class);
+            ArrayList<Task> courseTask = new ArrayList<>();
+            assert user != null;
+            if (user.getUserCoursesIDs() != null && !user.getUserCoursesIDs().isEmpty()) {
+                for (String id : user.getUserCoursesIDs())
+                    courseTask.add(FirebaseFirestore.getInstance().collection("Courses").document(id).get());
+                Tasks.whenAllComplete(courseTask.toArray(new Task[0])).addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        openDialog(task);
+                        if (getActivity() == null)
+                            return;
+                        getActivity().findViewById(R.id.daily_schedule).setVisibility(View.GONE);
                         return;
                     }
-                    getActivity().findViewById(R.id.daily_schedule).setVisibility(View.GONE);
-                }
+                    ArrayList<Course> enrolledCourses = new ArrayList<>();
+                    for (Task task1 : task.getResult())
+                        enrolledCourses.add(((DocumentSnapshot) task1.getResult()).toObject(Course.class));
+                    for (Course course : enrolledCourses) {
+                        if (getActivity() == null)
+                            return;
+                        int buildingId = getResources().getIdentifier(
+                                course.getBuildingName() + "_comp", "string", "com.cs310.covider");
+                        LinearLayout view = new LinearLayout(getContext());
+                        view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                        view.setBackground(getResources().getDrawable(R.drawable.custom_border));
+                        view.setMinimumHeight((int) (scale * 62));
+                        view.setGravity(Gravity.CENTER_VERTICAL);
+                        view.setContentDescription(course.getBuildingName());
+                        view.setOnClickListener(buildingFragment::showDetails);
+                        TextView building = new TextView(getContext());
+                        building.setText(getString(buildingId));
+                        building.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                        building.setTextSize((float) 15);
+                        building.setGravity(Gravity.CENTER_VERTICAL);
+                        building.setPadding(33, 0, 0, 0);
+                        view.addView(building);
+                        scheduleBuildingsContainer.addView(view);
+                        getActivity().findViewById(R.id.daily_schedule).setVisibility(View.VISIBLE);
+                    }
+                });
+            } else {
+                if (getActivity() == null)
+                    return;
+                getActivity().findViewById(R.id.daily_schedule).setVisibility(View.GONE);
             }
         });
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void showFrequentlyVisitedBuildings() {
         final float scale = getResources().getDisplayMetrics().density;
         LinearLayout frequentBuildingsContainer = getActivity().findViewById(R.id.frequently_visited_buildings);
         frequentBuildingsContainer.removeAllViews();
         BuildingFragment buildingFragment = this;
-        Util.getCurrentUserTask().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                User user = documentSnapshot.toObject(User.class);
-                ArrayList<String> frequentlyVisitedBuildingAbbrevs = new ArrayList<>();
-                if (user.getBuildingCheckedinTimes() != null && !user.getBuildingCheckedinTimes().isEmpty()) {
-                    for (Map.Entry<String, Integer> entry : user.getBuildingCheckedinTimes().entrySet()) {
-                        if (entry.getValue() > 1) {
-                            frequentlyVisitedBuildingAbbrevs.add(String.valueOf(entry.getKey()));
-                        }
-                    }
-                }
-                if (frequentlyVisitedBuildingAbbrevs.isEmpty()) {
-                    if (getActivity() == null) {
+        Objects.requireNonNull(Util.getCurrentUserTask()).addOnSuccessListener(documentSnapshot -> {
+            User user = documentSnapshot.toObject(User.class);
+            ArrayList<String> frequentlyVisitedBuildingAbbrevs = new ArrayList<>();
+            assert user != null;
+            if (user.getBuildingCheckedinTimes() != null && !user.getBuildingCheckedinTimes().isEmpty())
+                for (Map.Entry<String, Integer> entry : user.getBuildingCheckedinTimes().entrySet())
+                    if (entry.getValue() > 1)
+                        frequentlyVisitedBuildingAbbrevs.add(String.valueOf(entry.getKey()));
+            if (frequentlyVisitedBuildingAbbrevs.isEmpty()) {
+                if (getActivity() == null)
+                    return;
+                getActivity().findViewById(R.id.frequent_visit).setVisibility(View.GONE);
+            } else {
+                for (String buildingAbbrev : frequentlyVisitedBuildingAbbrevs) {
+                    if (getActivity() == null)
                         return;
-                    }
-                    getActivity().findViewById(R.id.frequent_visit).setVisibility(View.GONE);
-                } else {
-                    for (String buildingAbbrev : frequentlyVisitedBuildingAbbrevs) {
-                        if (getActivity() == null) {
-                            return;
-                        }
-                        int buildingId = getActivity().getResources().getIdentifier(
-                                buildingAbbrev + "_comp", "string", "com.cs310.covider");
-                        LinearLayout view = new LinearLayout(getContext());
-                        view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                        view.setOrientation(LinearLayout.HORIZONTAL);
-                        view.setMinimumHeight((int) (70 * scale + 0.5f));
-                        view.setGravity(Gravity.CENTER_VERTICAL);
-                        view.setContentDescription(buildingAbbrev);
-                        view.setOnClickListener(buildingFragment::showDetails);
-                        TextView building = new TextView(getContext());
-                        building.setText(getString(buildingId));
-                        building.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                        building.setTextSize(17);
-                        building.setPadding(10, 0, 0, 0);
-                        view.addView(building);
-                        frequentBuildingsContainer.addView(view);
-                    }
-                    getActivity().findViewById(R.id.frequent_visit).setVisibility(View.VISIBLE);
+                    int buildingId = getActivity().getResources().getIdentifier(
+                            buildingAbbrev + "_comp", "string", "com.cs310.covider");
+                    LinearLayout view = new LinearLayout(getContext());
+                    view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                    view.setMinimumHeight((int) (scale * 62));
+                    view.setGravity(Gravity.CENTER_VERTICAL);
+                    view.setBackground(getResources().getDrawable(R.drawable.custom_border));
+                    view.setContentDescription(buildingAbbrev);
+                    view.setOnClickListener(buildingFragment::showDetails);
+                    TextView building = new TextView(getContext());
+                    building.setText(getString(buildingId));
+                    building.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                    building.setTextSize((float) 15);
+                    building.setGravity(Gravity.CENTER_VERTICAL);
+                    building.setPadding(33, 0, 0, 0);
+                    view.addView(building);
+                    frequentBuildingsContainer.addView(view);
                 }
+                getActivity().findViewById(R.id.frequent_visit).setVisibility(View.VISIBLE);
             }
         });
     }
@@ -237,9 +215,8 @@ public class BuildingFragment extends MyFragment {
             ArrayList<Task> checkedInUserTasks = new ArrayList<>();
             assert currBuilding != null;
             if (Util.buildingCheckinDataValidForToday(currBuilding)) {
-                for (String checkedInEmail : currBuilding.getCheckedInUserEmails()) {
+                for (String checkedInEmail : currBuilding.getCheckedInUserEmails())
                     checkedInUserTasks.add(Util.getUserWithEmailTask(checkedInEmail));
-                }
                 Tasks.whenAllComplete(checkedInUserTasks.toArray(new Task[0])).addOnCompleteListener(tasks -> {
                     if (!tasks.isSuccessful()) {
                         openDialog(tasks);
@@ -247,25 +224,22 @@ public class BuildingFragment extends MyFragment {
                         return;
                     }
                     ArrayList<User> visitors = new ArrayList<>();
-                    for (Task task : tasks.getResult()) {
+                    for (Task task : tasks.getResult())
                         visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
-                    }
                     if (!visitors.isEmpty()) {
                         int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
                         for (User user : visitors) {
-                            if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate())) {
+                            if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
                                 infectedCount++;
-                            } else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate())) {
+                            else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
                                 symptomsCount++;
-                            }
                         }
-                        float risk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
-                        displayPopUp(risk, bar, tv, currBuilding, way, pop, view);
+                        float updatedRisk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
+                        displayPopUp(updatedRisk, bar, tv, currBuilding, way, pop, view);
                     }
                 });
-            } else {
+            } else
                 displayPopUp(defaultRisk, bar, tv, currBuilding, way, pop, view);
-            }
         }).addOnFailureListener(e -> openDialog(e.getMessage()));
     }
 
