@@ -14,7 +14,6 @@
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_login.xml" value="0.2829931972789116" />
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_logout.xml" value="0.12083333333333333" />
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_map.xml" value="0.1" />
-        <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_maps.xml" value="0.1" />
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/fragment_register.xml" value="0.18857142857142858" />
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/layouts/fragments/layout/map.xml" value="0.1" />
         <entry key="..\:/Bian/csci310/Covider/app/src/main/res/menu/auth_menu.xml" value="0.12291666666666666" />
@@ -29,8 +28,10 @@
         <entry key="app/src/main/res/layouts/fragments/layout/details.xml" value="0.3440826416015625" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_building.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_checkin_form.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layouts/fragments/layout/fragment_course_detail.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layouts/fragments/layout/fragment_courses.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_detail.xml" value="0.16314199395770393" />
-        <entry key="app/src/main/res/layouts/fragments/layout/fragment_form.xml" value="0.1" />
+        <entry key="app/src/main/res/layouts/fragments/layout/fragment_form.xml" value="0.30677032470703125" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_logout.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_map.xml" value="0.1" />
         <entry key="app/src/main/res/layouts/fragments/layout/fragment_maps.xml" value="0.16875" />

@@ -163,18 +163,18 @@ public class AddCourseFragment extends MyFragment {
                                                         public void onSuccess(Void unused) {
                                                             FirebaseFirestore.getInstance().collection("Buildings").document(buildingName).update("coursesIDs", FieldValue.arrayUnion(newCourse.getId()))
                                                                     .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void unused) {
+                                                                    FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
+                                                                            .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                         @Override
                                                                         public void onSuccess(Void unused) {
-                                                                            FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
-                                                                                    .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                                        @Override
-                                                                                        public void onSuccess(Void unused) {
-                                                                                            openDialog("Success!");
-                                                                                            redirectToHome();
-                                                                                        }
-                                                                                    });
+                                                                            openDialog("Success!");
+                                                                            redirectToHome();
                                                                         }
                                                                     });
+                                                                }
+                                                            });
                                                         }
                                                     });
                                                     break;

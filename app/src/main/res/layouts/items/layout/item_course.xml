@@ -1,35 +1,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:minHeight="100dp"
-              android:background="@drawable/custom_border">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_border"
+    android:minHeight="100dp"
+    android:orientation="vertical">
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/item_course_name_section"
-            android:textSize="15sp"
-            android:layout_marginStart="15dp"
-            android:textStyle="bold">
-    </TextView>
+        android:id="@+id/item_course_name_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:textSize="15sp"
+        android:textStyle="bold"></TextView>
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/item_course_course_mode"
-            android:layout_gravity="start"
-            android:textSize="15sp"
-            android:layout_weight="1"
-            android:layout_marginStart="15dp">
-    </TextView>
+        android:id="@+id/item_course_course_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="15dp"
+        android:layout_weight="1"
+        android:textSize="15sp"></TextView>
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/item_course_building_name"
-            android:textSize="15sp"
-            android:layout_marginStart="15dp">
-    </TextView>
+        android:id="@+id/item_course_building_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:textSize="15sp"></TextView>
 
 </LinearLayout>

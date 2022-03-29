@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".fragment.BuildingFragment">
 
-    <!-- TODO: Update layout -->
-    <!-- android:text="Map/List" -->
     <TextView
         android:id="@+id/building"
         android:layout_width="match_parent"
@@ -27,8 +25,8 @@
                 android:id="@+id/daily_schedule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="9dp"
-                android:paddingBottom="9dp"
+                android:paddingHorizontal="11dp"
+                android:paddingBottom="5.5dp"
                 android:text="@string/daily_schedule"
                 android:theme="@style/special" />
 
@@ -42,9 +40,9 @@
                 android:id="@+id/frequent_visit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="9dp"
-                android:paddingTop="1dp"
-                android:paddingBottom="9dp"
+                android:paddingHorizontal="11dp"
+                android:paddingTop="5.5dp"
+                android:paddingBottom="5.5dp"
                 android:text="@string/frequent_visit"
                 android:theme="@style/special" />
 
@@ -57,8 +55,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:paddingHorizontal="10dp"
+                android:layout_marginTop="8dp"
+                android:paddingHorizontal="11dp"
                 android:text="@string/whole_list"
                 android:theme="@style/special" />
 
