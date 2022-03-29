@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="11dp"
-                android:paddingBottom="5.5dp"
+                android:paddingBottom="11dp"
                 android:text="@string/daily_schedule"
                 android:theme="@style/special" />
 
@@ -41,8 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="11dp"
-                android:paddingTop="5.5dp"
-                android:paddingBottom="5.5dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
                 android:text="@string/frequent_visit"
                 android:theme="@style/special" />
 
@@ -55,7 +55,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
                 android:paddingHorizontal="11dp"
                 android:text="@string/whole_list"
                 android:theme="@style/special" />
