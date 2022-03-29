@@ -1,11 +1,11 @@
 package com.cs310.covider.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,14 +13,12 @@ import androidx.fragment.app.Fragment;
 
 import com.cs310.covider.MainActivity;
 import com.cs310.covider.R;
-import com.cs310.covider.model.Course;
-import com.cs310.covider.model.User;
-import com.cs310.covider.model.UsersAdapter;
-import com.cs310.covider.model.Util;
+import com.cs310.covider.model.*;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -73,6 +71,10 @@ public class CourseDetailFragment extends MyFragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        refreshView();
+    }
+
+    private void refreshView() {
         FirebaseFirestore.getInstance().collection("Courses").document(courseID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -85,6 +87,57 @@ public class CourseDetailFragment extends MyFragment {
                 ArrayList<Task> studentTasks = new ArrayList<>();
                 for (String email : course.getInstructorsEmails()) {
                     instructorTasks.add(Util.getUserWithEmailTask(email));
+                }
+                if (course.getInstructorsEmails().contains(FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
+                    rootView.findViewById(R.id.course_detail_mode_change_form).setVisibility(View.VISIBLE);
+                    Spinner spinner = rootView.findViewById(R.id.course_detail_course_mode_selection);
+                    String[] items = null;
+                    if (course.getCourseMode() == Course.CourseMode.INPERSON) {
+                        items = new String[]{"INPERSON", "REMOTE"};
+                    } else {
+                        items = new String[]{"REMOTE", "INPERSON"};
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+                    spinner.setAdapter(adapter);
+                    Button button = rootView.findViewById(R.id.course_detail_submit);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            showYesNoDialog(new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    String selection = spinner.getSelectedItem().toString();
+                                    if (course.getCourseMode().toString().equals(selection)) {
+                                        openDialog("Course is already " + selection);
+                                        return;
+                                    }
+                                    if (selection.equals("INPERSON")) {
+                                        course.setCourseMode(Course.CourseMode.INPERSON);
+                                    } else {
+                                        course.setCourseMode(Course.CourseMode.REMOTE);
+                                    }
+                                    FirebaseFirestore.getInstance().collection("Courses").document(course.getId()).set(course).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            ((MainActivity) getActivity()).sendNotificationToTopic("Course Mode Change", nameAndSection + " is now " + selection, course.getId());
+                                            openDialog("Success!");
+                                            refreshView();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull @NotNull Exception e) {
+                                            openDialog(e.getMessage());
+                                        }
+                                    });
+                                }
+                            }, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            }, "Are you sure want to change course mode to " + spinner.getSelectedItem().toString() + "?");
+                        }
+                    });
                 }
                 if (course.getStudentsEmails().isEmpty()) {
                     rootView.findViewById(R.id.course_details_no_student_message).setVisibility(View.VISIBLE);

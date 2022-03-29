@@ -165,7 +165,7 @@ public class CheckInFormFragment extends MyFragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
                             }
-                        }, "Are you sure you want to check into " + selection.getName() + "?");
+                        }, "Are you sure you want to check into " + ((MainActivity) (getActivity())).buildingAbrevToFullName(selection.getName()) + "?");
                     }
                 });
             }

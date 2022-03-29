@@ -1,60 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fillViewport="true"
-    tools:context=".fragment.CourseDetailFragment">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fillViewport="true"
+            tools:context=".fragment.CourseDetailFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/course_detail_name_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="20sp"></TextView>
+            android:orientation="vertical">
+
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Instructors:"
-            android:textSize="15sp"
-            android:textStyle="bold"></TextView>
+                android:id="@+id/course_detail_name_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="20sp"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/course_detail_mode_change_form"
+                android:visibility="gone"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:background="#f1e3e2">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="Change course mode:"/>
+
+                <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/course_detail_course_mode_selection">
+                </Spinner>
+
+            </LinearLayout>
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:id="@+id/course_detail_submit">
+            </Button>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Instructors:"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
 
         <ListView
-            android:id="@+id/courses_detail_instructors_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"></ListView>
+                android:id="@+id/courses_detail_instructors_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Students:"
-            android:textSize="15sp"
-            android:textStyle="bold"></TextView>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Students:"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/course_details_no_student_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="There is no student yet"
-            android:textSize="15sp"
-            android:visibility="gone"></TextView>
+                android:id="@+id/course_details_no_student_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="There is no student yet"
+                android:textSize="15sp"
+                android:visibility="gone"/>
 
         <ListView
-            android:id="@+id/courses_detail_student_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"></ListView>
+                android:id="@+id/courses_detail_student_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+
     </LinearLayout>
 
 </ScrollView>

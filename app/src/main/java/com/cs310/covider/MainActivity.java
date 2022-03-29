@@ -317,13 +317,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             JSONObject notificationObj = new JSONObject();
             notificationObj.put("title", title);
             notificationObj.put("body", body);
+            notificationObj.put("priority", 10);
             json.put("notification", notificationObj);
             String URL = "https://fcm.googleapis.com/fcm/send";
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL,
                     json,
                     response -> {
+                        int i = 0;
                     },
                     error -> {
+                        int i = 0;
                     }
             ) {
                 @Override
