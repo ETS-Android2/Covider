@@ -27,9 +27,12 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Objects;
 
 public class AddCourseFragment extends MyFragment {
@@ -163,18 +166,19 @@ public class AddCourseFragment extends MyFragment {
                                                         public void onSuccess(Void unused) {
                                                             FirebaseFirestore.getInstance().collection("Buildings").document(buildingName).update("coursesIDs", FieldValue.arrayUnion(newCourse.getId()))
                                                                     .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void unused) {
-                                                                    FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
-                                                                            .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                         @Override
                                                                         public void onSuccess(Void unused) {
-                                                                            openDialog("Success!");
-                                                                            redirectToHome();
+                                                                            FirebaseFirestore.getInstance().collection("Users").document(currentUser.getEmail()).update("userCoursesIDs", FieldValue.arrayUnion(newCourse.getId()))
+                                                                                    .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                                        @Override
+                                                                                        public void onSuccess(Void unused) {
+                                                                                            FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(buildingName.getBytes(StandardCharsets.UTF_8)));
+                                                                                            openDialog("Success!");
+                                                                                            redirectToHome();
+                                                                                        }
+                                                                                    });
                                                                         }
                                                                     });
-                                                                }
-                                                            });
                                                         }
                                                     });
                                                     break;
@@ -221,6 +225,7 @@ public class AddCourseFragment extends MyFragment {
                 }).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(course.getId().getBytes(StandardCharsets.UTF_8)));
                         openDialog("Success!");
                     }
                 });

@@ -297,10 +297,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL,
                     json,
                     response -> {
-                        int i = 0;
                     },
                     error -> {
-                        int i = 0;
                     }
             ) {
                 @Override
