@@ -234,7 +234,7 @@ public class BuildingFragment extends MyFragment {
                             else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
                                 symptomsCount++;
                         }
-                        float updatedRisk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
+                        float updatedRisk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor);
                         displayPopUp(updatedRisk, bar, tv, currBuilding, way, pop, view);
                     }
                 });

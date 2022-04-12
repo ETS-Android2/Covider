@@ -107,7 +107,7 @@ public class MapsFragment extends MyFragment {
         HashSet<String> frequentlyVisitedBuildingAbbrevs = new HashSet<>();
         if (user.getBuildingCheckedinTimes() != null && !user.getBuildingCheckedinTimes().isEmpty())
             for (Map.Entry<String, Integer> entry : user.getBuildingCheckedinTimes().entrySet())
-                if (entry.getValue() > 1)
+                if (entry.getValue() > 1 && user.getLastCheckDate()!= null && Util.withInTwoWeeks(user.getLastCheckDate()))
                     frequentlyVisitedBuildingAbbrevs.add(String.valueOf(entry.getKey()));
 
         for (String name : frequentlyVisitedBuildingAbbrevs)
@@ -165,7 +165,7 @@ public class MapsFragment extends MyFragment {
                             else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
                                 symptomsCount++;
                         }
-                        float updatedRisk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor) / totalVisitor;
+                        float updatedRisk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor);
                         displayPopUp(updatedRisk, bar, tv, currBuilding, way, pop, view);
                     }
                 });
