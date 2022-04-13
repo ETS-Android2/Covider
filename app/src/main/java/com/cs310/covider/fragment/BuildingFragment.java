@@ -231,10 +231,10 @@ public class BuildingFragment extends MyFragment {
                         for (User user : visitors) {
                             if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
                                 infectedCount++;
-                            else if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
+                            if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
                                 symptomsCount++;
                         }
-                        float updatedRisk = defaultRisk + (float) (.8 * infectedCount + .5 * symptomsCount + .2 * totalVisitor);
+                        float updatedRisk = defaultRisk + (float) (.7 * infectedCount + .2 * symptomsCount + .1 * totalVisitor);
                         displayPopUp(updatedRisk, bar, tv, currBuilding, way, pop, view);
                     }
                 });
