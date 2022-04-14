@@ -157,7 +157,7 @@ public class BuildingFragment extends MyFragment {
     @SuppressLint("UseCompatLoadingForDrawables")
     private void showFrequentlyVisitedBuildings() {
         final float scale = getResources().getDisplayMetrics().density;
-        LinearLayout frequentBuildingsContainer = getActivity().findViewById(R.id.frequently_visited_buildings);
+        LinearLayout frequentBuildingsContainer = getActivity().findViewById(R.id.buildings_frequently_visited);
         frequentBuildingsContainer.removeAllViews();
         BuildingFragment buildingFragment = this;
         Objects.requireNonNull(Util.getCurrentUserTask()).addOnSuccessListener(documentSnapshot -> {

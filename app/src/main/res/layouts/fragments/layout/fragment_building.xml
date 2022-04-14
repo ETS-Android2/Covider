@@ -47,12 +47,13 @@
                 android:theme="@style/special" />
 
             <LinearLayout
-                android:id="@+id/frequently_visited_buildings"
+                android:id="@+id/buildings_frequently_visited"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
 
             <TextView
+                android:id="@+id/all_usc_buildings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="11dp"
