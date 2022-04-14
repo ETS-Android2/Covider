@@ -39,7 +39,23 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class YiyiYuanBlackBoxTests {
+public class YiyiYuanBlackWhiteBoxTests {
+    protected static ViewAction clickOnNonDisplayView = new ViewAction() {
+        @Override
+        public Matcher<View> getConstraints() {
+            return ViewMatchers.isEnabled();
+        }
+
+        @Override
+        public String getDescription() {
+            return "";
+        }
+
+        @Override
+        public void perform(UiController uiController, View view) {
+            view.performClick();
+        }
+    };
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<>(MainActivity.class);
@@ -68,6 +84,48 @@ public class YiyiYuanBlackBoxTests {
 
     protected static void isGone(int id) {
         onView(withId(id)).check(matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
+    }
+
+    private static Matcher<View> LinearLayoutCount(final int size) {
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public boolean matchesSafely(final View view) {
+                return ((LinearLayout) view).getChildCount() == size;
+            }
+
+            @Override
+            public void describeTo(final Description description) {
+                description.appendText("Test Failed: Expected " + size + " items");
+            }
+        };
+    }
+
+    private static Predicate<View> MatcherPred(final Matcher<View> matcher) {
+        return matcher::matches;
+    }
+
+    protected static Matcher<View> ViewCount(final Matcher<View> viewMatcher, final int expectedCount) {
+        return new TypeSafeMatcher<View>() {
+            int actualCount = -1;
+
+            @Override
+            public void describeTo(Description description) {
+                if (0 <= actualCount) {
+                    description.appendText(String.valueOf(expectedCount));
+                    description.appendText("\n With matcher: ");
+                    viewMatcher.describeTo(description);
+                    description.appendText(String.valueOf(actualCount));
+                }
+            }
+
+            @Override
+            protected boolean matchesSafely(View root) {
+                actualCount = 0;
+                Iterable<View> iterable = TreeIterables.breadthFirstViewTraversal(root);
+                actualCount = Lists.newArrayList(Iterables.filter(iterable, MatcherPred(viewMatcher))).size();
+                return actualCount == expectedCount;
+            }
+        };
     }
 
     public void EnsureLoggedOut() {
@@ -131,44 +189,6 @@ public class YiyiYuanBlackBoxTests {
         isVisible(R.id.all_usc_buildings);
     }
 
-    private static Matcher<View> LinearLayoutCount(final int size) {
-        return new TypeSafeMatcher<View>() {
-            @Override public boolean matchesSafely (final View view) {
-                return ((LinearLayout) view).getChildCount() == size;
-            }
-
-            @Override public void describeTo (final Description description) {
-                description.appendText ("Test Failed: Expected " + size + " items");
-            }
-        };
-    }
-
-    private static Predicate<View> MatcherPred(final Matcher<View> matcher) {
-        return matcher::matches;
-    }
-
-    protected static Matcher<View> ViewCount(final Matcher<View> viewMatcher, final int expectedCount) {
-        return new TypeSafeMatcher<View>() {
-            int actualCount = -1;
-            @Override
-            public void describeTo(Description description) {
-                if (0 <= actualCount) {
-                    description.appendText(String.valueOf(expectedCount));
-                    description.appendText("\n With matcher: ");
-                    viewMatcher.describeTo(description);
-                    description.appendText(String.valueOf(actualCount));
-                }
-            }
-            @Override
-            protected boolean matchesSafely(View root) {
-                actualCount = 0;
-                Iterable<View> iterable = TreeIterables.breadthFirstViewTraversal(root);
-                actualCount = Lists.newArrayList(Iterables.filter(iterable, MatcherPred(viewMatcher))).size();
-                return actualCount == expectedCount;
-            }
-        };
-    }
-
     @Test
     public void ListDisplayAfterCoursesAdded() {
         EnsureLoggedOut();
@@ -219,25 +239,8 @@ public class YiyiYuanBlackBoxTests {
         onView(withId(R.id.map)).check(matches(isDisplayed()));
     }
 
-    protected static ViewAction clickOnNonDisplayView = new ViewAction() {
-        @Override
-        public Matcher<View> getConstraints() {
-            return ViewMatchers.isEnabled();
-        }
-
-        @Override
-        public String getDescription() {
-            return "";
-        }
-
-        @Override
-        public void perform(UiController uiController, View view) {
-            view.performClick();
-        }
-    };
-
     @Test
-    public void BuildingDetailDefaultDisplay() throws UiObjectNotFoundException {
+    public void BuildingDetailDefaultDisplayInMapTab() throws UiObjectNotFoundException {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_map_item)).check(matches(isDisplayed())).perform(click());
         try {
@@ -247,9 +250,81 @@ public class YiyiYuanBlackBoxTests {
         }
         UiDevice device = UiDevice.getInstance(getInstrumentation());
         UiObject marker = device.findObject(new UiSelector().descriptionContains("ann"));
+        marker.exists();
         marker.click();
         onView(withId(R.id.building_comp)).check(matches(withText(R.string.ann_comp)));
         onView(withId(R.id.ratingBar)).noActivity();
-        onView(withId(R.id.req)).check(matches(withText(R.string.ann_comp)));
+        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
+        onView(withId(R.id.ways)).check(matches(withText("Go to the USC Pharmacy or a Nearby CVS/Walgreens Store to Purchase")));
+        onView(withId(R.id.return_to_previous)).perform(click());
+        UiObject marker2 = device.findObject(new UiSelector().descriptionContains("acc"));
+        marker2.exists();
+        marker2.click();
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
+        onView(withId(R.id.ratingBar)).noActivity();
+        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
+        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
+        onView(withId(R.id.return_to_previous)).perform(click());
+        UiObject marker3 = device.findObject(new UiSelector().descriptionContains("mcc"));
+        marker3.exists();
+        marker3.click();
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.mcc_comp)));
+        onView(withId(R.id.ratingBar)).noActivity();
+        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
+        onView(withId(R.id.ways)).check(matches(withText("Masks Can Be Purchased at USC bookstore ($2/each) or Target")));
+    }
+
+    @Test
+    public void BuildingDetailDisplayInBuildingTab() {
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_building_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.acc)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
+        onView(withId(R.id.ratingBar)).noActivity();
+        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
+        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
+        onView(withId(R.id.return_to_previous)).perform(click());
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        onView(withId(R.id.mcc)).check(matches(isDisplayed())).perform(click());
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.mcc_comp)));
+//        onView(withId(R.id.ratingBar)).noActivity();
+//        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
+//        onView(withId(R.id.ways)).check(matches(withText("Masks Can Be Purchased at USC bookstore ($2/each) or Target")));
+//        onView(withId(R.id.return_to_previous)).perform(click());
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        onView(withId(R.id.ann)).check(matches(isDisplayed())).perform(click());
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.ann_comp)));
+//        onView(withId(R.id.ratingBar)).noActivity();
+//        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
+//        onView(withId(R.id.ways)).check(matches(withText("Go to the USC Pharmacy or a Nearby CVS/Walgreens Store to Purchase")));
+//        onView(withId(R.id.return_to_previous)).perform(click());
     }
 }
