@@ -229,6 +229,7 @@ public class YiyiYuanBlackWhiteBoxTests {
     @Test
     public void DefaultMapDisplay() {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        ClosePopup();
         onView(withId(R.id.menu_map_item)).check(matches(isDisplayed())).perform(click());
         try {
             Thread.sleep(1000);
