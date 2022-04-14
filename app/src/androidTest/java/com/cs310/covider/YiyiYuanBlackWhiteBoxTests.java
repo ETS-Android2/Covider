@@ -82,8 +82,8 @@ public class YiyiYuanBlackWhiteBoxTests {
         onView(withId(id)).check(matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 
-    protected static void isInvisible(int id) {
-        onView(withId(id)).check(matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
+    protected static void isGone(int id) {
+        onView(withId(id)).check(matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
     }
 
     private static Matcher<View> LinearLayoutCount(final int size) {
@@ -185,7 +185,7 @@ public class YiyiYuanBlackWhiteBoxTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        isInvisible(R.id.daily_schedule);
+        isGone(R.id.daily_schedule);
         isVisible(R.id.all_usc_buildings);
     }
 
