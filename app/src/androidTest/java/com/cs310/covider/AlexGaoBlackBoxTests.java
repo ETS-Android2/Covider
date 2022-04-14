@@ -12,8 +12,6 @@ import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.cs310.covider.fragment.FormFragment;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,12 +22,12 @@ public class AlexGaoBlackBoxTests {
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-    private static boolean waitForElementUntilDisplayed(ViewInteraction element) {
+    private static void waitForElementUntilDisplayed(ViewInteraction element) {
         int i = 0;
         while (i++ < 200) {
             try {
                 element.check(matches(isDisplayed()));
-                return true;
+                return;
             } catch (Exception e) {
                 e.printStackTrace();
                 try {
@@ -39,7 +37,6 @@ public class AlexGaoBlackBoxTests {
                 }
             }
         }
-        return false;
     }
 
     public void ClosePopup() {
@@ -75,7 +72,7 @@ public class AlexGaoBlackBoxTests {
     }
 
     @Test
-    public void studentCanOpenForm(){
+    public void studentCanOpenForm() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
@@ -99,16 +96,16 @@ public class AlexGaoBlackBoxTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        onView(withId(R.id.symptoms_text)).check(matches(isDisplayed()));
+        // onView(withId(R.id.symptoms_text)).check(matches(isDisplayed()));
         onView(withId(R.id.form_symptoms_selection)).check(matches(isDisplayed()));
-        onView(withId(R.id.test_text)).check(matches(isDisplayed()));
+        // onView(withId(R.id.test_text)).check(matches(isDisplayed()));
         onView(withId(R.id.form_test_selection)).check(matches(isDisplayed()));
         onView(withId(R.id.form_checkbox_agree)).check(matches(isDisplayed()));
         onView(withId(R.id.form_button)).check(matches(isDisplayed()));
     }
 
     @Test
-    public void instructorCanOpenForm(){
+    public void instructorCanOpenForm() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
@@ -132,16 +129,16 @@ public class AlexGaoBlackBoxTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        onView(withId(R.id.symptoms_text)).check(matches(isDisplayed()));
+        // onView(withId(R.id.symptoms_text)).check(matches(isDisplayed()));
         onView(withId(R.id.form_symptoms_selection)).check(matches(isDisplayed()));
-        onView(withId(R.id.test_text)).check(matches(isDisplayed()));
+        // onView(withId(R.id.test_text)).check(matches(isDisplayed()));
         onView(withId(R.id.form_test_selection)).check(matches(isDisplayed()));
         onView(withId(R.id.form_checkbox_agree)).check(matches(isDisplayed()));
         onView(withId(R.id.form_button)).check(matches(isDisplayed()));
     }
 
     @Test
-    public void studentCanSubmitForm(){
+    public void studentCanSubmitForm() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
@@ -179,7 +176,7 @@ public class AlexGaoBlackBoxTests {
     }
 
     @Test
-    public void instructorCanSubmitForm(){
+    public void instructorCanSubmitForm() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
@@ -217,7 +214,7 @@ public class AlexGaoBlackBoxTests {
     }
 
     @Test
-    public void userCanSubmitBuildingCheckinForm(){
+    public void userCanSubmitBuildingCheckinForm() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
