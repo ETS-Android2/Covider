@@ -427,7 +427,7 @@ public class YiyiYuanBlackWhiteBoxTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // if already checked in, comment out line 401 - 408
+        // if already checked in, comment out line 431 - 438
         onView(withId(R.id.form_checkbox_agree)).perform(click());
         onView(withId(R.id.form_button)).perform(click());
         try {
@@ -462,7 +462,7 @@ public class YiyiYuanBlackWhiteBoxTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // if already checked in, comment out line 436 - 443
+        // if already checked in, comment out line 466 - 463
         onView(withId(R.id.form_checkbox_agree)).perform(click());
         onView(withId(R.id.form_button)).perform(click());
         try {
@@ -500,7 +500,7 @@ public class YiyiYuanBlackWhiteBoxTests {
             e.printStackTrace();
         }
         onView(withId(R.id.checkin_submit_button)).perform(click());
-        // if already checked in the building acb, comment out the following line (line 474)
+        // if already checked in the building acb, comment out the following line (line 504)
         onView(withText("YES")).check(matches(isDisplayed())).perform(click());
         ClosePopup();
 
@@ -527,7 +527,7 @@ public class YiyiYuanBlackWhiteBoxTests {
             e.printStackTrace();
         }
         onView(withId(R.id.checkin_submit_button)).perform(click());
-        // if already checked in the building acb, comment out the following line (line 501)
+        // if already checked in the building acb, comment out the following line (line 531)
         onView(withText("YES")).check(matches(isDisplayed())).perform(click());
         ClosePopup();
     }
