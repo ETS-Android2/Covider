@@ -27,12 +27,12 @@ public class DavidZhangBlackBoxTests {
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-    private static boolean waitForElementUntilDisplayed(ViewInteraction element) {
+    private static void waitForElementUntilDisplayed(ViewInteraction element) {
         int i = 0;
         while (i++ < 200) {
             try {
                 element.check(matches(isDisplayed()));
-                return true;
+                return;
             } catch (Exception e) {
                 e.printStackTrace();
                 try {
@@ -42,7 +42,6 @@ public class DavidZhangBlackBoxTests {
                 }
             }
         }
-        return false;
     }
 
 
