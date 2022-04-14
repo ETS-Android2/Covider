@@ -272,6 +272,7 @@ public class YiyiYuanBlackWhiteBoxTests {
         onView(withId(R.id.ratingBar)).noActivity();
         onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
         onView(withId(R.id.ways)).check(matches(withText("Masks Can Be Purchased at USC bookstore ($2/each) or Target")));
+        onView(withId(R.id.return_to_previous)).perform(click());
     }
 
     @Test
