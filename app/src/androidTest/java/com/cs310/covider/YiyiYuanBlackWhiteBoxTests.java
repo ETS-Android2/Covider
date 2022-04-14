@@ -228,6 +228,7 @@ public class YiyiYuanBlackWhiteBoxTests {
 
     @Test
     public void DefaultMapDisplay() {
+        EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         ClosePopup();
         onView(withId(R.id.menu_map_item)).check(matches(isDisplayed())).perform(click());
@@ -315,37 +316,37 @@ public class YiyiYuanBlackWhiteBoxTests {
             e.printStackTrace();
         }
         onView(withId(R.id.acc)).check(matches(isDisplayed())).perform(click());
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
-//        onView(withId(R.id.ratingBar)).noActivity();
-//        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
-//        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
-//        onView(withId(R.id.return_to_previous)).perform(click());
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        onView(withId(R.id.acb)).check(matches(isDisplayed())).perform(click());
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acb_comp)));
-//        onView(withId(R.id.ratingBar)).noActivity();
-//        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a Mask")));
-//        onView(withId(R.id.ways)).check(matches(withText("Masks Can Be Purchased at USC bookstore ($2/each) or Target")));
-//        onView(withId(R.id.return_to_previous)).perform(click());
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
+        onView(withId(R.id.ratingBar)).noActivity();
+        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
+        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
+        onView(withId(R.id.return_to_previous)).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.acb)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acb_comp)));
+        onView(withId(R.id.ratingBar)).noActivity();
+        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a Mask")));
+        onView(withId(R.id.ways)).check(matches(withText("Masks Can Be Purchased at USC bookstore ($2/each) or Target")));
+        onView(withId(R.id.return_to_previous)).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 //        onView(withId(R.id.ann)).check(matches(isDisplayed())).perform(click());
 //        try {
 //            Thread.sleep(1000);
