@@ -230,7 +230,20 @@ public class YiyiYuanBlackWhiteBoxTests {
     public void DefaultMapDisplay() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_map_item)).check(matches(isDisplayed())).perform(click());
         try {
             Thread.sleep(1000);
