@@ -4,6 +4,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
@@ -223,7 +224,6 @@ public class YiyiYuanBlackWhiteBoxTests {
         onView(isRoot()).check(matches(ViewCount(withText(R.string.acc_comp), 3)));
         onView(isRoot()).check(matches(ViewCount(withText(R.string.ahf2_comp), 2)));
         onView(withId(R.id.all_usc_buildings)).check(matches(withText("All USC Buildings")));
-//        onView(withId(R.id.buildings_frequently_visited)).check(matches(withText("Frequently Visited Buildings")));
     }
 
     @Test
@@ -371,5 +371,167 @@ public class YiyiYuanBlackWhiteBoxTests {
 //        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
 //        onView(withId(R.id.ways)).check(matches(withText("Go to the USC Pharmacy or a Nearby CVS/Walgreens Store to Purchase")));
 //        onView(withId(R.id.return_to_previous)).perform(click());
+    }
+
+    @Test
+    public void CheckFrequentlyVisitedSetUp1() {
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_form_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // if already checked in, comment out line 401 - 408
+        onView(withId(R.id.form_checkbox_agree)).perform(click());
+        onView(withId(R.id.form_button)).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withText("YES")).check(matches(isDisplayed())).perform(click());
+        ClosePopup();
+        onView(withId(R.id.map)).check(matches(isDisplayed()));
+
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_form_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // if already checked in, comment out line 436 - 443
+        onView(withId(R.id.form_checkbox_agree)).perform(click());
+        onView(withId(R.id.form_button)).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withText("YES")).check(matches(isDisplayed())).perform(click());
+        ClosePopup();
+        onView(withId(R.id.map)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void CheckFrequentlyVisitedSetUp2() {
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_checkin_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.checkin_submit_button)).perform(click());
+        // if already checked in the building acb, comment out the following line (line 474)
+        onView(withText("YES")).check(matches(isDisplayed())).perform(click());
+        ClosePopup();
+
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_checkin_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.checkin_submit_button)).perform(click());
+        // if already checked in the building acb, comment out the following line (line 501)
+        onView(withText("YES")).check(matches(isDisplayed())).perform(click());
+        ClosePopup();
+    }
+
+    @Test
+    public void CheckFrequentlyVisitedInBuildingTap() {
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        ClosePopup();
+        onView(withId(R.id.menu_building_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        isVisible(R.id.list);
+        isVisible(R.id.all_usc_buildings);
+        onView(withId(R.id.all_usc_buildings)).check(matches(withText("All USC Buildings")));
+        onView(withId(R.id.list)).check(matches(isDisplayed()));
+        onView(withId(R.id.frequent_visit)).check(matches(withText("Frequently Visited Buildings")));
+        onView(isRoot()).check(matches(ViewCount(withText(R.string.acb_comp), 2)));
     }
 }
