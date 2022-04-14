@@ -40,22 +40,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class YiyiYuanBlackWhiteBoxTests {
-    protected static ViewAction clickOnNonDisplayView = new ViewAction() {
-        @Override
-        public Matcher<View> getConstraints() {
-            return ViewMatchers.isEnabled();
-        }
-
-        @Override
-        public String getDescription() {
-            return "";
-        }
-
-        @Override
-        public void perform(UiController uiController, View view) {
-            view.performClick();
-        }
-    };
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<>(MainActivity.class);
@@ -99,6 +83,23 @@ public class YiyiYuanBlackWhiteBoxTests {
             }
         };
     }
+    
+//    private static ViewAction clickOnNonDisplayView = new ViewAction() {
+//        @Override
+//        public Matcher<View> getConstraints() {
+//            return ViewMatchers.isEnabled();
+//        }
+//
+//        @Override
+//        public String getDescription() {
+//            return "";
+//        }
+//
+//        @Override
+//        public void perform(UiController uiController, View view) {
+//            view.performClick();
+//        }
+//    };
 
     private static Predicate<View> MatcherPred(final Matcher<View> matcher) {
         return matcher::matches;
