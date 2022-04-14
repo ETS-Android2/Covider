@@ -4,7 +4,6 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
@@ -14,8 +13,11 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 
 import androidx.test.espresso.NoMatchingViewException;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.espresso.core.internal.deps.guava.base.Predicate;
@@ -373,6 +375,34 @@ public class YiyiYuanBlackWhiteBoxTests {
 //        onView(withId(R.id.return_to_previous)).perform(click());
     }
 
+    public void DefaultRiskLevel() {
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        ClosePopup();
+        onView(withId(R.id.menu_building_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acb_comp)));
+        onView(withId(R.id.ratingBar)).check(matches(RatingMatcher(1.5F)));
+    }
+
     @Test
     public void CheckFrequentlyVisitedSetUp1() {
         EnsureLoggedOut();
@@ -528,10 +558,53 @@ public class YiyiYuanBlackWhiteBoxTests {
             e.printStackTrace();
         }
         isVisible(R.id.list);
+        isVisible(R.id.buildings_frequently_visited);
         isVisible(R.id.all_usc_buildings);
         onView(withId(R.id.all_usc_buildings)).check(matches(withText("All USC Buildings")));
         onView(withId(R.id.list)).check(matches(isDisplayed()));
         onView(withId(R.id.frequent_visit)).check(matches(withText("Frequently Visited Buildings")));
         onView(isRoot()).check(matches(ViewCount(withText(R.string.acb_comp), 2)));
+    }
+
+    private static Matcher<View> RatingMatcher(final float rating) {
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public boolean matchesSafely(final View view) {
+                return ((RatingBar) view).getRating() == rating;
+            }
+
+            @Override
+            public void describeTo(final Description description) {
+                description.appendText("Test Failed: Expected " + rating);
+            }
+        };
+    }
+
+    public void TestRiskLevelUpdate() {
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        ClosePopup();
+        onView(withId(R.id.menu_building_item)).check(matches(isDisplayed())).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acb_comp)));
+        onView(withId(R.id.ratingBar)).check(matches(RatingMatcher((float) (1.5 + (.7 * 2 + .2 * 2 + .1 * 2)))));
     }
 }
