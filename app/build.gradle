@@ -59,6 +59,7 @@ android {
 
 
 dependencies {
+    implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     annotationProcessor 'com.android.databinding:compiler:3.5.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

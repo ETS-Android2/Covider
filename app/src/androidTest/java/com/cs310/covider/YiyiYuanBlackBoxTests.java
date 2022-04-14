@@ -6,16 +6,34 @@ import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.test.espresso.NoMatchingViewException;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.DrawerActions;
+import androidx.test.espresso.core.internal.deps.guava.base.Predicate;
+import androidx.test.espresso.core.internal.deps.guava.collect.Iterables;
+import androidx.test.espresso.core.internal.deps.guava.collect.Lists;
 import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.espresso.util.TreeIterables;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.uiautomator.UiDevice;
+import androidx.test.uiautomator.UiObject;
+import androidx.test.uiautomator.UiObjectNotFoundException;
+import androidx.test.uiautomator.UiSelector;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -85,7 +103,7 @@ public class YiyiYuanBlackBoxTests {
     }
 
     @Test
-    public void DefaultListDisplaySetUp() {
+    public void DefaultListDisplay() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
@@ -113,8 +131,46 @@ public class YiyiYuanBlackBoxTests {
         isVisible(R.id.all_usc_buildings);
     }
 
+    private static Matcher<View> LinearLayoutCount(final int size) {
+        return new TypeSafeMatcher<View>() {
+            @Override public boolean matchesSafely (final View view) {
+                return ((LinearLayout) view).getChildCount() == size;
+            }
+
+            @Override public void describeTo (final Description description) {
+                description.appendText ("Test Failed: Expected " + size + " items");
+            }
+        };
+    }
+
+    private static Predicate<View> MatcherPred(final Matcher<View> matcher) {
+        return matcher::matches;
+    }
+
+    protected static Matcher<View> ViewCount(final Matcher<View> viewMatcher, final int expectedCount) {
+        return new TypeSafeMatcher<View>() {
+            int actualCount = -1;
+            @Override
+            public void describeTo(Description description) {
+                if (0 <= actualCount) {
+                    description.appendText(String.valueOf(expectedCount));
+                    description.appendText("\n With matcher: ");
+                    viewMatcher.describeTo(description);
+                    description.appendText(String.valueOf(actualCount));
+                }
+            }
+            @Override
+            protected boolean matchesSafely(View root) {
+                actualCount = 0;
+                Iterable<View> iterable = TreeIterables.breadthFirstViewTraversal(root);
+                actualCount = Lists.newArrayList(Iterables.filter(iterable, MatcherPred(viewMatcher))).size();
+                return actualCount == expectedCount;
+            }
+        };
+    }
+
     @Test
-    public void ListDisplaySetUp() {
+    public void ListDisplayAfterCoursesAdded() {
         EnsureLoggedOut();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
@@ -131,10 +187,6 @@ public class YiyiYuanBlackBoxTests {
         }
         ClosePopup();
         onView(withId(R.id.map)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void ListDisplayAfterCoursesAdded() {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_building_item)).check(matches(isDisplayed())).perform(click());
         try {
@@ -143,13 +195,20 @@ public class YiyiYuanBlackBoxTests {
             e.printStackTrace();
         }
         isVisible(R.id.list);
+        isVisible(R.id.daily_schedule);
+        isVisible(R.id.all_usc_buildings);
         onView(withId(R.id.list)).check(matches(isDisplayed()));
         onView(withId(R.id.daily_schedule)).check(matches(withText("Buildings in My Daily Schedule")));
+        onView(withId(R.id.buildings_in_daily_schedule)).check(matches(LinearLayoutCount(3)));
+        onView(isRoot()).check(matches(ViewCount(withText(R.string.acb_comp), 3)));
+        onView(isRoot()).check(matches(ViewCount(withText(R.string.acc_comp), 3)));
+        onView(isRoot()).check(matches(ViewCount(withText(R.string.ahf2_comp), 2)));
         onView(withId(R.id.all_usc_buildings)).check(matches(withText("All USC Buildings")));
+//        onView(withId(R.id.buildings_frequently_visited)).check(matches(withText("Frequently Visited Buildings")));
     }
 
     @Test
-    public void MapDisplay() {
+    public void DefaultMapDisplay() {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_map_item)).check(matches(isDisplayed())).perform(click());
         try {
@@ -160,20 +219,37 @@ public class YiyiYuanBlackBoxTests {
         onView(withId(R.id.map)).check(matches(isDisplayed()));
     }
 
+    protected static ViewAction clickOnNonDisplayView = new ViewAction() {
+        @Override
+        public Matcher<View> getConstraints() {
+            return ViewMatchers.isEnabled();
+        }
+
+        @Override
+        public String getDescription() {
+            return "";
+        }
+
+        @Override
+        public void perform(UiController uiController, View view) {
+            view.performClick();
+        }
+    };
+
     @Test
-    public void DailyScheduleDisplay() {
+    public void BuildingDetailDefaultDisplay() throws UiObjectNotFoundException {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
-        onView(withId(R.id.menu_building_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.menu_map_item)).check(matches(isDisplayed())).perform(click());
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        onView(withId(R.id.list)).check(matches(isDisplayed()));
-        isVisible(R.id.list);
-        onView(withId(R.id.daily_schedule)).check(matches(withText("Buildings in My Daily Schedule")));
-//        onView(withId(R.id.daily_schedule)).check(matches(withLinearLayoutSize(3)));
+        UiDevice device = UiDevice.getInstance(getInstrumentation());
+        UiObject marker = device.findObject(new UiSelector().descriptionContains("ann"));
+        marker.click();
+        onView(withId(R.id.building_comp)).check(matches(withText(R.string.ann_comp)));
+        onView(withId(R.id.ratingBar)).noActivity();
+        onView(withId(R.id.req)).check(matches(withText(R.string.ann_comp)));
     }
 }
-
-//  onView(withId(R.id.frequently_visited_buildings)).check(matches(withText("Frequently Visited Buildings")));
