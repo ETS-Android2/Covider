@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.HashMap;
 
 import static com.cs310.covider.model.Util.sameWeek;
-import static com.cs310.covider.model.Util.userCheckedIn;
 import static org.junit.Assert.*;
 
 /**
@@ -19,7 +18,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class WhiteBoxTests {
+public class DavidZhangWhiteBoxTests {
     User instructor = new User(User.UserType.INSTRUCTOR, new ArrayList<>(), "apple@qq.com", new Date(), new Date(), new Date(), new HashMap<>());
     User student = new User(User.UserType.STUDENT, new ArrayList<>(), "apple@qq.com", new Date(), new Date(), new Date(), new HashMap<>());
 
