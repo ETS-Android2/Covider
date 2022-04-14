@@ -15,8 +15,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.test.espresso.NoMatchingViewException;
-import androidx.test.espresso.UiController;
-import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.espresso.core.internal.deps.guava.base.Predicate;
@@ -83,7 +81,7 @@ public class YiyiYuanBlackWhiteBoxTests {
             }
         };
     }
-    
+
 //    private static ViewAction clickOnNonDisplayView = new ViewAction() {
 //        @Override
 //        public Matcher<View> getConstraints() {
