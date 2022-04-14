@@ -241,6 +241,21 @@ public class YiyiYuanBlackWhiteBoxTests {
 
     @Test
     public void BuildingDetailDefaultDisplayInMapTab() throws UiObjectNotFoundException {
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_map_item)).check(matches(isDisplayed())).perform(click());
         try {
@@ -257,26 +272,41 @@ public class YiyiYuanBlackWhiteBoxTests {
         onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
         onView(withId(R.id.ways)).check(matches(withText("Go to the USC Pharmacy or a Nearby CVS/Walgreens Store to Purchase")));
         onView(withId(R.id.return_to_previous)).perform(click());
-        UiObject marker2 = device.findObject(new UiSelector().descriptionContains("acc"));
-        marker2.exists();
-        marker2.click();
-        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
-        onView(withId(R.id.ratingBar)).noActivity();
-        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
-        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
-        onView(withId(R.id.return_to_previous)).perform(click());
+//        UiObject marker2 = device.findObject(new UiSelector().descriptionContains("acc"));
+//        marker2.exists();
+//        marker2.click();
+//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
+//        onView(withId(R.id.ratingBar)).noActivity();
+//        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
+//        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
+//        onView(withId(R.id.return_to_previous)).perform(click());
         UiObject marker3 = device.findObject(new UiSelector().descriptionContains("mcc"));
         marker3.exists();
         marker3.click();
         onView(withId(R.id.building_comp)).check(matches(withText(R.string.mcc_comp)));
         onView(withId(R.id.ratingBar)).noActivity();
-        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
+        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a Mask")));
         onView(withId(R.id.ways)).check(matches(withText("Masks Can Be Purchased at USC bookstore ($2/each) or Target")));
         onView(withId(R.id.return_to_previous)).perform(click());
     }
 
     @Test
     public void BuildingDetailDisplayInBuildingTab() {
+        EnsureLoggedOut();
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.menu_login_item)).check(matches(isDisplayed())).perform(click());
+        onView(withId(R.id.login_email))
+                .perform(replaceText("hello2@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.login_password))
+                .perform(replaceText("yiyi11325"), closeSoftKeyboard());
+        onView(withId(R.id.login_button))
+                .perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ClosePopup();
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         onView(withId(R.id.menu_building_item)).check(matches(isDisplayed())).perform(click());
         try {
@@ -285,30 +315,30 @@ public class YiyiYuanBlackWhiteBoxTests {
             e.printStackTrace();
         }
         onView(withId(R.id.acc)).check(matches(isDisplayed())).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
-        onView(withId(R.id.ratingBar)).noActivity();
-        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
-        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
-        onView(withId(R.id.return_to_previous)).perform(click());
 //        try {
 //            Thread.sleep(1000);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-//        onView(withId(R.id.mcc)).check(matches(isDisplayed())).perform(click());
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.mcc_comp)));
+//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acc_comp)));
 //        onView(withId(R.id.ratingBar)).noActivity();
-//        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a N95 Mask")));
+//        onView(withId(R.id.req)).check(matches(withText("Show a Negative COVID Test")));
+//        onView(withId(R.id.ways)).check(matches(withText("Testing on Campus: Secure an Appointment in MySHR in Advance or Use Walk-up Testing At the Sites")));
+//        onView(withId(R.id.return_to_previous)).perform(click());
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        onView(withId(R.id.acb)).check(matches(isDisplayed())).perform(click());
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        onView(withId(R.id.building_comp)).check(matches(withText(R.string.acb_comp)));
+//        onView(withId(R.id.ratingBar)).noActivity();
+//        onView(withId(R.id.req)).check(matches(withText("Buy and Wear a Mask")));
 //        onView(withId(R.id.ways)).check(matches(withText("Masks Can Be Purchased at USC bookstore ($2/each) or Target")));
 //        onView(withId(R.id.return_to_previous)).perform(click());
 //        try {
