@@ -12,14 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/exposure_risk_level"
-        android:textColor="#616161"
-        android:textSize="15sp" />
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="15.5sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/entry_req"
-            android:textSize="15sp" />
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15.5sp" />
 
         <TextView
             android:id="@+id/req"
@@ -56,7 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ways_to_satisfy_req"
-            android:textSize="15sp" />
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15.5sp" />
 
         <TextView
             android:id="@+id/ways"
