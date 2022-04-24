@@ -34,6 +34,7 @@ import com.cs310.covider.fragment.RegisterFragment;
 import com.cs310.covider.model.Pair;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -146,6 +147,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 User user = documentSnapshot.toObject(User.class);
+                if (user.getUserCoursesIDs() != null) {
+                    for (String courseID : user.getUserCoursesIDs()) {
+                        FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(courseID.getBytes(StandardCharsets.UTF_8)).replace("=", "")).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                int i = 0;
+                            }
+                        });
+                    }
+                }
                 if (!Util.userDidTodayCheck(user)) {
                     openDialog("You have not completed today's check form!");
                 }
@@ -283,7 +294,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void sendNotificationToTopic(String title, String body, String courseID) {
-        String topic = Base64.getEncoder().encodeToString(courseID.getBytes(StandardCharsets.UTF_8));
+        String topic = Base64.getEncoder().encodeToString(courseID.getBytes(StandardCharsets.UTF_8)).replace("=", "");
         RequestQueue mRequestQue = Volley.newRequestQueue(this);
         JSONObject json = new JSONObject();
         try {

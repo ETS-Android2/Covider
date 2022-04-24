@@ -172,7 +172,7 @@ public class AddCourseFragment extends MyFragment {
                                                                                     .addOnFailureListener(e -> openDialog(task)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                                         @Override
                                                                                         public void onSuccess(Void unused) {
-                                                                                            FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(buildingName.getBytes(StandardCharsets.UTF_8)));
+                                                                                            FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(newCourse.getId().getBytes(StandardCharsets.UTF_8)).replace("=", ""));
                                                                                             openDialog("Success!");
                                                                                             redirectToHome();
                                                                                         }
@@ -225,7 +225,8 @@ public class AddCourseFragment extends MyFragment {
                 }).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(course.getId().getBytes(StandardCharsets.UTF_8)));
+                        FirebaseMessaging.getInstance().subscribeToTopic(Base64.getEncoder().encodeToString(course.getId().getBytes(StandardCharsets.UTF_8)).replace("=", ""));
+                        redirectToHome();
                         openDialog("Success!");
                     }
                 });
