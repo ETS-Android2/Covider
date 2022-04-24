@@ -7,8 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
     <color name="cardinal">#8c1a11</color>
+    <color name="red">#FBF3F3</color>
+    <color name="blue">#FFF4F8FC</color>
+    <color name="orange">#FCF6EF</color>
     <color name="gold">#f0c68b</color>
     <color name="bubbles">#E7FEFF</color>
 </resources>
