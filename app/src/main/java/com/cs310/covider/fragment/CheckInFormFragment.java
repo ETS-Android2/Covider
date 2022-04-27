@@ -2,12 +2,11 @@ package com.cs310.covider.fragment;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,10 +17,7 @@ import com.cs310.covider.R;
 import com.cs310.covider.model.Building;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.*;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -105,9 +101,69 @@ public class CheckInFormFragment extends MyFragment {
                 }
                 spinner.setAdapter(adapter);
                 Button button = rootView.findViewById(R.id.checkin_submit_button);
+                View child = rootView;
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        Building building = buildings.get(i);
+                        ArrayList<Task> checkedInUserTasks = new ArrayList<>();
+                        assert building != null;
+                        if (Util.buildingCheckinDataValidForToday(building)) {
+                            for (String checkedInEmail : building.getCheckedInUserEmails()) {
+                                checkedInUserTasks.add(Util.getUserWithEmailTask(checkedInEmail));
+                            }
+                            Tasks.whenAllComplete(checkedInUserTasks.toArray(new Task[0])).addOnCompleteListener(tasks -> {
+                                if (!tasks.isSuccessful()) {
+                                    openDialog(tasks);
+                                    redirectToHome();
+                                    return;
+                                }
+                                ArrayList<User> visitors = new ArrayList<>();
+                                for (Task task : tasks.getResult())
+                                    visitors.add(((DocumentSnapshot) task.getResult()).toObject(User.class));
+                                if (!visitors.isEmpty()) {
+                                    int totalVisitor = visitors.size(), infectedCount = 0, symptomsCount = 0;
+                                    for (User user : visitors) {
+                                        if (user.getLastInfectionDate() != null && Util.withInTwoWeeks(user.getLastInfectionDate()))
+                                            infectedCount++;
+                                        if (user.getLastSymptomsDate() != null && Util.withInTwoWeeks(user.getLastSymptomsDate()))
+                                            symptomsCount++;
+                                    }
+                                    float updatedRisk = 1.5f + (float) (.7 * infectedCount + .2 * symptomsCount + .1 * totalVisitor);
+                                    ((TextView) child.findViewById(R.id.building_comp)).setText(((MainActivity) (getActivity())).buildingAbrevToFullName(building.getName()));
+                                    RatingBar bar = child.findViewById(R.id.ratingBar);
+                                    TextView tv = child.findViewById(R.id.req);
+                                    TextView way = child.findViewById(R.id.ways);
+                                    bar.setRating(updatedRisk);
+                                    tv.setText(building.getEntryRequirement());
+                                    way.setText(building.getHowToSatisfyRequirement());
+                                }
+                            });
+                        } else {
+                            float updatedRisk = 1.5f;
+                            ((TextView) child.findViewById(R.id.building_comp)).setText(((MainActivity) (getActivity())).buildingAbrevToFullName(building.getName()));
+                            RatingBar bar = child.findViewById(R.id.ratingBar);
+                            TextView tv = child.findViewById(R.id.req);
+                            TextView way = child.findViewById(R.id.ways);
+                            bar.setRating(updatedRisk);
+                            tv.setText(building.getEntryRequirement());
+                            way.setText(building.getHowToSatisfyRequirement());
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        CheckBox checkBox = rootView.findViewById(R.id.checkin_checkbox_confirm);
+                        if (!checkBox.isChecked()) {
+                            openDialog("You have not confirmed that you meet the entry requirements!");
+                            return;
+                        }
                         Building selection = buildings.get(spinner.getSelectedItemPosition());
                         if (Util.userCheckedIn(selection, FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
                             openDialog("You already checked in to this building!");

@@ -1,35 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".fragment.CheckInFormFragment">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            tools:context=".fragment.CheckInFormFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:text="Which building are you checking-in to?"
-            android:textSize="20sp"></TextView>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="Which building are you checking-in to?"
+                android:textSize="20sp"/>
 
         <Spinner
-            android:id="@+id/checkin_buildings_selection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></Spinner>
+                android:id="@+id/checkin_buildings_selection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grey"
+                android:orientation="vertical"
+                android:paddingHorizontal="25dp">
+
+            <TextView
+                    android:id="@+id/building_comp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/exposure_risk_level"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="15.5sp"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey"
+                    android:gravity="start"
+                    android:orientation="vertical">
+
+                <RatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:isIndicator="true"
+                        android:numStars="7"
+                        android:stepSize="0.1"
+                        android:theme="@style/RatingBar"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entry_req"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="15.5sp"/>
+
+                <TextView
+                        android:id="@+id/req"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:textSize="14sp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ways_to_satisfy_req"
+                        android:textColor="@color/cardview_dark_background"
+                        android:textSize="15.5sp"/>
+
+                <TextView
+                        android:id="@+id/ways"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:textSize="14sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <CheckBox
+                android:id="@+id/checkin_checkbox_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I confirm that I satisfy all entry requirements"/>
 
         <Button
-            android:id="@+id/checkin_submit_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/submit" />
-
+                android:id="@+id/checkin_submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"/>
     </LinearLayout>
+
 </ScrollView>
