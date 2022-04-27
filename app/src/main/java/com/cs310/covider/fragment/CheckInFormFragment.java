@@ -185,8 +185,9 @@ public class CheckInFormFragment extends MyFragment {
                                             @Override
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 User user = documentSnapshot.toObject(User.class);
-                                                if (user.getBuildingCheckedinTimes() == null) {
+                                                if (user.getBuildingCheckedinTimes() == null || user.getCheckedinTimesValidSinceDate() == null || !Util.withInTwoWeeks(user.getCheckedinTimesValidSinceDate())) {
                                                     user.setBuildingCheckedinTimes(new HashMap<>());
+                                                    user.setCheckedinTimesValidSinceDate(new Date());
                                                 }
                                                 user.getBuildingCheckedinTimes().merge(selection.getName(), 1, Integer::sum);
                                                 FirebaseFirestore.getInstance().collection("Users").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {

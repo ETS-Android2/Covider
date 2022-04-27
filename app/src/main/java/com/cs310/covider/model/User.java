@@ -14,20 +14,23 @@ public class User implements Serializable {
     private Date lastCheckDate;
     private Date lastInfectionDate;
     private HashMap<String, Integer> buildingCheckedinTimes;
+    private Date checkedinTimesValidSinceDate;
 
 
     public User() {
     }
 
-    public User(UserType userType, ArrayList<String> userCoursesIDs, String email, Date lastSymptomsDate, Date lastCheckDate, Date lastInfectionDate, HashMap<String, Integer> buildingCheckedinTimes) {
-        this.buildingCheckedinTimes = buildingCheckedinTimes;
+    public User(UserType userType, ArrayList<String> userCoursesIDs, String email, Date lastSymptomsDate, Date lastCheckDate, Date lastInfectionDate, HashMap<String, Integer> buildingCheckedinTimes, Date checkedinTimesValidSinceDate) {
         this.userType = userType;
         this.userCoursesIDs = userCoursesIDs;
         this.email = email;
         this.lastSymptomsDate = lastSymptomsDate;
         this.lastCheckDate = lastCheckDate;
         this.lastInfectionDate = lastInfectionDate;
+        this.buildingCheckedinTimes = buildingCheckedinTimes;
+        this.checkedinTimesValidSinceDate = checkedinTimesValidSinceDate;
     }
+
 
     public boolean risky(Util.TimeSpan span, Date queryDate) {
         //TODO
@@ -88,6 +91,14 @@ public class User implements Serializable {
 
     public void setBuildingCheckedinTimes(HashMap<String, Integer> buildingCheckedinTimes) {
         this.buildingCheckedinTimes = buildingCheckedinTimes;
+    }
+
+    public Date getCheckedinTimesValidSinceDate() {
+        return checkedinTimesValidSinceDate;
+    }
+
+    public void setCheckedinTimesValidSinceDate(Date checkedinTimesValidSinceDate) {
+        this.checkedinTimesValidSinceDate = checkedinTimesValidSinceDate;
     }
 
     public enum UserType implements Serializable {

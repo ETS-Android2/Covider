@@ -35,6 +35,7 @@ public class Util {
     }
 
     public static boolean withInTwoWeeks(Date date) {
+        assert date != null;
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, 14);
