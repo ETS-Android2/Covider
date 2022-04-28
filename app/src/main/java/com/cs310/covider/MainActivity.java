@@ -22,15 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.cs310.covider.fragment.AddCourseFragment;
-import com.cs310.covider.fragment.BuildingFragment;
-import com.cs310.covider.fragment.CheckInFormFragment;
-import com.cs310.covider.fragment.CoursesFragment;
-import com.cs310.covider.fragment.FormFragment;
-import com.cs310.covider.fragment.LoginFragment;
-import com.cs310.covider.fragment.LogoutFragment;
-import com.cs310.covider.fragment.MapsFragment;
-import com.cs310.covider.fragment.RegisterFragment;
+import com.cs310.covider.fragment.*;
 import com.cs310.covider.model.Pair;
 import com.cs310.covider.model.User;
 import com.cs310.covider.model.Util;
@@ -215,6 +207,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_checkin_item: {
                 fragmentClass = CheckInFormFragment.class;
                 break;
+            }
+            case R.id.menu_my_info_item: {
+                fragmentClass = MyInfoFragment.class;
             }
             default: {
                 break;

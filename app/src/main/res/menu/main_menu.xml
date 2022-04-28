@@ -6,12 +6,17 @@
         android:checkableBehavior="single">
 
         <item
+                android:id="@+id/menu_my_info_item"
+                android:title="@string/my_info" />
+
+
+        <item
             android:id="@+id/menu_form_item"
             android:title="@string/daily_health_form" />
 
         <item
-            android:id="@+id/menu_checkin_item"
-            android:title="@string/building_checkin_form"></item>
+                android:id="@+id/menu_checkin_item"
+                android:title="@string/building_checkin_form"/>
 
         <item
             android:id="@+id/menu_building_item"

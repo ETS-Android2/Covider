@@ -32,4 +32,5 @@
     <string name="daily_schedule">Buildings in My Daily Schedule</string>
     <string name="frequent_visit">Frequently Visited Buildings</string>
     <string name="whole_list">All USC Buildings</string>
+    <string name="my_info">My Info</string>
 </resources>

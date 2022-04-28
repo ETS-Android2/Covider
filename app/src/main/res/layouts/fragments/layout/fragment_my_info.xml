@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fillViewport="true"
+            tools:context=".fragment.MyInfoFragment">
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="50dp"
+                android:text="Email:"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"/>
+
+        <TextView
+                android:id="@+id/my_info_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textSize="20sp"
+                android:text="your email..."/>
+
+        <ImageView
+                android:id="@+id/my_info_qrcode"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="50dp"
+                android:contentDescription="QR code"/>
+
+    </LinearLayout>
+
+</ScrollView>
