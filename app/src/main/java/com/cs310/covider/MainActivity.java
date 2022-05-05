@@ -311,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 public Map<String, String> getHeaders() {
                     Map<String, String> header = new HashMap<>();
                     header.put("content-type", "application/json");
-                    header.put("authorization", "key=AAAAj2t5Vvk:APA91bFOAe4_gl7xXBrt6vBRxa0FzaK6E5T8SzcKAoytUUDuStDVIdfMfQfsf62w_2UoTmNp1TKgu6ZkuhRV3lvofsxIuSdlcvvLZu21okeet35NTBEbx5CJ4BI2lP_Ghhty1tswSSta");
+                    header.put("authorization", "key=");
                     return header;
                 }
             };
